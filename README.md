@@ -1,4 +1,4 @@
-![Logo](https://imgur.com/a/kjuFoQg)
+![Logo](https://imgur.com/a/tree-technology-kjuFoQg)
 
 # Projeto Pesquisa e Inovação - Grupo 4
 
