@@ -1,4 +1,3 @@
-![Logo](https://imgur.com/a/tree-technology-kjuFoQg)
 
 # Projeto Pesquisa e Inovação - Grupo 4
 
@@ -11,3 +10,5 @@ Projeto Software para trânsito em São Paulo.
 - [@Bruna Karen](https://github.com/brunaK19)
 - [@Gustavo Kohatsu](https://github.com/Gustavo-Kohatsu)
 - [@Leonardo Jhonne](https://github.com/leonardojhonee)
+
+![Tree Technology 169](https://github.com/user-attachments/assets/e5461fc6-9a92-4801-8831-a5e26e584c12)
