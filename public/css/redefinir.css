@@ -1,0 +1,21 @@
+body {
+    background-color: #001E30;
+    height: 100%;
+    width: 99%;
+}
+
+.div_branca {
+    background-color: white;
+    border-radius: 20px;
+    height: 50vh;
+    width: 70vw;
+    margin: 7%;
+}
+
+.div_branca span {
+    color: #45A449;
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    display: flex;
+}
