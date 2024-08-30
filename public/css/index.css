@@ -1,0 +1,147 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/*Aqui tem o conteudo da nav-bar*/
+a{
+    color: #ffff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover{
+    color: #45a449;
+}
+
+.logo{
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    background-color: #001e30;
+    height: 10vh;
+}
+.btn-entrar {
+    background-color: #fff;
+    color: #001e30;
+    border: 10px solid #001e30;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin-left: -300px;
+}
+
+.btn-entrar:hover {
+    background-color: #45a449;
+    color: #ffffff;
+}
+
+.nav-list{
+    list-style: none;
+    display: flex;
+}
+.nav-list li{
+    letter-spacing: 3px;
+    margin-left: 32px;
+    font-size: 20px;
+}
+.nav-list li a:hover{
+    color: #45a449;
+}
+
+/*Aqui tem o conteudo da primeira tela */
+
+main{
+    position: relative;
+    background: url('../assets/pexels-photo-4628195.jpeg') no-repeat
+    center center;
+    background-size: cover;
+    height: 92vh;
+}
+
+main h1, h2, p{
+    font-family: 'inter', sans-serif;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+}
+
+main h1{
+    font-size: 80px;
+    display: flex;
+    color: #fff;
+    top: 200px; /* Ajusta a distância do topo */
+    left: 40px; /* Ajusta a distância da esquerda */
+}
+main h2{
+    font-size: 50px;
+    display: flex;
+    color: #45a449;
+    top: 300px; /* Ajusta a distância do topo */
+    left: 40px; /* Ajusta a distância da esquerda */
+}
+main p{
+    font-size: 32px;
+    display: flex;
+    color: #fff;
+    top: 400px; /* Ajusta a distância do topo */
+    left: 40px; /* Ajusta a distância da esquerda */
+}
+
+/*besteirol so para ficar mais bonito*/
+hr.linha-divisao {
+    border: 0; /* Remove a borda padrão */
+    height: 8px; /* Define a altura da linha */
+    background-color: #45a449; /* Define a cor da linha */
+
+}
+
+/*Aqui fica o sobre nos*/
+.container-sobre{
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+    margin: 0 auto; /* Centraliza a div se necessário */
+    max-width: 100%; /* Garante que a div não exceda a largura da página */
+    box-sizing: border-box; /* Inclui padding e bordas no cálculo da largura total */
+    overflow: hidden; /* Garante que o conteúdo não exceda os limites */
+}
+.container-sobre img {
+    height: auto; /* Mantém a proporção da imagem */
+    display: block; /* Remove espaço embaixo da imagem */
+}
+
+.texto-sobre {
+    flex: 1; /* Permite que o texto ocupe o espaço restante */
+    max-width: 100%; /* Garante que o texto não exceda a largura da div */
+}
+
+.h2-sobre {
+    font-size: 40px; /* Ajuste o tamanho da fonte */
+    color: #33363a; /* Altere a cor do texto */
+    margin-bottom: 60px; /* Adicione mais espaço abaixo do título */
+}
+
+.h2-nossa {
+    font-size: 40px; /* Ajuste o tamanho da fonte */
+    color: #45a449; /* Altere a cor do texto */
+    margin-top: 45px;
+
+}
+
+.texto-sobre p {
+    font-size: 16px; /* Ajusta o tamanho da fonte do parágrafo */
+    line-height: 1.6; /* Melhora a legibilidade do texto */
+    color: #333; /* Define a cor do texto */
+    margin: 150px 0; /* Ajusta o espaço acima e abaixo do parágrafo */
+}
