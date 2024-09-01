@@ -1,147 +1,304 @@
-*{
+/* STYLE GERAL */
+
+
+
+
+* {
+    
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-/*Aqui tem o conteudo da nav-bar*/
-a{
-    color: #ffff;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-a:hover{
-    color: #45a449;
-}
-
-.logo{
-    font-size: 24px;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-}
-
-nav{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-family: 'Inter', sans-serif;
-    background-color: #001e30;
-    height: 10vh;
-}
-.btn-entrar {
-    background-color: #fff;
-    color: #001e30;
-    border: 10px solid #001e30;
-    padding: 8px 16px;
-    border-radius: 25px;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    margin-left: -300px;
-}
-
-.btn-entrar:hover {
-    background-color: #45a449;
-    color: #ffffff;
-}
-
-.nav-list{
-    list-style: none;
-    display: flex;
-}
-.nav-list li{
-    letter-spacing: 3px;
-    margin-left: 32px;
-    font-size: 20px;
-}
-.nav-list li a:hover{
-    color: #45a449;
-}
-
-/*Aqui tem o conteudo da primeira tela */
-
-main{
+body {
     position: relative;
-    background: url('../assets/pexels-photo-4628195.jpeg') no-repeat
+    background: url(../assets/pexels-photo-4628195.jpeg) no-repeat
     center center;
+    height: 40vh;
+    
     background-size: cover;
-    height: 92vh;
+    
+}   
+
+.navbar {
+    max-width: 1280px;
+    margin: 0 auto;
+   
 }
 
-main h1, h2, p{
-    font-family: 'inter', sans-serif;
-    position: absolute;
-    padding: 0;
-    margin: 0;
-}
-
-main h1{
-    font-size: 80px;
+.flex {
     display: flex;
+}
+
+
+.btn-login-cadastro button {
+    padding: 10px 40px;
+    font-size: 18px;
+    
+    background-color:#45a449;
+    border: 0;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .2s;
+    color: white;
+    font-weight: bold;
+}
+
+h2.titulo {
     color: #fff;
-    top: 200px; /* Ajusta a distância do topo */
-    left: 40px; /* Ajusta a distância da esquerda */
+    font-size: 38px;
+    text-align: center;
 }
-main h2{
-    font-size: 50px;
-    display: flex;
-    color: #45a449;
-    top: 300px; /* Ajusta a distância do topo */
-    left: 40px; /* Ajusta a distância da esquerda */
+
+h2.titulo span {
+    color:#45a449;
 }
-main p{
-    font-size: 32px;
+
+button:hover,
+form .btn-login-cadastro input:hover {
+    box-shadow: 0px 0px 8px white;
+    transform: scale(1.05);
+}
+
+/* FIM STYLE GERAL */
+
+
+
+/* STYLE NAVBAR */
+header {
+    padding: 30px 4%;
+}
+
+header > .navbar {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header a {
+    color: #acacac;
+    text-decoration: none;
+    display: inline-block;
+    transition: .2s;
+}
+
+header nav.menu a:hover {
     color: #fff;
-    top: 400px; /* Ajusta a distância do topo */
-    left: 40px; /* Ajusta a distância da esquerda */
+    transform: scale(1.05);
 }
 
-/*besteirol so para ficar mais bonito*/
-hr.linha-divisao {
-    border: 0; /* Remove a borda padrão */
-    height: 8px; /* Define a altura da linha */
-    background-color: #45a449; /* Define a cor da linha */
-
+header nav ul {
+    list-style-type: none;
 }
 
-/*Aqui fica o sobre nos*/
-.container-sobre{
-    display: flex;
-    align-items: flex-start;
-    padding: 20px;
-    margin: 0 auto; /* Centraliza a div se necessário */
-    max-width: 100%; /* Garante que a div não exceda a largura da página */
-    box-sizing: border-box; /* Inclui padding e bordas no cálculo da largura total */
-    overflow: hidden; /* Garante que o conteúdo não exceda os limites */
-}
-.container-sobre img {
-    height: auto; /* Mantém a proporção da imagem */
-    display: block; /* Remove espaço embaixo da imagem */
+header nav.menu ul li {
+    display: inline-block;
+    padding: 0 70px;
+    font-weight: bold;
 }
 
-.texto-sobre {
-    flex: 1; /* Permite que o texto ocupe o espaço restante */
-    max-width: 100%; /* Garante que o texto não exceda a largura da div */
+/* FIM STYLE NAVBAR */
+
+
+
+/* STYLE PAGINAINICIAL */
+
+section.paginaInicial {
+    padding: 40px 4%;
 }
 
-.h2-sobre {
-    font-size: 40px; /* Ajuste o tamanho da fonte */
-    color: #33363a; /* Altere a cor do texto */
-    margin-bottom: 60px; /* Adicione mais espaço abaixo do título */
+section.paginaInicial .flex {
+    align-items: center;
+    justify-content: center;
+    gap: 90px;
 }
 
-.h2-nossa {
-    font-size: 40px; /* Ajuste o tamanho da fonte */
-    color: #45a449; /* Altere a cor do texto */
+.paginaInicial h1 {
+    color: #fff;
+    font-size: 42px;
+    line-height: 40px;
+}
+
+.paginaInicial .txt-paginaInicial h1 span {
+    color:#45a449;
+}
+
+.paginaInicial .txt-paginaInicial p {
+    color: #fff;
+    margin: 40px 0;
+   
+}
+
+.paginaInicial .img-paginaInicial img {
+    width: 400px;
+    position: relative;
+    animation: flutuar 2s ease-in-out infinite alternate;
+}
+
+
+@keyframes flutuar {
+    0% {
+        top: 0;
+    }
+
+    100% {
+        top: 30px;
+    }
+}
+
+/* FIM STYLE PAGINAINICIAL */
+
+/* STYLE FUNCIONALIDADES SITE */
+
+section.funcionalidades {
+
+    padding: 40px 4%;
+    background-color: rgb(2, 2, 63);
+   
+}
+
+section.funcionalidades .flex {
+    gap: 60px;
+}
+
+.funcionalidades .funcionalidades-box {
+    color: #fff;
+    padding: 40px;
+    border-radius: 20px;
     margin-top: 45px;
+    transition: .2s;
+}
+
+.funcionalidades .funcionalidades-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ffffff78;
+}
+
+.funcionalidades .funcionalidades-box i {
+    font-size: 70px;
+    color: #45a449;
+}
+
+.funcionalidades .funcionalidades-box h3 {
+    font-size: 28px;
+    margin: 15px 0;
+}
+
+/* FIM STYLE FUNCIONALIDADES SITE */
+
+/* STYLE MINHA HISTORIA e SOBRE */
+section.sobre {
+    padding: 80px 4%;
+    background-color: aliceblue;
+}
+
+section.sobre .flex {
+    align-items: center;
+    gap: 60px;
+}
+
+.sobre .txt-sobre {
+    color: black;
+}
+
+.sobre .txt-sobre h2 {
+    font-size: 40px;
+    line-height: 40px;
+    margin-bottom: 30px;
+}
+
+.sobre .txt-sobre h2 span {
+    color:#45a449;
+    display: block;
+}
+
+.sobre .txt-sobre p {
+    margin: 20px 0;
+    text-align: justify;
+}
+
+.btn-social button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background-color:#45a449;
+    font-size: 22px;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: .2s;
+}
+/* FIM STYLE MINHA HISTORIA e SOBRE */
+
+
+
+/* STYLE MINHASARTES */
+
+.Equipe{
+background-color: aliceblue;
 
 }
 
-.texto-sobre p {
-    font-size: 16px; /* Ajusta o tamanho da fonte do parágrafo */
-    line-height: 1.6; /* Melhora a legibilidade do texto */
-    color: #333; /* Define a cor do texto */
-    margin: 150px 0; /* Ajusta o espaço acima e abaixo do parágrafo */
+.Equipe .interface {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+ 
+   
 }
+
+.Equipe .image-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Espaço entre as imagens */
+    
+}
+
+.Equipe .image-container img {
+    width: 18%; /* Ajuste conforme necessário */
+    height: auto;
+    border-radius: 8px; /* Opcional: cantos arredondados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Opcional: sombra */
+}
+
+
+.Equipe .txt-equipe {
+display: flex;
+font-size: 30px;
+align-items: center;
+justify-content: center;
+
+}
+/* FIM STYLE MINHASARTES */
+
+
+/* STYLE RODAPE */
+footer {
+    padding: 40px 4%;
+    box-shadow: 0 0 40px 10px #ffffff1d;
+    background-color: rgb(5, 5, 69);
+}
+
+footer .flex {
+    justify-content: space-between;
+}
+
+footer .line-footer {
+    padding: 20px 0;
+}
+
+.borda {
+    border-top: 2px solid white;
+}
+
+footer .line-footer p i {
+    color:#45a449;
+    font-size: 22px;
+}
+
+footer .line-footer p a {
+    color: #fff;
+}
+/* FIM STYLE RODAPE */
