@@ -3,10 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Institucional</title>
-    <link rel="stylesheet" href="css/index.css">
+    <title>Entrar</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
+    <img src="./assets/img/Arrow 1.png" alt="" class="voltar" onclick="voltar()">
+    <div class="container">
+        <div class="cadastro-content" id="cadastro">
+            <div class="first-column">
+                <h1>Cadastre-se</h1>
+                <p class="description">Insira seus dados pessoais para</p>
+                <p class="description">criar uma conta na nossa plataforma</p>
+
+                <h3>Já tem uma conta?</h3>
+                <button class="btn-transicao" id="signin"  onclick="logar()" >Entre aqui</button>
+            </div>
+            <div class="second-column">
+                <div class="forms">
+                     <span>Nome</span>
+                     <input type="text" id="nome" placeholder="Seu nome"> 
+
+                     <span>E-mail</span>
+                     <input type="email" id="email" placeholder="Exemplo@gmail.com"> 
+
+                     <span>Senha</span>
+                     <input type="password" id="senha"> 
+
+                     <span>Confirmar senha</span>
+                     <input type="password" id="confirma-senha"> 
+
+                     <div id="mensagem"></div>
+
+                     <button class="btn-entrar" onclick="validar()">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+        <div class="login-content" id="login" style="display: none;">
+            <div class="first-column">
+                <h2>Login</h2>
+                <p class="description">Faça login na sua conta</p>
+
+                <h3>Não tem uma conta?</h3>
+                <button class="btn-transicao"  id="signup" onclick="cadastrar()">Cadastre-se aqui</button>
+            </div>
+            <div class="second-column">
+                <div class="forms">
+                     <span>Nome</span>
+                     <input type="text" id="nome2"> 
+
+                     <span>Senha</span>
+                     <input type="password" id="senha2"> 
+                     <a href="" class="link-redefinirsenha">Esqueci a senha</a>
+
+                     <button class="btn-entrar">Entrar</button>
+                </div>
+            </div>
+
+        </div><!-- second content -->
+    </div>
+
+    <Script src="./js/animacao.js"></Script>
 </body>
 </html>

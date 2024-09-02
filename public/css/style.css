@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #001E30;
+    font-family: 'Poppins';
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: -5vh;
+}
+
+.voltar{
+    height: 40px;
+    margin: 10px 0px 0px 10px;
+    cursor: pointer;
+}
+
+/* CADASTRO */
+
+.cadastro-content,.login-content{
+    display: flex;
+    height: 70%;
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+
+
+.cadastro-content .first-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-image: url(../assets/img/background.png);
+    background-size: cover;
+    border-radius: 0px 0px 0px 30px;
+    width: 40%;
+    height: 100%;
+}
+
+.first-column h3{
+    margin-top: 20px;
+    
+}
+
+.btn-transicao{
+    color: #88ff8e;
+    background: none;
+    border: none;
+    font-family: 'Poppins';
+    font-size: large;
+    font-weight: medium;
+    cursor: pointer;
+}
+
+.cadastro-content .second-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+    height: 100%;
+    border-radius: 0px 30px 0px 0px;
+    width: 60%;
+}
+
+.forms{
+    display: flex;
+    flex-direction: column;
+    color: #001E30;
+    font-weight: 600;
+    justify-content: center;
+    margin: 5vw;
+}
+
+.forms input{
+    border:none;
+    border-bottom: 3px solid #001E30;
+    height: 30px;
+    margin-bottom: 30px;
+    font-size: large;
+    outline: none;
+}
+
+.btn-entrar{
+    background-color: #76cc7a;
+    text-align: center;
+    padding: 5px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 40px;
+    font-size:large;
+    border: none;
+    font-family: 'Poppins';
+    outline: 0;
+    cursor: pointer;
+}
+
+.btn-entrar:hover{
+    background-color: #3fb144;
+    
+}
+
+/* LOGIN */
+
+
+.login-content .first-column{
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url(../assets/img/background.png);
+    background-size: cover;
+    width: 50%;
+    text-align: center;
+    height: 100%;
+    border-radius: 0px 30px 0px 0px;
+    color: #fff;
+    
+}
+
+.link-redefinirsenha{
+    color: #38833c;
+    margin-bottom: 5vh;
+}
+
+.login-content .second-column{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0px 0px 0px 30px;
+    height: 100%;
+    order: 1;
+    width: 60%;;
+}
