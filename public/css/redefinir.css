@@ -11,6 +11,13 @@ a {
     color: inherit;
 }
 
+.div_branca a {
+    margin-left: 30%;
+    width: 17vw;
+    height: 7vh;
+    margin-top: 40px;
+}
+
 #seta {
     width: 4vw;
     margin-left: 2%;
@@ -64,6 +71,16 @@ a {
     outline: none;
 }
 
+#botao-enviar {
+    background-color: #001E30;
+    color: white;
+    font-weight: bold;
+    width: 17vw;
+    height: 7vh;
+    border-radius: 20px;
+    font-size: 22px;
+}
+
 #botao-redefinir {
     background-color: #001E30;
     color: white;
@@ -74,7 +91,6 @@ a {
     border-radius: 20px;
     font-size: 22px;
     margin-top: 40px;
-
 }
 
 .input-container {
