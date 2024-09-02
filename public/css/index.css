@@ -4,6 +4,8 @@
 
 
 * {
+
+    scroll-behavior: smooth;
     
     margin: 0;
     padding: 0;
@@ -13,18 +15,18 @@
 
 body {
     position: relative;
-    background: url(../assets/pexels-photo-4628195.jpeg) no-repeat
-    center center;
+    background: url(../assets/pexels-photo-4628195.jpeg) no-repeat center center;
     height: 40vh;
     
     background-size: cover;
     
-}   
+    overflow-x: hidden;
+}
 
 .navbar {
     max-width: 1280px;
     margin: 0 auto;
-   
+
 }
 
 .flex {
@@ -35,8 +37,8 @@ body {
 .btn-login-cadastro button {
     padding: 10px 40px;
     font-size: 18px;
-    
-    background-color:#45a449;
+
+    background-color: #45a449;
     border: 0;
     border-radius: 30px;
     cursor: pointer;
@@ -52,7 +54,7 @@ h2.titulo {
 }
 
 h2.titulo span {
-    color:#45a449;
+    color: #45a449;
 }
 
 button:hover,
@@ -70,7 +72,7 @@ header {
     padding: 30px 4%;
 }
 
-header > .navbar {
+header>.navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -104,6 +106,10 @@ header nav.menu ul li {
 
 /* STYLE PAGINAINICIAL */
 
+.txt-paginaInicial {
+    margin-bottom: 5%;
+}
+
 section.paginaInicial {
     padding: 40px 4%;
 }
@@ -121,14 +127,16 @@ section.paginaInicial .flex {
 }
 
 .paginaInicial .txt-paginaInicial h1 span {
-    color:#45a449;
+    color: #45a449;
 }
 
 .paginaInicial .txt-paginaInicial p {
     color: #fff;
-    margin: 40px 0;
-   
+    margin: 30px 0;
+
 }
+
+
 
 .paginaInicial .img-paginaInicial img {
     width: 400px;
@@ -147,6 +155,16 @@ section.paginaInicial .flex {
     }
 }
 
+@keyframes flutuarMaisRapido {
+    0% {
+        top: 0;
+    } 50% {
+        top: 15px;
+    } 100% {
+        top: 30px;
+    }
+}
+
 /* FIM STYLE PAGINAINICIAL */
 
 /* STYLE FUNCIONALIDADES SITE */
@@ -155,7 +173,7 @@ section.funcionalidades {
 
     padding: 40px 4%;
     background-color: rgb(2, 2, 63);
-   
+
 }
 
 section.funcionalidades .flex {
@@ -209,7 +227,7 @@ section.sobre .flex {
 }
 
 .sobre .txt-sobre h2 span {
-    color:#45a449;
+    color: #45a449;
     display: block;
 }
 
@@ -223,20 +241,29 @@ section.sobre .flex {
     height: 60px;
     border-radius: 50%;
     border: none;
-    background-color:#45a449;
+    background-color: #45a449;
     font-size: 22px;
     cursor: pointer;
     margin: 0 5px;
     transition: .2s;
 }
+
 /* FIM STYLE MINHA HISTORIA e SOBRE */
 
 
 
 /* STYLE MINHASARTES */
 
-.Equipe{
-background-color: aliceblue;
+.Equipe {
+    background-color: aliceblue;
+    height: 60vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 5px;
 
 }
 
@@ -244,33 +271,65 @@ background-color: aliceblue;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
- 
-   
+    padding: 10px;
+
 }
 
 .Equipe .image-container {
     display: flex;
     justify-content: space-between;
-    gap: 10px; /* Espaço entre as imagens */
-    
+    gap: 20px;
+    /* Espaço entre as imagens */
+
+}
+
+.Equipe .image-container a {
+    width: 18%;
+    /* Ajuste conforme necessário */
+    height: auto;
+    border-radius: 500px;
+    /* Opcional: cantos arredondados */
 }
 
 .Equipe .image-container img {
-    width: 18%; /* Ajuste conforme necessário */
-    height: auto;
-    border-radius: 8px; /* Opcional: cantos arredondados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Opcional: sombra */
+    border-radius: 500px;
 }
 
 
-.Equipe .txt-equipe {
-display: flex;
-font-size: 30px;
-align-items: center;
-justify-content: center;
+.Equipe .titulo-equipe {
+    height: 25%;
+    width: 100%;
+    display: flex;
+    font-size: 30pt;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
 
 }
+
+.txt-equipe {
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 164px;
+    font-size: 13pt;
+}
+
+.integrantes {
+    height: 100%;
+    width: 5%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
 /* FIM STYLE MINHASARTES */
 
 
@@ -294,11 +353,33 @@ footer .line-footer {
 }
 
 footer .line-footer p i {
-    color:#45a449;
+    color: #45a449;
     font-size: 22px;
 }
 
 footer .line-footer p a {
     color: #fff;
 }
+
 /* FIM STYLE RODAPE */
+
+/* SCROLL LATERAL DIREITO */
+
+::-webkit-scrollbar {
+    width: 7px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #004306;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #12c406;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #0d7d05;
+  }
