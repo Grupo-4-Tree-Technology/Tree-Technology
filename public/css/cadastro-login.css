@@ -15,14 +15,14 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin-top: -5vh;
+    height: 90vh;
 }
 
 .voltar{
-    height: 40px;
-    margin: 10px 0px 0px 10px;
+    height: 30px;
+    margin: 15px 0px 0px 15px;
     cursor: pointer;
+    display: inline;
 }
 
 /* CADASTRO */
@@ -36,8 +36,6 @@ body{
     color: #fff;
     
 }
-
-
 
 .cadastro-content .first-column{
     display: flex;
@@ -66,7 +64,7 @@ body{
     cursor: pointer;
 }
 
-.cadastro-content .second-column, .login-content .second-column{
+.cadastro-content .second-column{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -114,7 +112,6 @@ body{
 }
 
 /* LOGIN */
-
 
 .login-content .first-column{
     order: 2;
