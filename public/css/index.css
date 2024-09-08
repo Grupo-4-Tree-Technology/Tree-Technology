@@ -3,7 +3,7 @@
 * {
 
     scroll-behavior: smooth;
-    
+
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,12 +12,12 @@
 
 body {
     position: relative;
-    background: url(../assets/pexels-photo-4628195.jpeg) no-repeat center center;
-    height: 40vh;
-    
+    background: url(../assets/background\ \(index\).png) no-repeat center center;
+    height: 100vh;
+
     background-size: cover;
-    
-    overflow-x: hidden;
+
+
 }
 
 .navbar {
@@ -25,11 +25,6 @@ body {
     margin: 0 auto;
 
 }
-
-.flex {
-    display: flex;
-}
-
 
 .btn-login-cadastro button {
     padding: 10px 40px;
@@ -76,14 +71,15 @@ header>.navbar {
 }
 
 header a {
-    color: #acacac;
+
+    color: #ffffff;
     text-decoration: none;
     display: inline-block;
     transition: .2s;
 }
 
 header nav.menu a:hover {
-    color: #fff;
+    color: #4ce154;
     transform: scale(1.05);
 }
 
@@ -103,15 +99,13 @@ header nav.menu ul li {
 
 /* STYLE PAGINAINICIAL */
 
-.txt-paginaInicial {
-    margin-bottom: 5%;
-}
-
 section.paginaInicial {
+    height: 67vh;
     padding: 40px 4%;
 }
 
-section.paginaInicial .flex {
+section.paginaInicial .div-paginaInicial {
+    display: flex;
     align-items: center;
     justify-content: center;
     gap: 90px;
@@ -124,11 +118,12 @@ section.paginaInicial .flex {
 }
 
 .paginaInicial .txt-paginaInicial h1 span {
-    color: #45a449;
+    color: #4ce154;
 }
 
 .paginaInicial .txt-paginaInicial p {
     color: #fff;
+    font-size: 15pt;
     margin: 30px 0;
 
 }
@@ -155,9 +150,13 @@ section.paginaInicial .flex {
 @keyframes flutuarMaisRapido {
     0% {
         top: 0;
-    } 50% {
+    }
+
+    50% {
         top: 15px;
-    } 100% {
+    }
+
+    100% {
         top: 30px;
     }
 }
@@ -167,13 +166,20 @@ section.paginaInicial .flex {
 /* STYLE FUNCIONALIDADES SITE */
 
 section.funcionalidades {
-
+    height: 75vh;
     padding: 40px 4%;
     background-color: rgb(2, 2, 63);
 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
 }
 
-section.funcionalidades .flex {
+section.funcionalidades .descricao-projeto {
+    display: flex;
+    justify-content: space-around;
+
     gap: 60px;
 }
 
@@ -208,7 +214,8 @@ section.sobre {
     background-color: aliceblue;
 }
 
-section.sobre .flex {
+section.sobre .descricao-empresa {
+    display: flex;
     align-items: center;
     gap: 60px;
 }
@@ -233,16 +240,35 @@ section.sobre .flex {
     text-align: justify;
 }
 
-.btn-social button {
-    width: 60px;
+.btn-social {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-social span {
+
+    background-color: #3cbd42;
+
     height: 60px;
+    width: 60px;
+
     border-radius: 50%;
     border: none;
-    background-color: #45a449;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     font-size: 22px;
     cursor: pointer;
+
     margin: 0 5px;
     transition: .2s;
+}
+
+.btn-social span:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ffffff78;
 }
 
 .btn-social a:visited {
@@ -257,8 +283,8 @@ section.sobre .flex {
 
 .Equipe {
     background-color: aliceblue;
-    height: 60vh;
-    width: 100vw;
+    height: 67vh;
+    width: 100%;
 
     display: flex;
     flex-direction: column;
@@ -268,34 +294,35 @@ section.sobre .flex {
 
 }
 
-.Equipe .interface {
+.interface-team {
     display: flex;
+    gap: 4.5em;
+}
+
+.content-member {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-
 }
 
-.Equipe .image-container {
+.content-member .name-member {
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    /* Espaço entre as imagens */
-
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20pt;
 }
 
-.Equipe .image-container a {
-    width: 18%;
-    /* Ajuste conforme necessário */
-    height: auto;
-    border-radius: 500px;
-    /* Opcional: cantos arredondados */
-}
+.content-member>a {
 
-.Equipe .image-container img {
     border-radius: 500px;
 }
 
+.content-member>a>img {
+
+    border-radius: 500px;
+}
 
 .Equipe .titulo-equipe {
     height: 25%;
@@ -336,41 +363,62 @@ section.sobre .flex {
 
 /* STYLE RODAPE */
 footer {
-    padding: 40px 4%;
     box-shadow: 0 0 40px 10px #ffffff1d;
     background-color: rgb(5, 5, 69);
-    
-}
+    height: 25vh;
 
-footer .flex {
-    justify-content: space-between;
-}
-
-footer .line-footer {
-    padding: 10px 0;
     display: flex;
+    align-items: center;
     justify-content: space-around;
-    gap: 50vw;
 }
 
-.line-footer .endereco{
+footer .contact-adress {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2%;
+
+    width: 100vw;
+    height: 25vh;
+
+}
+
+#direitos-reservados {
+    color: white;
+    width: 25vw;
+    text-align: center;
+
+    font-size: 1.2em;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#direitos-reservados > a {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 75px;
+    height: 75px;
+    border-radius: 250px;
+
+}
+
+.endereco {
     color: #fff;
+    
     font-size: large;
-}
-.borda {
-    border-top: 2px solid white;
-}
 
-footer .line-footer p i {
-    color: #45a449;
-    font-size: 22px;
-    
-}
+    width: 20vw;
 
-footer .line-footer p a {
-    color: #fff;
-    
-    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+ 
+    gap: 1.2em;
 }
 
 /* FIM STYLE RODAPE */
@@ -378,20 +426,20 @@ footer .line-footer p a {
 /* SCROLL LATERAL DIREITO */
 
 ::-webkit-scrollbar {
-    width: 7px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
     background: #004306;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
     background: #12c406;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
     background: #0d7d05;
-  }
+}
