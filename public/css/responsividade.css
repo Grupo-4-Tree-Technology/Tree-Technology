@@ -1,0 +1,244 @@
+@media screen and (max-width: 1919px) {
+
+    section.paginaInicial .div-paginaInicial {
+        display: flex;
+        justify-content: space-around;
+
+        padding: 7%;
+    }
+    
+}
+
+@media screen and (max-width: 1220px) {
+    
+    .Equipe {
+        height: 37vh;
+    }
+
+    .Equipe .titulo-equipe {
+        height: 30%;
+    }
+
+    .menu ul {
+       width: 75%;
+       display: grid;
+       grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 992px) {
+    
+    section.paginaInicial .div-paginaInicial {
+        height: 100%;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        gap: 2px;
+    }
+    
+    .img-paginaInicial {
+        width: 40%;
+    }
+    
+    .img-sobre {
+        display: none;
+    }
+    
+    section.funcionalidades {
+        display: flex;
+        justify-content: start;
+
+        height: 155vh;
+        padding: 40px 4%;
+        background-color: rgb(2, 2, 63);
+  
+    }
+
+    .interface-project {
+
+        height: 30%;
+        width: 92vw;
+    }
+
+    section.funcionalidades .descricao-projeto {
+        height: 65%;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        place-items: center;
+
+    }
+
+    .funcionalidades .funcionalidades-box {
+        padding: 30px;
+        height: fit-content;
+        width: 57%;
+    }
+
+    .Equipe {
+        height: 48vh;
+        justify-content: space-evenly;
+    }
+
+    .direitos-reservados > a {
+        width: 10px;
+    }
+
+    .direitos-reservados > a > img {
+        width: 10px;
+    }
+
+    .span-direitos {
+        font-size: 10.5pt;
+    }
+
+    .endereco .estado {
+        display: flex;
+        align-items: start;
+
+        width: 100%;
+    }
+
+    .endereco p {
+        font-size: 10pt;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .menu, .btn-login-cadastro {
+        display: none;
+    }
+
+    .btn-abrir-menu {
+        display: block;
+    }
+    
+    .txt-paginaInicial {
+        padding-left: 5%;
+    }
+
+    section.paginaInicial .div-paginaInicial {
+        justify-content: space-evenly;
+    }
+    
+    .paginaInicial h1 {
+        font-size: 2em;
+        
+    }
+
+    .paginaInicial .txt-paginaInicial p {
+        font-size: 12pt;
+        padding: 0 0 0 1%;
+    }
+
+    section.funcionalidades {
+        height: 170vh;
+    }
+
+    .Equipe {
+        height: 55vh;
+    }
+
+    .Equipe .titulo-equipe {
+        height: 10%;
+        font-size: 1.75em;
+    }
+
+    .content-member > a {
+        width: 45%;
+    }
+
+    .interface-team {
+        gap: 1.5em;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+    }
+
+    footer {
+        height: 40vh;
+    }
+
+    .btn-social {
+        flex-direction: column;
+        gap: 1.2em;
+    }
+
+    #direitos-reservados {
+        flex-direction: column;
+        width: 50%;
+        gap: 0.75em;
+    }
+
+    .endereco {
+        align-items: start;
+        width: 35%;
+    }
+
+    .endereco > p {
+
+        text-align: start;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    section.funcionalidades {
+        height: 175vh;
+    }
+
+    .funcionalidades .funcionalidades-box {
+        width: 89%;
+    }
+
+    .Equipe {
+        height: 40vh;
+    }
+
+    .Equipe .titulo-equipe {
+        font-size: 1.5em;
+    }
+
+    .content-member .name-member {
+        font-size: 75%;
+    }
+
+    footer {
+        height: 50vh;
+        display: flex;
+        align-items: start;
+        padding: 10% 0;
+    }
+
+    footer .contact-address {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .btn-social {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .endereco {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 55%;
+    }
+
+    .endereco .estado {
+        text-align: center;
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    section.funcionalidades {
+        height: 200vh;
+    }
+}
+
