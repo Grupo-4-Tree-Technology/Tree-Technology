@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="css/responsividade.css">
 
     <link rel="shortcut icon" href="assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
+
+    <script src="js/menu.js" defer></script>
     <title>SITE | TREE TECHNOLOGY</title>
 
 </head>
@@ -54,6 +56,27 @@
                 </a>
             </div>
 
+            <div class="btn-abrir-menu" id="btn-menu">
+                <i class="bi bi-list"></i>
+            </div>
+
+            <div class="menu-mobile" id="menu-mobile">
+                <div class="btn-fechar">
+                    <i class="bi bi-x-lg"></i>
+                </div>
+
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">INÍCIO</a></li>
+                        <li><a href="#sobre">SOBRE</a></li>
+                        <li><a href="#projeto">PROJETO</a></li>
+                        <li><a href="#equipe">EQUIPE</a></li>
+                        <li><a href="cadastro-login.html">ENTRAR</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="overlay-menu" id="overlay-menu"></div>
         </div>
 
     </header>
@@ -70,7 +93,7 @@
                     <h1>Bem vindo a<span> Tree Technology_</span></h1>
                     <p>A RAIZ DA INOVAÇÃO_</p>
 
-                    <div class="btn-login-cadastro">
+                    <div class="btn-cadastrar">
                         <a href="cadastro-login.html">
                             <button>CADASTRO</button>
                         </a>
@@ -251,7 +274,7 @@
 
     <footer>
         
-        <div class="contact-adress">
+        <div class="contact-address">
 
             <div class="btn-social">
 
@@ -283,9 +306,9 @@
 
             <div id="direitos-reservados">
                 <a href="index.html">
-                    <img src="./assets/Tree Technology (Branca).png" style="width: 100px;" alt="Logo">
+                    <img src="./assets/Tree Technology (Branca).png" style="width: 90px;" alt="Logo">
                 </a>
-                <span>
+                <span class="span-direitos">
                     <p>TreeTechnology &copy; 2024.</p>
                     <p>All rights reserved.</p>
                 </span>
@@ -293,9 +316,9 @@
 
             <div class="endereco">
                 <p>Av. Paulista, 234 - 08845-330</p>
-                <p>São Paulo - SP</p>
+                <p class="estado">São Paulo - SP</p>
             </div>
-
+            
         </div>
         
     </footer>
