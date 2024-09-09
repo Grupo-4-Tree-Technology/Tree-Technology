@@ -29,7 +29,7 @@ body{
 
 .cadastro-content,.login-content{
     display: flex;
-    height: 70%;
+    height: 90%;
     width: 70%;
     justify-content: center;
     align-items: center;
