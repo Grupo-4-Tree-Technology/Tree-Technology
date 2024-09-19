@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/redefinir.css">
+    <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
+    <title>Redefinir senha | Tree Technology</title>
+</head>
+
+<body>
+    <a href="redefinir.html"><img id="seta" src="../assets/seta.jpg"></a>
+    <div class="div_branca">
+        <span><br>Redefinir Senha</span>
+        <span id="texto-redefinir">Digite sua nova senha</span>
+
+        <div class="input-container">
+            <input id="inp_senha" placeholder="Nova senha" type="password">
+            <img id="olho" onclick="visualizarSenha()" src="../assets/olhoAberto.png" class="toggle-password">
+        </div>
+
+        <div class="input-container">
+            <input id="inp_senha2" placeholder="Confirmar senha" type="password">
+            <img id="olho2" onclick="visualizarSenha2()" src="../assets/olhoAberto.png" class="toggle-password">
+        </div>
+
+        <button onclick="redefinirSenha()" id="botao-redefinir">Confirmar</button>
+    </div>
+</body>
+
+<script>
+    function visualizarSenha() {
+        let inputSenha = document.getElementById("inp_senha")
+        let imgSenha = document.getElementById("olho")
+        if (inputSenha.type == "password") {
+            inputSenha.type = 'text'
+            imgSenha.src = "../assets/olhoAberto.png"
+        } else {
+            imgSenha.src = "../assets/olhoFechado.png"
+            inputSenha.type = 'password'
+        }
+    }
+
+    function visualizarSenha2() {
+        let inputSenha2 = document.getElementById("inp_senha2")
+        let imgSenha2 = document.getElementById("olho2")
+        if (inputSenha2.type == "password") {
+            inputSenha2.type = 'text'
+            imgSenha2.src = "../assets/olhoAberto.png"
+        } else {
+            imgSenha2.src = "../assets/olhoFechado.png"
+            inputSenha2.type = 'password'
+        }
+    }
+
+</script>
+
+</html>

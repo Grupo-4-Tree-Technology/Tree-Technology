@@ -1,0 +1,102 @@
+body {
+    background-color: #001E30;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.div_branca a {
+    width: 17vw;
+    height: 7vh;
+    margin-top: 40px;
+}
+
+#seta {
+    height: 30px;
+    margin: 15px 0px 0px 15px;
+    cursor: pointer;
+    display: inline;
+}
+
+.div_branca {
+    text-align: center;
+    background-color: white;
+    border-radius: 0px 30px 0px 30px;
+    height: 500px;
+    width: 45vw;
+    margin-top: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_branca span {
+    color: #45A449;
+    font-size: 55px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+#texto-redefinir {
+    color: #403939;
+    font-size: 25px;
+    text-align: center;
+}
+
+.div_branca input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 4px solid #001E30;
+    font-size: 24px;
+    width: 25vw;
+    color: #001E30;
+    margin-top: 20px;
+}
+
+.div_branca input::placeholder {
+    color: #001E30;
+    font-weight: bold;
+}
+
+.div_branca input:focus {
+    outline: none;
+}
+
+#botao-redefinir, #botao-enviar {
+    background-color: #001E30;
+    color: white;
+    font-weight: bold;
+    width: 17vw;
+    height: 7vh;
+    border-radius: 20px;
+    font-size: 22px;
+    border: none;
+    cursor: pointer;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 4vh;
+}
+
+
+.toggle-password {
+    position: absolute;
+    right: 155px;
+    top: 65%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}

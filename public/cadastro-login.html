@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar</title>
+    <link rel="stylesheet" href="css/cadastro-login.css">
+    <link rel="shortcut icon" href="assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
+</head>
+
+<body>
+    <img src="./assets/Arrow 1.png" alt="" class="voltar" onclick="voltar()">
+    <main class="container">
+        <!-- TELA DE CADASTRO -->
+
+        <section class="cadastro-content" id="cadastro">
+
+            <div class="first-column">
+
+                <h1>Cadastre-se</h1>
+                <p class="description">Insira seus dados pessoais para</p>
+                <p class="description">criar uma conta na nossa plataforma!</p>
+
+                <h3>Já tem uma conta?</h3>
+                <button class="btn-transicao" id="signin" onclick="logar()">Entre aqui</button>
+
+            </div>
+
+            <div class="second-column">
+
+                <div class="forms">
+                    <span>Nome</span>
+                    <input type="text" id="nome" placeholder="Seu nome">
+
+                    <span>E-mail</span>
+                    <input type="email" id="email" placeholder="Exemplo@gmail.com">
+
+                    <span>CNPJ</span>
+                    <input type="email" id="cnpj" placeholder="01.001.001/0001-01">
+
+                    <span>Senha</span>
+                    <input type="password" id="senha">
+
+                    <span>Confirmar senha</span>
+                    <input type="password" id="confirma-senha">
+
+                    <div id="mensagem"></div>
+
+                    <button class="btn-entrar" onclick="validarCadastro()">Cadastrar</button>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FIM TELA DE CADASTRO -->
+
+        <!-- TELA DE LOGIN -->
+
+        <section class="login-content" id="login" style="display: none;">
+
+            <div class="first-column">
+                <h2>Login</h2>
+                <p class="description">Faça login na sua conta!</p>
+
+                <h3>Não tem uma conta?</h3>
+                <button class="btn-transicao" id="signup" onclick="cadastrar()">Cadastre-se aqui</button>
+
+            </div>
+
+            <div class="second-column">
+
+                <div class="forms">
+                    <span>Nome</span>
+                    <input type="text" id="nome2">
+
+                    <span>Senha</span>
+                    <input type="password" id="senha2">
+
+                    <a href="telas-redefinicao-senha/redefinir.html" class="link-redefinirsenha">Esqueci a senha</a>
+                    <!--
+                     REDEFINIR.HTML = Tela de envio no e-mail para alteração da senha
+                     NOVASENHA.HTML = Tela de ALTERAÇÃO DE SENHA pós envio do e-mail !!  
+                     -->
+
+                     <div id="mensagemErro"></div>
+
+                    <button class="btn-entrar" onclick="validarLogin()">Entrar</button>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <Script src="./js/script.js"></Script>
+</body>
+
+</html>
