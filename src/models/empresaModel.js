@@ -1,12 +1,12 @@
 var database = require("../database/config")
 
-function autenticar(nome, senha) {
+function autenticar(email, senha) {
     console.log("Autenticando o usuário:", nome);
 
     var instrucaoSql = `
         SELECT id, nome, email, cnpj 
         FROM Empresa 
-        WHERE nome = '${nome}' AND senha = '${senha}';
+        WHERE email = '${email}' AND senha = '${senha}';
     `;
     
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
