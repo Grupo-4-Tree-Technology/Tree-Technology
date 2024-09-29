@@ -16,17 +16,17 @@ function listar(req, res) {
 
 
 function autenticar(req, res) {
-    var nome = req.body.nomeServer;
+    var email = req.body.emailServer;
     var senha = req.body.senhaServer;
 
-    if (!nome || !senha) {
+    if (!email || !senha) {
         return res.status(400).json({ "msg:": "erro ao cadastrar" })
     } else {
-        empresaModel.autenticar(nome, senha)
+        empresaModel.autenticar(email, senha)
             .then((response) => {
 
                 if (response[0] == undefined) {
-                    return res.status(204).json({ "msg": "Nome ou Senha estão incorretos!" })
+                    return res.status(204).json({ "msg": "e-mail ou Senha estão incorretos!" })
                 } else {
                     return res.status(200).json({ "msg": "Usuário autenticado", response })
                 }

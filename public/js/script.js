@@ -6,7 +6,7 @@ const cnpj = document.querySelector("#cnpj");
 var confirmaSenha = document.querySelector("#confirma-senha");
 
 //CHAMANDO CAMPOS DE LOGIN
-var nomeLogin = document.querySelector("#nome2");
+var emailLogin = document.querySelector("#email2");
 var senhaLogin = document.querySelector("#senha2");
 
 // CHAMANDO AS DIVS RESPONSÁVEIS POR CADA TELA
@@ -102,7 +102,7 @@ function validarEmail(email) {
 
 //VALIDA SE OS CAMPOS ESTÃO VAZIOS NA TELA DE LOGIN
 function validarLogin() {
-    if (nomeLogin.value == "" || senhaLogin.value == "") {
+    if (emailLogin.value == "" || senhaLogin.value == "") {
 
         mensagemErro.innerHTML = "Preencha todos os campos!";
         mensagemErro.style.color = "red";
@@ -116,7 +116,7 @@ function validarLogin() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                nomeServer: nomeLogin.value,
+                emailServer: emailLogin.value,
                 senhaServer: senhaLogin.value
             })
         }).then(function (resposta) {
