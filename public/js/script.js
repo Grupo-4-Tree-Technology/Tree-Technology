@@ -1,8 +1,9 @@
 // CHAMANDO CAMPOS DE CADASTRO
-var nome = document.querySelector("#nome");
+var razao_social = document.querySelector('#razao_social');
+var nome = document.querySelector("#nome_fantasia");
 var email = document.querySelector("#email");
 var senha = document.querySelector("#senha");
-const cnpj = document.querySelector("#cnpj");
+var cnpj = document.querySelector("#cnpj");
 var confirmaSenha = document.querySelector("#confirma-senha");
 
 //CHAMANDO CAMPOS DE LOGIN
@@ -20,13 +21,18 @@ var mensagemErro = document.querySelector("#mensagemErro");
 function validarCadastro() {
 
     if (
-        (nome.value == "" ||
+        (   razao_social.value == "" ||
+            nome.value == "" ||
             email.value == "" ||
             senha.value == "" ||
             confirmaSenha.value == "")
     ) {
         mensagem.innerHTML =
             "<p style='color:red;'>Preencha todos os campos!</p>";
+        return false;
+
+    } else if (senha.value.length < 8 || senha.value.length > 16) {
+        mensagem.innerHTML = "<p style='color:red;'>A senha deve ter entre 8 e 16 caracteres.</p>";
         return false;
 
     } else if (senha.value != confirmaSenha.value) {
@@ -43,9 +49,10 @@ function validarCadastro() {
         mensagem.innerHTML = "<p style='color:red;'>CNPJ inválido.</p>";
 
     } else {
-
+        formatarCNPJ();
 
         data = {
+            razaoSocialServer: razao_social.value,
             nomeServer: nome.value,
             emailServer: email.value,
             cnpjServer: cnpj.value,
@@ -150,6 +157,22 @@ function validarLogin() {
     }
 }
 
+function mascaraCNPJ() {
+    // Está função será ativado toda vez que o usuário digitar algo (por conta do onkeyup):
+
+    var cnpj = document.querySelector("#cnpj");
+    
+    cnpj.value = cnpj.value.replace(/\D+/g, '')
+    .replace(/(\d{2})(\d)/, '$1.$2')
+    .replace(/(\d{3})(\d)/, '$1.$2')
+    .replace(/(\d{3})(\d)/, '$1/$2')
+    .replace(/(\d{4})(\d)/, '$1-$2')
+    .replace(/(-\d{2})\d+?$/, '$1')
+}
+
+function formatarCNPJ() {
+    cnpj.value = cnpj.value.replaceAll('.', '').replace('/', '').replace('-', '');
+}
 
 
 function logar() {
@@ -165,12 +188,10 @@ function cadastrar() {
 
 }
 
-
 function validarCNPJ(cnpj) {
-    // Remove tudo que não seja número
+    // O Comando abaixo faz com que seja removido tudo que não seja número
     cnpj = cnpj.replace(/[^\d]+/g, '');
 
-    // Verifica se tem 14 dígitos
     if (cnpj.length !== 14) {
         return false;
     }
@@ -184,8 +205,6 @@ function validarCNPJ(cnpj) {
     // Aqui retornamos "true" apenas se passar as verificações básicas
     return true;
 }
-
-
 
 //FUNÇÃO PARA VOLTAR A PÁGINA ANTERIOR
 function voltar() {

@@ -23,7 +23,9 @@
                 <p class="description">criar uma conta na nossa plataforma!</p>
 
                 <h3>Já tem uma conta?</h3>
-                <button class="btn-transicao" id="signin" onclick="logar()">Entre aqui</button>
+                <span>
+                    <button class="btn-transicao" id="signin" onclick="logar()">Entre aqui</button>
+                </span>
 
             </div>
 
@@ -31,26 +33,26 @@
 
                 <div class="forms">
                     <span>Razão social</span>
-                    <input type="text" id="nome" placeholder="Tree Technology Brasil Ltda">
+                    <input type="text" id="razao_social" placeholder="Tree Technology Brasil Ltda">
 
                     <span>Nome fantasia da empresa</span>
-                    <input type="text" id="nome" placeholder="Tree Technology">
+                    <input type="text" id="nome_fantasia" placeholder="Tree Technology">
 
                     <span>E-mail</span>
                     <input type="email" id="email" placeholder="tree-technology@gmail.com">
 
                     <span>CNPJ</span>
-                    <input type="email" id="cnpj" placeholder="00.000.000/0000-00" maxlength="14">
+                    <input type="text" id="cnpj" onkeyup="mascaraCNPJ()" placeholder="00.000.000/0000-00" maxlength="18">
 
                     <span>Senha</span>
-                    <input type="password" id="senha" placeholder="************">
+                    <input type="password" id="senha" placeholder="************" minlength="8" maxlength="16">
 
                     <span>Confirmar senha</span>
-                    <input type="password" id="confirma-senha" placeholder="************">
+                    <input type="password" id="confirma-senha" placeholder="************" minlength="8" maxlength="16">
 
                     <div id="mensagem"></div>
 
-                    <button class="btn-entrar" onclick="validarCadastro()">Cadastrar</button>
+                    <button class="btn-entrar" onclick="validarCadastro(), mascaraCNPJ()">Cadastrar</button>
 
                 </div>
             </div>
@@ -67,7 +69,9 @@
                 <p class="description">Faça login na sua conta!</p>
 
                 <h3>Não tem uma conta?</h3>
-                <button class="btn-transicao" id="signup" onclick="cadastrar()">Cadastre-se aqui</button>
+                <span>
+                    <button class="btn-transicao" id="signup" onclick="cadastrar()">Cadastre-se aqui</button>
+                </span>
 
             </div>
 
@@ -80,7 +84,9 @@
                     <span>Senha</span>
                     <input type="password" id="senha2">
 
-                    <a href="telas-redefinicao-senha/redefinir.html" class="link-redefinirsenha">Esqueci a senha</a>
+                    <span style="margin-bottom: 5vh;">
+                        <a href="telas-redefinicao-senha/redefinir.html" class="link-redefinirsenha">Esqueci a senha</a>
+                    </span>
                     <!--
                      REDEFINIR.HTML = Tela de envio no e-mail para alteração da senha
                      NOVASENHA.HTML = Tela de ALTERAÇÃO DE SENHA pós envio do e-mail !!  
@@ -96,7 +102,7 @@
         </section>
     </main>
 
-    <Script src="./js/script.js"></Script>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>

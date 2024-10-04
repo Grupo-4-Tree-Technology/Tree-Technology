@@ -39,6 +39,7 @@ function autenticar(req, res) {
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var razao_social = req.body.razaoSocialServer;
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
@@ -47,7 +48,9 @@ function cadastrar(req, res) {
     console.log(req.body)
 
     // Faça as validações dos valores
-    if (nome == undefined) {
+    if (razao_social == undefined) {
+        res.status(400).send("Sua razão social está undefined!");
+    } else if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
     } else if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
@@ -58,7 +61,7 @@ function cadastrar(req, res) {
     } else  {
 
         // Passe os valores como parâmetro e vá para o arquivo empresaModel.js
-        empresaModel.cadastrar(nome, email, senha, cnpj)
+        empresaModel.cadastrar(razao_social, nome, email, senha, cnpj)
             .then(
                 function (resultado) {
                     res.json(resultado);
