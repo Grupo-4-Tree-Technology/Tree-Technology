@@ -1,12 +1,9 @@
 /* STYLE GERAL */
 
-
-
-
 * {
 
     scroll-behavior: smooth;
-    
+
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -15,12 +12,12 @@
 
 body {
     position: relative;
-    background: url(../assets/pexels-photo-4628195.jpeg) no-repeat center center;
-    height: 40vh;
-    
+    background: url(../assets/fundo9898.png) no-repeat center center;
+    height: 100vh;
+
     background-size: cover;
-    
-    overflow-x: hidden;
+
+
 }
 
 .navbar {
@@ -29,12 +26,20 @@ body {
 
 }
 
-.flex {
-    display: flex;
+.btn-login-cadastro button {
+    padding: 10px 40px;
+    font-size: 18px;
+
+    background-color: #45a449;
+    border: 0;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .2s;
+    color: white;
+    font-weight: bold;
 }
 
-
-.btn-login-cadastro button {
+.btn-cadastrar button {
     padding: 10px 40px;
     font-size: 18px;
 
@@ -50,7 +55,10 @@ body {
 h2.titulo {
     color: #fff;
     font-size: 38px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+
+    gap: 10px;
 }
 
 h2.titulo span {
@@ -79,14 +87,15 @@ header>.navbar {
 }
 
 header a {
-    color: #acacac;
+
+    color: #ffffff;
     text-decoration: none;
     display: inline-block;
     transition: .2s;
 }
 
 header nav.menu a:hover {
-    color: #fff;
+    color: #4ce154;
     transform: scale(1.05);
 }
 
@@ -103,18 +112,85 @@ header nav.menu ul li {
 /* FIM STYLE NAVBAR */
 
 
+/* ESTILO DO MENU MOBILE */
+
+.btn-abrir-menu {
+    display: none;
+}
+
+.btn-abrir-menu i { 
+    color: #00FF08;
+    font-size: 40px;
+}
+
+.menu-mobile {
+    background-color: #000;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+    width: 0%;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.menu-mobile.abrir-menu {
+    width: 70%;
+
+}
+
+.menu-mobile.abrir-menu ~ .overlay-menu {
+    display: block;
+}
+
+.menu-mobile .btn-fechar {
+    padding: 20px 5%;
+}
+
+.menu-mobile .btn-fechar i {
+    color: #00FF08;
+    font-size: 30px;
+}
+
+.menu-mobile nav ul {
+    text-align: right;
+
+}
+
+.menu-mobile nav ul li a {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 20px 8%;
+    display: block;
+
+}
+
+.menu-mobile nav ul li a:hover {
+    background-color: #00FF08;
+    color: #000;
+}
+
+.overlay-menu {
+    background-color: #000000a7;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 8888;
+    display: none;
+}
 
 /* STYLE PAGINAINICIAL */
 
-.txt-paginaInicial {
-    margin-bottom: 5%;
-}
-
 section.paginaInicial {
-    padding: 40px 4%;
+    height: 73vh;
 }
 
-section.paginaInicial .flex {
+section.paginaInicial .div-paginaInicial {
+    display: flex;
     align-items: center;
     justify-content: center;
     gap: 90px;
@@ -127,11 +203,12 @@ section.paginaInicial .flex {
 }
 
 .paginaInicial .txt-paginaInicial h1 span {
-    color: #45a449;
+    color: #4ce154;
 }
 
 .paginaInicial .txt-paginaInicial p {
     color: #fff;
+    font-size: 15pt;
     margin: 30px 0;
 
 }
@@ -139,7 +216,7 @@ section.paginaInicial .flex {
 
 
 .paginaInicial .img-paginaInicial img {
-    width: 400px;
+    width: 100%;
     position: relative;
     animation: flutuar 2s ease-in-out infinite alternate;
 }
@@ -158,60 +235,28 @@ section.paginaInicial .flex {
 @keyframes flutuarMaisRapido {
     0% {
         top: 0;
-    } 50% {
+    }
+
+    50% {
         top: 15px;
-    } 100% {
+    }
+
+    100% {
         top: 30px;
     }
 }
 
 /* FIM STYLE PAGINAINICIAL */
 
-/* STYLE FUNCIONALIDADES SITE */
 
-section.funcionalidades {
-
-    padding: 40px 4%;
-    background-color: rgb(2, 2, 63);
-
-}
-
-section.funcionalidades .flex {
-    gap: 60px;
-}
-
-.funcionalidades .funcionalidades-box {
-    color: #fff;
-    padding: 40px;
-    border-radius: 20px;
-    margin-top: 45px;
-    transition: .2s;
-}
-
-.funcionalidades .funcionalidades-box:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px #ffffff78;
-}
-
-.funcionalidades .funcionalidades-box i {
-    font-size: 70px;
-    color: #45a449;
-}
-
-.funcionalidades .funcionalidades-box h3 {
-    font-size: 28px;
-    margin: 15px 0;
-}
-
-/* FIM STYLE FUNCIONALIDADES SITE */
-
-/* STYLE MINHA HISTORIA e SOBRE */
+/* STYLE SOBRE */
 section.sobre {
     padding: 80px 4%;
     background-color: aliceblue;
 }
 
-section.sobre .flex {
+section.sobre .descricao-empresa {
+    display: flex;
     align-items: center;
     gap: 60px;
 }
@@ -234,131 +279,233 @@ section.sobre .flex {
 .sobre .txt-sobre p {
     margin: 20px 0;
     text-align: justify;
+    font-weight: bold;
+    color: #0c300b;
 }
 
-.btn-social button {
-    width: 60px;
+.btn-social {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-social span {
+
+    background-color: #3cbd42;
+
     height: 60px;
+    width: 60px;
+
     border-radius: 50%;
     border: none;
-    background-color: #45a449;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     font-size: 22px;
     cursor: pointer;
+
     margin: 0 5px;
     transition: .2s;
 }
 
-/* FIM STYLE MINHA HISTORIA e SOBRE */
+.btn-social span:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ffffff78;
+}
+
+.btn-social a:visited {
+    color: black;
+}
+
+/* FIM STYLESOBRE */
 
 
+/* STYLE FUNCIONALIDADES SITE */
 
-/* STYLE MINHASARTES */
-
-.Equipe {
-    background-color: aliceblue;
-    height: 60vh;
-    width: 100vw;
+section.funcionalidades {
+    height: 75vh;
+    padding: 40px 4%;
+    background-color: rgb(1, 1, 34);
 
     display: flex;
     flex-direction: column;
-    align-items: center;
-
-    gap: 5px;
-
-}
-
-.Equipe .interface {
-    display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-
 }
 
-.Equipe .image-container {
+.interface-project {
+    height: 70vh;
+    width: 92vw;
+
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    /* Espaço entre as imagens */
-
-}
-
-.Equipe .image-container a {
-    width: 18%;
-    /* Ajuste conforme necessário */
-    height: auto;
-    border-radius: 500px;
-    /* Opcional: cantos arredondados */
-}
-
-.Equipe .image-container img {
-    border-radius: 500px;
-}
-
-
-.Equipe .titulo-equipe {
-    height: 25%;
-    width: 100%;
-    display: flex;
-    font-size: 30pt;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    justify-content: center;
-    gap: 50px;
-
 }
 
-.txt-equipe {
-
-    width: 100%;
-
+section.funcionalidades .descricao-projeto {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-around;
 
-    gap: 164px;
-    font-size: 13pt;
 }
 
-.integrantes {
+.funcionalidades .funcionalidades-box {
+    color: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    transition: .2s;
+
     height: 100%;
-    width: 5%;
+}
+
+.funcionalidades .funcionalidades-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ffffff78;
+}
+
+.funcionalidades .funcionalidades-box i {
+    font-size: 70px;
+    color: #45a449;
+}
+
+.funcionalidades .funcionalidades-box h3 {
+    font-size: 28px;
+    margin: 15px 0;
+}
+
+/* FIM STYLE FUNCIONALIDADES SITE */
+
+
+
+
+/* STYLE SOBRE NÓS SITE */
+
+section.sobre-nos {
+    height: 75vh;
+    padding: 40px 4%;
+    background-color: aliceblue; /* Fundo da seção Alice Blue */
 
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-
+    align-items: center;
 }
 
-/* FIM STYLE MINHASARTES */
+.interface-about {
+    height: 70vh;
+    width: 92vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.sobre-nos .titulo {
+    color: rgb(1, 1, 34); /* Azul escuro para o título da seção */
+}
+
+section.sobre-nos .descricao-sobre {
+    display: flex;
+    justify-content: space-around;
+}
+
+.sobre-nos .sobre-nos-box {
+    background-color: aliceblue; /* Fundo dos cards Alice Blue */
+    color: rgb(1, 1, 34); /* Texto dos cards na cor azul escuro */
+    padding: 40px;
+    border-radius: 20px;
+    transition: .2s;
+
+    height: 100%;
+    font-weight: bold; /* Texto em negrito */
+}
+
+.sobre-nos .sobre-nos-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #00000078; /* Ajuste da sombra */
+}
+
+.sobre-nos .sobre-nos-box i {
+    font-size: 70px;
+    color: #45a449;
+}
+
+.sobre-nos .sobre-nos-box h3 {
+    font-size: 28px;
+    margin: 15px 0;
+    color: rgb(1, 1, 34); /* Azul escuro para os títulos dos cards */
+}
+
+/* FIM STYLE SOBRE NÓS SITE */
+
+
+
+
+
+
+
 
 
 /* STYLE RODAPE */
 footer {
-    padding: 40px 4%;
     box-shadow: 0 0 40px 10px #ffffff1d;
-    background-color: rgb(5, 5, 69);
+    background-color: rgb(1, 1, 34);
+    height: 25vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
-footer .flex {
+footer .contact-address {
+    display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 2%;
+
+    width: 100vw;
+    height: 25vh;
+
 }
 
-footer .line-footer {
-    padding: 20px 0;
+#direitos-reservados {
+    color: white;
+    width: 25vw;
+    text-align: center;
+
+    font-size: 1.2em;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-.borda {
-    border-top: 2px solid white;
+#direitos-reservados > a {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 75px;
+    height: 75px;
+    border-radius: 250px;
+
 }
 
-footer .line-footer p i {
-    color: #45a449;
-    font-size: 22px;
-}
-
-footer .line-footer p a {
+.endereco {
     color: #fff;
+    
+    font-size: large;
+
+    width: 20vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+ 
+    gap: 1.2em;
 }
 
 /* FIM STYLE RODAPE */
@@ -366,20 +513,20 @@ footer .line-footer p a {
 /* SCROLL LATERAL DIREITO */
 
 ::-webkit-scrollbar {
-    width: 7px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
     background: #004306;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
     background: #12c406;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
     background: #0d7d05;
-  }
+}
