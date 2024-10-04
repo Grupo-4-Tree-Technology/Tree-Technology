@@ -24,6 +24,17 @@ a {
     display: inline;
 }
 
+@keyframes animar-card {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    } to {
+        opacity: 1;
+        transform: translateY(0%);
+           
+    }
+}
+
 .div_branca {
     text-align: center;
     background-color: white;
@@ -37,6 +48,8 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    animation: animar-card 1s forwards ease-in-out;
 }
 
 .div_branca span {
