@@ -117,7 +117,7 @@ function validarLogin() {
 
     } else {
 
-        fetch("http://localhost:3333/empresa/autenticar", {
+        fetch("http://localhost:3333/empresa/verificarEmail", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

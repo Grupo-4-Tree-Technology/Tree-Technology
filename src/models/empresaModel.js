@@ -32,8 +32,22 @@ function cadastrar(razao_social, nome, email, senha, cnpj) {
     return database.executar(instrucaoSql);
 }
 
+function verificarEmail(emailInput) {
+    console.log('ESTOU NO empresaModel.js || Na função verificarEmail()');
+
+    var query = `
+    SELECT email 
+    FROM empresa 
+    WHERE email = "${emailInput}";
+    `
+    
+    console.log(`Executando a query SQL: \n ${query}`);
+    return database.executar(query);
+}
+
 module.exports = {
     listar,
     autenticar,
-    cadastrar
+    cadastrar,
+    verificarEmail
 };

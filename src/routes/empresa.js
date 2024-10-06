@@ -16,4 +16,8 @@ router.post("/listar", function (req, res) {
     empresaController.listar(req, res);
 });
 
+router.get("/verificarEmail/:emailInput", function (req, res) {
+    empresaController.verificarEmail(req, res);
+});
+
 module.exports = router;

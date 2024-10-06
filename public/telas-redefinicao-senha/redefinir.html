@@ -7,6 +7,24 @@
     <link rel="stylesheet" href="../css/redefinir.css">
     <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
     <title>Redefinir senha | Tree Technology</title>
+
+    <script>
+        /* Deixar o script aqui, faz com que ele rode antes do html*/
+        async function enviarEmail() {
+            const emailInput = document.querySelector('#email').value;
+
+            const response = await fetch('/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ toEmail: emailInput }),
+            });
+
+            const message = await response.text();
+            alert(message);
+        }
+    </script>
 </head>
 
 <body>
@@ -14,11 +32,29 @@
     <div class="div_branca">
         <span><br>Redefinir Senha</span>
         <span id="texto-redefinir">Digite o e-mail para receber o <br> link de redefinição</span>
-        <input placeholder="E-mail" type="text">
-        <a href="../telas-redefinicao-senha/novaSenha.html">
-            <button onclick="redefinirSenha()" id="botao-enviar">Enviar</button>
-        </a>
+        <input placeholder="E-mail" type="text" id="email">
+        
+        <button onclick="verificarEmail()" id="botao-enviar">Enviar</button>
+        
     </div>
 </body>
 
 </html>
+
+<script>
+    function verificarEmail() {
+    var emailInput = document.querySelector('#email').value;
+
+    fetch(`/empresa/verificarEmail/${emailInput}`, { cache: "no-store" })
+      .then(function (response) {
+        if (response.ok) {
+          response.json().then(function (resposta) {
+            alert("Foi feita a verificação! Seu e-mail existe na nossa base de dados!")
+            enviarEmail();
+          })
+        } else {
+            alert('Houve um erro ao tentar verificar se existe um e-mail na base de dados!')
+        }
+      })
+  }
+</script>
