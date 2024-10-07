@@ -19,7 +19,7 @@ body{
 }
 
 .voltar{
-    height: 30px;
+    width: 50px;
     margin: 15px 0px 0px 15px;
     cursor: pointer;
     display: inline;
@@ -104,7 +104,7 @@ body{
     outline: none;
 }
 
-.btn-entrar{
+.btn-entrar {
     background-color: #76cc7a;
     text-align: center;
     padding: 5px;

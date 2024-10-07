@@ -9,6 +9,8 @@ require("dotenv").config({ path: caminho_env });
 
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
+const crypto = require('crypto');
+let generatedToken;
 
 var express = require("express");
 var cors = require("cors");
@@ -60,14 +62,16 @@ const smtp = nodemailer.createTransport({
 
 app.post('/send-email', (req, res) => {
     const { toEmail } = req.body;
+    generatedToken = crypto.randomInt(100000, 999999).toString();
 
     const configEmail = {
         from: 'tree.technology@gmail.com',
         to: toEmail,
-        subject: `TESTE NODE MAIL!!!! ${new Date().toLocaleString()}`,
-        html: `<p>Isto é apenas um envio de teste com a API NodeMailer! <strong>Obrigado!</strong> <br> 
-                Data atual: <strong>${dataAtual}</strong> <br>
-                Horário atual: <strong>${horaAtual}</strong></p>`
+        subject: `TOKEN DE VERIFICAÇÃO`,
+        html: `<p>Seu token é: <strong>${generatedToken}</strong>! <br> <br>
+               Se você não solicitou este token, ignore este e-mail.<br>
+               Data atual: <strong>${dataAtual}</strong><br>
+               Horário atual: <strong>${horaAtual}</strong></p>`
     };
 
     smtp.sendMail(configEmail)
@@ -79,6 +83,17 @@ app.post('/send-email', (req, res) => {
             console.error('Erro ao enviar email:', error);
             res.status(500).send('Erro ao enviar email.');
         });
+});
+
+app.post('/novaSenha', (req, res) => {
+    const { token } = req.body;
+
+    // Verifica se o token inserido é igual ao gerado
+    if (token === generatedToken) {
+        res.status(200).send('Token verificado com sucesso!');
+    } else {
+        res.status(400).send('Token inválido!');
+    }
 });
 
 console.log(`Lembre-se sempre de utilizar o comando: \n

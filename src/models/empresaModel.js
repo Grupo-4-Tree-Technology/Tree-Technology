@@ -45,9 +45,23 @@ function verificarEmail(emailInput) {
     return database.executar(query);
 }
 
+function alterarSenha(senha, email) {
+    console.log('ESTOU NO empresaModel.js || Na função alterarSenha()');
+
+    var query = `
+    UPDATE empresa
+    SET senha = "${senha}"
+    WHERE email = "${email}";
+    `
+    
+    console.log(`Executando a query SQL: \n ${query}`);
+    return database.executar(query);
+}
+
 module.exports = {
     listar,
     autenticar,
     cadastrar,
-    verificarEmail
+    verificarEmail,
+    alterarSenha
 };
