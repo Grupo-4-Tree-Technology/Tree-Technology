@@ -1,34 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 body {
     background-color: #001E30;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     padding: 0;
     margin: 0;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.div_seta {
+a {
     text-decoration: none;
     color: inherit;
-    height: 10%;
-
-    display: flex;
-    justify-content: space-between;
-    padding-left: 1.5em;
-    align-items: center;
 }
 
 .div_branca a {
     width: 17vw;
     height: 7vh;
+    margin-top: 40px;
 }
 
 #seta {
     width: 50px;
-    
+    margin: 15px 0px 0px 15px;
     cursor: pointer;
     display: inline;
 }
@@ -57,16 +54,16 @@ main {
     text-align: center;
     background-color: white;
     border-radius: 30px;
-    height: 60vh;
+    height: 75vh;
     width: 45vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 25px;
+    gap: 4em;
+    margin-bottom: 2em;
 
     animation: animar-card 1s forwards ease-in-out;
-    margin-bottom: 7em;
 }
 
 .div_branca span {
@@ -78,15 +75,8 @@ main {
 
 #texto-redefinir {
     color: #403939;
-    font-size: 20px;
+    font-size: 25px;
     text-align: center;
-    width: 32vw;
-    height: 7vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.2em;
 }
 
 .div_branca input {
@@ -96,19 +86,18 @@ main {
     font-size: 24px;
     width: 25vw;
     color: #001E30;
-    margin-top: 1em
 }
 
 .div_branca input::placeholder {
     color: #001e30a1;
-    font-weight: bold;
+    font-size: 1em;
 }
 
 .div_branca input:focus {
     outline: none;
 }
 
-#botao-enviar {
+#botao-redefinir {
     background-color: #76cc7a;
     color: white;
     font-weight: bold;
@@ -120,18 +109,28 @@ main {
     cursor: pointer;
 }
 
-#botao-enviar:hover{
+#botao-redefinir:hover{
     background-color: #3fb144;
     box-shadow: 2px 2px 20px #00fd37b0;
     transition: all 0.35s ease-in-out;
     
 }
 
-#botao-enviar:focus {
+#botao-redefinir:focus {
     background-color: #3fb144;
     box-shadow: 2px 2px 20px #00fd37b0;
     transition: all 0.35s ease-in-out;
 
+}
+
+#input-token {
+    display: flex; 
+    flex-direction: column; 
+    align-items: start;
+
+    font-size: 1.35em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
 
 .input-container {
@@ -142,7 +141,7 @@ main {
 
 .toggle-password {
     position: absolute;
-    right: 155px;
+    right: 10px;
     top: 65%;
     transform: translateY(-50%);
     cursor: pointer;
