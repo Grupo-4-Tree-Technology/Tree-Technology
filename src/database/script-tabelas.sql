@@ -40,18 +40,18 @@ FOREIGN KEY ForeignKey_fkRota (fkRota) REFERENCES rota (id),
 FOREIGN KEY ForeignKey_fkPlaca (fkPlaca) REFERENCES veiculo (placa)
 );
 
-CREATE TABLE IF NOT EXISTS evento_transito (
-id INT AUTO_INCREMENT,
-data DATE NOT NULL,
-hora TIME NOT NULL,
-descricao VARCHAR(100) NOT NULL,
-ponto_inicial VARCHAR(100) NOT NULL,
-ponto_final VARCHAR(100) NOT NULL,
-tipo VARCHAR(45) NOT NULL,
-nome_regiao VARCHAR(45) NOT NULL,
+CREATE TABLE IF NOT EXISTS acidente_transito (
+id 						INT,
+data 					DATE NOT NULL,
+horario 				TIME NOT NULL,
+uf 						CHAR(2) NOT NULL,
+municipio 				VARCHAR(100) NOT NULL,
+causa_acidente 			VARCHAR(100) NOT NULL,
+fase_dia 				VARCHAR(45) NOT NULL,
+condicao_metereologica 	VARCHAR(45) NOT NULL,
+qtd_veiculos_envolvidos INT NOT NULL,
 
 PRIMARY KEY pk_evento_transito (id),
-CONSTRAINT CHECK (tipo IN ('Lentidão', 'Chuva', 'Acidentes')),
-CONSTRAINT CHECK (nome_regiao IN ('Norte', 'Sul', 'Leste', 'Oeste', 'Centro'))
+CONSTRAINT CHECK (fase_dia IN ('Plena Noite', 'Amanhecer', 'Pleno dia', 'Anoitecer')),
+CONSTRAINT CHECK (condicao_metereologica IN ('Céu Claro', 'Chuva', 'Sol', 'Nublado', 'Garoa/Chuvisco'))
 );
-
