@@ -59,7 +59,7 @@ function validarCadastro() {
             senhaServer: senha.value
         }
 
-        fetch("http://localhost:3333/empresa/cadastrar", {
+        fetch("/empresa/cadastrar", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
@@ -117,7 +117,7 @@ function validarLogin() {
 
     } else {
 
-        fetch("http://localhost:3333/empresa/verificarEmail", {
+        fetch("/empresa/verificarEmail", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
