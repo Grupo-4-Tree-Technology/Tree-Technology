@@ -22,7 +22,9 @@
             });
 
             const message = await response.text();
-            alert(message);
+
+            div_error.innerHTML = message;
+            container.style.display = "flex";
 
             if (response.ok) {
                 window.location.href = "/telas-redefinicao-senha/novaSenha.html";
@@ -36,8 +38,20 @@
         <a href="../cadastro-login.html"><img id="seta" src="../assets/seta.jpg"></a>
     </div>
     <main>
+
+        <div class="container" id="container" style="display: none;">
+            <div class="close">
+                <div class="title">
+                    <img class="img-modal" src="../assets/treeLogo.jpeg" alt="">
+                    <span class="text">Recuperação de senha</span>
+                </div>
+                <img class="img-modal" src="../assets/close.jpeg" alt="" style="height: 30px;" onclick="fecharModal()">
+            </div>
+            <span class="text" id="div_error"></span>
+        </div>
+
         <div class="div_branca">
-            <span>REDEFINIR SENHA</span>
+            <span>Redefinir Senha</span>
             <span id="texto-redefinir">
                 Digite seu e-mail para verificarmos se está registrado. Se estiver, enviaremos um token para você
                 redefinir sua senha.
@@ -61,12 +75,20 @@
             .then(function (response) {
                 if (response.ok) {
                     response.json().then(function (resposta) {
-                        alert("Foi feita a verificação! Seu e-mail existe na nossa base de dados!")
+
+                        div_error.innerHTML = 'Foi feita a verificação! Seu e-mail existe na nossa base de dados.';
+                        container.style.display = "flex";
+
                         enviarEmail();
                     })
                 } else {
-                    alert('Houve um erro ao tentar verificar se existe um e-mail na base de dados!')
+                    div_error.innerHTML = 'Houve um erro ao tentar verificar se existe um e-mail na base de dados!'
+                    container.style.display = "flex";
                 }
             })
+    }
+
+    function fecharModal() {
+        container.style.display = "none";
     }
 </script>
