@@ -136,6 +136,7 @@ function validarLogin() {
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
+                    alert("Login efetuado com sucesso!");
                     window.location = "";
                 });
 
