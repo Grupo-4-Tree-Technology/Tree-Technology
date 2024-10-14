@@ -117,7 +117,7 @@ function validarLogin() {
 
     } else {
 
-        fetch("/empresa/verificarEmail", {
+        fetch("/empresa/autenticar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
