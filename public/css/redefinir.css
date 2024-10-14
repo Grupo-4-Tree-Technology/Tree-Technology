@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 body {
     background-color: #001E30;
     height: 100vh;
@@ -48,7 +50,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    flex-direction: column;
     height: 90vh;
     width: 100vw;
 }
@@ -64,7 +66,7 @@ main {
     justify-content: center;
     align-items: center;
     gap: 25px;
-
+    color: #4b4949;
     animation: animar-card 1s forwards ease-in-out;
     margin-bottom: 7em;
 }
@@ -148,4 +150,47 @@ main {
     cursor: pointer;
     width: 20px;
     height: 20px;
+}
+
+.container{
+    top: 0;
+    margin-top: 10vh;
+    background-color: rgb(252, 245, 245);
+    height: auto;
+    width: auto;
+    border-radius: 15px;
+    flex-direction: column;
+    box-shadow: 0px 8px 8px 0px #707070;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-top: 5px solid #19b755;
+    padding: 12px 10px;
+    font-family: Poppins;
+    animation: animar-card 1s forwards ease-in-out;
+    position:fixed;
+    z-index: 100;
+}
+
+.title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: #165b30;
+}
+
+.text{
+    font-size: medium;
+}
+
+.img-modal{
+    height: 50px;
+    cursor: pointer;
+}
+
+.close{
+    display: flex;
+    gap: 18vw;
+    margin-bottom: 10px;
 }

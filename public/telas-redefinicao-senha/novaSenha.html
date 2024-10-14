@@ -14,8 +14,20 @@
         <a href="redefinir.html"><img id="seta" src="../assets/seta.jpg"></a>
     </div>
     <main>
+
+        <div class="container" id="container" style="display: none;">
+            <div class="close">
+                <div class="title">
+                    <img class="img-modal" src="../assets/treeLogo.jpeg" alt="">
+                    <span class="text">Recuperação de senha</span>
+                </div>
+                <img class="img-modal" src="../assets/close.jpeg" alt="" style="height: 30px;" onclick="fecharModal()">
+            </div>
+            <span class="text" id="div_error"></span>
+        </div>
+
         <div class="div_branca">
-            <span>REDEFINIR SENHA</span>
+            <span>Redefinir Senha</span>
             <div id="input-token">
                 <label>Digite o token enviado por e-mail:</label>
                 <input type="text" id="token" placeholder="Token" maxlength="6">
@@ -48,7 +60,9 @@
         });
 
         const message = await response.text();
-        alert(message);
+
+        div_error.innerHTML = message;
+        container.style.display = "flex";
 
         if (message == "Token verificado com sucesso!") {
             validarSenha();
@@ -61,14 +75,19 @@
         var mensagem = document.querySelector("#mensagem");
 
         if (senha.value != senha2.value) {
-            alert("As senhas não correspondem.");
-            
+
+            div_error.innerHTML = 'As senhas não correspondem.';
+            container.style.display = "flex";
+
             return false;
         } else if (
-            senha.value.length < 8 || senha.value.length > 16 || 
+            senha.value.length < 8 || senha.value.length > 16 ||
             senha2.value.length < 8 || senha2.value.length > 16) {
-                
-            alert("A senha deve ter entre 8 e 16 caracteres.");
+
+            div_error.innerHTML = 'A senha deve ter entre 8 e 16 caracteres.';
+            container.style.display = "flex";
+
+
             return false;
         } else {
             alterarSenha();
@@ -81,14 +100,29 @@
         var email = sessionStorage.EMAIL_INPUT;
 
         fetch(`/empresa/alterarSenha/${senha}/${email}`, { cache: "no-store" })
-        .then(function (response) {
+            .then(function (response) {
                 if (response.ok) {
                     response.json().then(function (resposta) {
-                        alert('Senha alterada com sucesso!!')
-                        window.location = "/telas-redefinicao-senha/novaSenha.html";                   
+
+                        let contador = 5;
+
+                        div_error.innerHTML = `Senha alterada com sucesso! Recarregando a página em ${contador}...`;
+                        container.style.display = "flex";
+
+                        let contagemRegressiva = setInterval(() => {
+                            contador--;
+                            div_error.innerHTML = `Senha alterada com sucesso! Recarregando a página em ${contador}...`;
+                            
+                            if (contador === 0) {
+                                clearInterval(contagemRegressiva);
+                                window.location = "/telas-redefinicao-senha/novaSenha.html";
+                            }
+                        }, 1000);
                     })
                 } else {
-                    alert('Houve um erro ao tentar alterar a senha!')
+                    div_error.innerHTML = 'Houve um erro ao tentar alterar a senha!';
+                    container.style.display = "flex";
+
                 }
             })
     }
@@ -115,6 +149,10 @@
             imgSenha2.src = "../assets/olhoAberto.png"
             inputSenha2.type = 'password'
         }
+    }
+
+    function fecharModal() {
+        container.style.display = "none";
     }
 
 </script>
