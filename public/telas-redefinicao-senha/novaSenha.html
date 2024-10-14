@@ -104,15 +104,25 @@
                 if (response.ok) {
                     response.json().then(function (resposta) {
 
-                        div_error.innerHTML = 'Senha alterada com sucesso!';
+                        let contador = 5;
+
+                        div_error.innerHTML = `Senha alterada com sucesso! Recarregando a página em ${contador}...`;
                         container.style.display = "flex";
 
-                        window.location = "/telas-redefinicao-senha/novaSenha.html";
+                        let contagemRegressiva = setInterval(() => {
+                            contador--;
+                            div_error.innerHTML = `Senha alterada com sucesso! Recarregando a página em ${contador}...`;
+                            
+                            if (contador === 0) {
+                                clearInterval(contagemRegressiva);
+                                window.location = "/telas-redefinicao-senha/novaSenha.html";
+                            }
+                        }, 1000);
                     })
                 } else {
                     div_error.innerHTML = 'Houve um erro ao tentar alterar a senha!';
                     container.style.display = "flex";
-                    
+
                 }
             })
     }
@@ -141,7 +151,7 @@
         }
     }
 
-    function fecharModal(){
+    function fecharModal() {
         container.style.display = "none";
     }
 
