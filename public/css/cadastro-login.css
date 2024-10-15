@@ -19,13 +19,24 @@ body{
 }
 
 .voltar{
-    height: 30px;
+    width: 50px;
     margin: 15px 0px 0px 15px;
     cursor: pointer;
     display: inline;
 }
 
 /* CADASTRO */
+
+@keyframes animar-card {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    } to {
+        opacity: 1;
+        transform: translateY(0%);
+           
+    }
+}
 
 .cadastro-content,.login-content{
     display: flex;
@@ -34,6 +45,7 @@ body{
     justify-content: center;
     align-items: center;
     color: #fff;
+    animation: animar-card 0.85s forwards ease-in-out;
     
 }
 
@@ -92,7 +104,7 @@ body{
     outline: none;
 }
 
-.btn-entrar{
+.btn-entrar {
     background-color: #76cc7a;
     text-align: center;
     padding: 5px;
@@ -108,7 +120,16 @@ body{
 
 .btn-entrar:hover{
     background-color: #3fb144;
+    box-shadow: 2px 2px 20px #00fd37b0;
+    transition: all 75ms ease-in-out;
     
+}
+
+.btn-entrar:focus {
+    background-color: #3fb144;
+    box-shadow: 2px 2px 20px #00fd37b0;
+    transition: all 75ms ease-in-out;
+
 }
 
 /* LOGIN */

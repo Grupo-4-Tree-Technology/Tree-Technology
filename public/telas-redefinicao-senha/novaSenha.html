@@ -4,40 +4,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/redefinir.css">
+    <link rel="stylesheet" href="../css/novaSenha.css">
     <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
     <title>Redefinir senha | Tree Technology</title>
 </head>
 
 <body>
-    <a href="redefinir.html"><img id="seta" src="../assets/seta.jpg"></a>
-    <div class="div_branca">
-        <span><br>Redefinir Senha</span>
-        <span id="texto-redefinir">Digite sua nova senha</span>
-
-        <div class="input-container">
-            <input id="inp_senha" placeholder="Nova senha" type="password">
-            <img id="olho" onclick="visualizarSenha()" src="../assets/olhoAberto.png" class="toggle-password">
-        </div>
-
-        <div class="input-container">
-            <input id="inp_senha2" placeholder="Confirmar senha" type="password">
-            <img id="olho2" onclick="visualizarSenha2()" src="../assets/olhoAberto.png" class="toggle-password">
-        </div>
-
-        <button onclick="redefinirSenha()" id="botao-redefinir">Confirmar</button>
+    <div>
+        <a href="redefinir.html"><img id="seta" src="../assets/seta.jpg"></a>
     </div>
+    <main>
+
+        <div class="container" id="container" style="display: none;">
+            <div class="close">
+                <div class="title">
+                    <img class="img-modal" src="../assets/treeLogo.jpeg" alt="">
+                    <span class="text">Recuperação de senha</span>
+                </div>
+                <img class="img-modal" src="../assets/close.jpeg" alt="" style="height: 30px;" onclick="fecharModal()">
+            </div>
+            <span class="text" id="div_error"></span>
+        </div>
+
+        <div class="div_branca">
+            <span>Redefinir Senha</span>
+            <div id="input-token">
+                <label>Digite o token enviado por e-mail:</label>
+                <input type="text" id="token" placeholder="Token" maxlength="6">
+            </div>
+            <div id="input-token" style="position: relative;">
+                <label>Digite a nova senha:</label>
+                <input id="inp_senha" placeholder="Nova senha" type="password" maxlength="16">
+                <img id="olho" onclick="visualizarSenha()" src="../assets/olhoAberto.png" class="toggle-password">
+            </div>
+            <div id="input-token" style="position: relative;">
+                <label>Confirme a nova senha:</label>
+                <input id="inp_senha2" placeholder="Confirmar senha" type="password" maxlength="16">
+                <img id="olho2" onclick="visualizarSenha2()" src="../assets/olhoAberto.png" class="toggle-password">
+            </div>
+            <button onclick="verificarToken()" id="botao-redefinir">Confirmar</button>
+        </div>
+    </main>
 </body>
 
 <script>
+    async function verificarToken() {
+        const tokenInput = document.querySelector('#token').value;
+
+        const response = await fetch('/novaSenha', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ token: tokenInput }),
+        });
+
+        const message = await response.text();
+
+        div_error.innerHTML = message;
+        container.style.display = "flex";
+
+        if (message == "Token verificado com sucesso!") {
+            validarSenha();
+        }
+    }
+
+    function validarSenha() {
+        var senha = document.querySelector("#inp_senha");
+        var senha2 = document.querySelector("#inp_senha2");
+        var mensagem = document.querySelector("#mensagem");
+
+        if (senha.value != senha2.value) {
+
+            div_error.innerHTML = 'As senhas não correspondem.';
+            container.style.display = "flex";
+
+            return false;
+        } else if (
+            senha.value.length < 8 || senha.value.length > 16 ||
+            senha2.value.length < 8 || senha2.value.length > 16) {
+
+            div_error.innerHTML = 'A senha deve ter entre 8 e 16 caracteres.';
+            container.style.display = "flex";
+
+
+            return false;
+        } else {
+            alterarSenha();
+        }
+
+    }
+
+    function alterarSenha() {
+        var senha = document.querySelector("#inp_senha").value;
+        var email = sessionStorage.EMAIL_INPUT;
+
+        fetch(`/empresa/alterarSenha/${senha}/${email}`, { cache: "no-store" })
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+
+                        let contador = 5;
+
+                        div_error.innerHTML = `Senha alterada com sucesso! Recarregando a página em ${contador}...`;
+                        container.style.display = "flex";
+
+                        let contagemRegressiva = setInterval(() => {
+                            contador--;
+                            div_error.innerHTML = `Senha alterada com sucesso! Recarregando a página em ${contador}...`;
+                            
+                            if (contador === 0) {
+                                clearInterval(contagemRegressiva);
+                                window.location = "/telas-redefinicao-senha/novaSenha.html";
+                            }
+                        }, 1000);
+                    })
+                } else {
+                    div_error.innerHTML = 'Houve um erro ao tentar alterar a senha!';
+                    container.style.display = "flex";
+
+                }
+            })
+    }
+
     function visualizarSenha() {
         let inputSenha = document.getElementById("inp_senha")
         let imgSenha = document.getElementById("olho")
         if (inputSenha.type == "password") {
-            inputSenha.type = 'text'
-            imgSenha.src = "../assets/olhoAberto.png"
-        } else {
             imgSenha.src = "../assets/olhoFechado.png"
+            inputSenha.type = 'text'
+        } else {
+            imgSenha.src = "../assets/olhoAberto.png"
             inputSenha.type = 'password'
         }
     }
@@ -46,12 +143,16 @@
         let inputSenha2 = document.getElementById("inp_senha2")
         let imgSenha2 = document.getElementById("olho2")
         if (inputSenha2.type == "password") {
-            inputSenha2.type = 'text'
-            imgSenha2.src = "../assets/olhoAberto.png"
-        } else {
             imgSenha2.src = "../assets/olhoFechado.png"
+            inputSenha2.type = 'text'
+        } else {
+            imgSenha2.src = "../assets/olhoAberto.png"
             inputSenha2.type = 'password'
         }
+    }
+
+    function fecharModal() {
+        container.style.display = "none";
     }
 
 </script>
