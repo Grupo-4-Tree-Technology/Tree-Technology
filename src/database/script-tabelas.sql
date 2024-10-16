@@ -53,5 +53,5 @@ qtd_veiculos_envolvidos INT NOT NULL,
 
 PRIMARY KEY pk_evento_transito (id),
 CONSTRAINT CHECK (fase_dia IN ('Plena Noite', 'Amanhecer', 'Pleno dia', 'Anoitecer')),
-CONSTRAINT CHECK (condicao_metereologica IN ('Céu Claro', 'Chuva', 'Sol', 'Nublado', 'Garoa/Chuvisco'))
+CONSTRAINT CHECK (condicao_metereologica IN ('Ceu Claro', 'Chuva', 'Sol', 'Nublado', 'Garoa/Chuvisco'))
 );
