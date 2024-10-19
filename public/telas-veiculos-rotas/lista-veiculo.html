@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/cadastro-rotas-veiculo.css">
+    <title>Rotas Cadastradas</title>
+</head>
+
+<body>
+    <div class="top-menu">
+        <img src="../assets/Group 23.png" alt="" class="voltar" onclick="voltar()">
+        <div class="icons">
+            <img src="../assets/Bell.png" alt="" onclick="telaNotificação()">
+            <img src="../assets/Icon.png" alt="" id="user" onclick="telaUser()">
+            <img src="../assets/graffic.png" alt="" id="dash" onclick="telaDash()">
+        </div>
+    </div>
+    <main class="container">
+        <h1>Veículos cadastrados</h1>
+        <div class="box">
+            <div class="list-routes">
+                <div class="text">
+                    <div class="title">
+                        <h4>ID Veículo</h4>
+                        <h4>Placa</h4>
+
+                    </div>
+
+                    <div class="dots">
+                        <img src="../assets/dots.png" alt="" onclick="abrirDots()">
+                        <div class="options" style="display: none;" id="options">
+                            <img src="../assets/close.jpeg" alt="" onclick="fecharDots()">
+                            <button>Deletar veículo</button>
+                            <button onclick="telaCadastroRota()">Editar veículo</button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="rota">
+                    <p>001</p>
+                    <p>AVCD2256</p>
+                </div>
+            </div>
+            <button>Adicionar Veículo</button>
+        </div>
+    </main>
+</body>
+
+<script src="../js/icons.js"></script>
+
+</html>

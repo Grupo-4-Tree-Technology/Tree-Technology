@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/cadastro-rotas-veiculo.css">
+    <title>Notificações</title>
+</head>
+
+<body>
+
+    <div class="top-menu">
+        <img src="../assets/Group 23.png" alt="" class="voltar" onclick="voltar()">
+
+        <div class="icons">
+            <img src="../assets/Bell.png" alt="" onclick="telaNotificação()">
+            <img src="../assets/Icon.png" alt="" id="user" onclick="telaUser()">
+            <img src="../assets/graffic.png" alt="" id="dash" onclick="telaDash()">
+        </div>
+
+    </div>
+
+    <main class="container">
+
+        <h1>Adicionar Rota</h1>
+
+        <div class="box">
+
+            <div class="box-3" id="instrucao" style="display: none;">
+
+                <img src="../assets/close.jpeg" alt="" onclick="fechar()">
+
+                <h4>Partida:</h4>
+                <p>O campo "Partida" se refere ao ponto de onde a rota será iniciada. Insira o endereço ou nome do local
+                    de partida.</p>
+
+                <h4>Destino:</h4>
+                <p>O campo "Destino" é o ponto final da rota, ou seja, o local para onde o veículo está se dirigindo.
+                </p>
+
+                <h4>Adicionar Rua Intermediária:</h4>
+                <p>Esse campo permite adicionar ruas ou locais intermediários pelos quais a rota deve passar antes de
+                    chegar ao destino final.</p>
+
+                <h4>Placa do Veículo:</h4>
+                <p>A "Placa do Veículo" identifica o veículo que será utilizado para realizar a rota.</p>
+
+            </div>
+
+            <div class="forms">
+
+                <img src="../assets/circle-help.png" alt="" onclick="instrucao()">
+
+                <p>Partida</p>
+                <input type="text" name="" id="">
+
+                <div id="ruasIntermediarias" class="novoInput"></div>
+
+                <button id="adicionarRua">+ Adicionar rua intermediária</button>
+
+                <p>Destino</p>
+                <input type="email" name="" id="">
+
+                <p>Placa do veículo</p>
+                <input type="number" name="" id="">
+
+                <button>Adicionar</button>
+
+            </div>
+        </div>
+    </main>
+</body>
+
+<script src="../js/icons.js"></script>
+
+</html>
