@@ -16,21 +16,16 @@
 
 }
 
-.top-menu img{
-    max-height: 40px;
-    min-height: 10px;
-}
-
 .icons{
     display: flex;
     justify-content: space-around;
-    width: 15%;
+    width: 15vw;
   
 }
 
 .icons img{
+    width: 10.5%;
     cursor: pointer;
-    max-height: 30px;
 }
 
 .container{
@@ -52,7 +47,25 @@
     box-shadow: 10px 10px 10px  #68696977;
     display: flex;
     flex-direction: column;
-    
+}
+
+.box-notificacoes {
+    background-color: #F4F4F4;
+    height: 75vh;
+    width: auto;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px  #68696977;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.box a {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
 }
 
 .message{
@@ -135,7 +148,15 @@ button:hover{
     background-color: #61ab63;
 }
 
-.forms a{
+#button-delete {
+    background-color: #dc5656;
+}
+
+#button-delete:hover {
+    background-color: #d21414;
+}
+
+.forms span{
     margin-top: 10px;
     text-decoration: none;
     font-weight: bold;
@@ -170,6 +191,7 @@ button:hover{
 .title{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     gap: 20vw;
     text-align: right;
 }
@@ -245,13 +267,22 @@ button:hover{
 
 @media (max-width: 800px) {
     .icons{
-       width: 20%;
+       width: 50vw;
     }
 }
 
 @media (max-width: 600px) {
     .icons{
-       width: 30%;
+        width: 50vw;
+    }
+
+    .icons img{
+        width: 10%;
+        cursor: pointer;
+    }
+
+    #dash {
+        width: 5.5vw
     }
 
     .forms button{

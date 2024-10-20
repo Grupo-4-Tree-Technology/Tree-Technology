@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/cadastro-rotas-veiculo.css">
-    <title>Notificações</title>
+    <title>Informações Pessoais</title>
+    <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
 </head>
 
 <body>
@@ -14,9 +15,9 @@
         <img src="../assets/Group 23.png" alt="" class="voltar" onclick="voltar()">
        
         <div class="icons">
-            <img src="../assets/Bell.png" alt="" onclick="telaNotificação()">
-            <img src="../assets/Icon.png" alt="" id="user" onclick="telaUser()">
-            <img src="../assets/graffic.png" alt="" id="dash" onclick="telaDash()">
+            <img src="../assets/Bell.png" onclick="telaNotificação()">
+            <img src="../assets/Icon.png" id="user" onclick="telaUser()">
+            <img src="../assets/icon dashboard.png" id="dash" onclick="telaDash()">
         </div>
 
     </div>
@@ -24,7 +25,7 @@
     <main class="container">
 
         <div class="box-2"  id="confirmarcao" style="display: none;">
-            <span>Tem certeza que deseja exluir sua conta?</span>
+            <span>Tem certeza que deseja excluir sua conta?</span>
             <div class="buttons">
                 <button style="background-color: #f75050;">Deletar conta</button>
                 <button onclick="cancelarMensagem()">Cancelar</button>
@@ -38,7 +39,7 @@
             <div class="forms">
 
                 <p>Razão Social</p>
-                <input type="text" name="" id="" style="background-color: rgb(201, 198, 198);" placeholder="Tree-Technology">
+                <input type="text" name="" id="" disabled style="background-color: rgb(201, 198, 198);">
 
                 <p>Nome Fantasia</p>
                 <input type="text" name="" id="">
@@ -51,7 +52,7 @@
 
                 <button>Salvar Mudanças</button>
 
-                <a href="" onclick="mensagemConfirmar()">Deletar conta</a>
+                <span style="cursor: pointer;" onclick="mensagemConfirmar()">Deletar conta</span>
                 
             </div>
 
