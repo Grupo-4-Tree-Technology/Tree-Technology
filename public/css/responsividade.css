@@ -1,5 +1,4 @@
 @media screen and (max-width: 1919px) {
-
     section.paginaInicial .div-paginaInicial {
         display: flex;
         justify-content: space-around;
@@ -7,6 +6,28 @@
         padding: 7%;
     }
     
+}
+
+@media screen and (max-width: 1440px) {
+    .div-paginaInicial {
+        padding: 0 7% !important;
+    }   
+
+    header {
+        padding: 0 4%;
+    }
+
+    section.paginaInicial {
+        height: 76vh;
+    }
+
+    .paginaInicial .img-paginaInicial img {
+        width: 70%;
+    }
+
+    section.funcionalidades {
+        height: 100vh;
+    }
 }
 
 @media screen and (max-width: 1220px) {
@@ -186,7 +207,7 @@
 @media screen and (max-width: 600px) {
 
     section.funcionalidades {
-        height: 175vh;
+        height: 232vh;
     }
 
     .funcionalidades .funcionalidades-box {
@@ -194,7 +215,7 @@
     }
 
     .Equipe {
-        height: 40vh;
+        height: 55vh;
     }
 
     .Equipe .titulo-equipe {
