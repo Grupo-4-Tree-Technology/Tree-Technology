@@ -257,15 +257,6 @@ button:hover{
 
 /*Tela cadastrar rotas*/
 
-.principal{
-    height: auto;
-    width: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    background: none;
-}
-
 .box-3{
     background-color: #ffff;
     height: auto;
