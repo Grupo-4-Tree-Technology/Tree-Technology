@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/cadastro-rotas-veiculo.css">
+    <title>Informações Pessoais</title>
+    <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
+</head>
+
+<body>
+
+    <div class="top-menu">
+        <div id="hamburguer">
+            <img src="../assets/Group 23.png" style="width: 50%;">
+        </div>
+        <div class="btn-abrir-menu" id="btn-menu">
+            <i class="bi bi-list"></i>
+        </div>
+
+        <div class="menu-mobile" id="menu-mobile">
+            <div class="btn-fechar">
+                <i class="bi bi-x-lg"></i>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">DASHBOARD</a></li>
+                    <li><a href="lista-rotas.html">VISUALIZAR ROTAS</a></li>
+                    <li><a href="lista-veiculo.html">VISUAZALIZAR VEÍCULOS</a></li>
+                    <li><a href="../index.html">SAIR</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="overlay-menu" id="overlay-menu"></div>
+       
+        <div class="icons">
+            <img src="../assets/Bell.png" onclick="telaNotificação()">
+            <img src="../assets/Icon.png" id="user" onclick="telaUser()">
+            <img src="../assets/icon dashboard.png" id="dash" onclick="telaDash()">
+        </div>
+
+    </div>
+
+    <main class="container">
+
+        <div class="box-2"  id="confirmarcao" style="display: none;">
+            <span>Tem certeza que deseja excluir sua conta?</span>
+            <div class="buttons">
+                <button style="background-color: #f75050;">Deletar conta</button>
+                <button onclick="cancelarMensagem()">Cancelar</button>
+            </div>
+        </div>
+        
+        <h1>Atualizar informações</h1>
+
+        <div class="box">
+
+            <div class="forms">
+
+                <p>Razão Social</p>
+                <input type="text" name="" id="" disabled style="background-color: rgb(201, 198, 198);">
+
+                <p>Nome Fantasia</p>
+                <input type="text" name="" id="">
+
+                <p>E-mail</p>
+                <input type="email" name="" id="" disabled style="background-color: rgb(201, 198, 198);">
+
+                <p>CNPJ</p>
+                <input type="number" name="" id="" disabled style="background-color: rgb(201, 198, 198);">
+
+                <button>Salvar Mudanças</button>
+
+                <span style="cursor: pointer;" onclick="mensagemConfirmar()">Deletar conta</span>
+                
+            </div>
+
+        </div>
+
+    </main>
+</body>
+
+<script src="../js/icons.js"></script>
+</html>
+
+<script>
+    let hamburgu = document.getElementById('hamburguer');
+    let menu = document.getElementById('menu-mobile');
+    let overlay = document.getElementById('overlay-menu');
+    let btnFechar = document.querySelector('.btn-fechar');
+
+    hamburgu.addEventListener('click', () => {
+        menu.classList.add('abrir-menu')
+    })
+
+    menu.addEventListener('click', () => {
+        menu.classList.remove('abrir-menu')
+    })
+
+    overlay.addEventListener('click', () => {
+        menu.classList.remove('abrir-menu')
+    })
+
+    btnFechar.addEventListener('click', () => {
+        menu.classList.remove('abrir-menu');
+        overlay.style.display = 'none';
+    });
+</script>

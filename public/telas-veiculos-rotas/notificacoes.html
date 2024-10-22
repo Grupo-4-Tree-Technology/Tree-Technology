@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/cadastro-rotas-veiculo.css">
+    
+    <title>Notificações</title>
+    <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="top-menu">
+        <div id="hamburguer">
+            <img src="../assets/Group 23.png" style="width: 50%;">
+        </div>
+        <div class="btn-abrir-menu" id="btn-menu">
+            <i class="bi bi-list"></i>
+        </div>
+
+        <div class="menu-mobile" id="menu-mobile">
+            <div class="btn-fechar">
+                <i class="bi bi-x-lg"></i>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">DASHBOARD</a></li>
+                    <li><a href="lista-rotas.html">VISUALIZAR ROTAS</a></li>
+                    <li><a href="lista-veiculo.html">VISUAZALIZAR VEÍCULOS</a></li>
+                    <li><a href="../index.html">SAIR</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="overlay-menu" id="overlay-menu"></div>
+        <div class="icons">
+            <img src="../assets/Bell.png" onclick="telaNotificação()">
+            <img src="../assets/Icon.png" id="user" onclick="telaUser()">
+            <img src="../assets/icon dashboard.png" id="dash" onclick="telaDash()">
+        </div>
+    </div>
+    <main class="container">
+        <h1>Notificações</h1>
+        <div class="box-notificacoes">
+            <div class="message">
+                <div class="title">
+                    <h4>Acidente na via</h4>
+                    <span>Qua 16:40</span>
+                </div>
+                <p>Fluxo mais lento na zona leste por conta das chuvas</p>
+            </div>
+            <div class="message">
+                <div class="title">
+                    <h4>Sem notificações no momento</h4>
+                    <span>Qua 16:40</span>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+<script src="../js/icons.js"></script>
+
+</html>
+<script>
+    let hamburgu = document.getElementById('hamburguer');
+    let menu = document.getElementById('menu-mobile');
+    let overlay = document.getElementById('overlay-menu');
+    let btnFechar = document.querySelector('.btn-fechar');
+
+    hamburgu.addEventListener('click', () => {
+        menu.classList.add('abrir-menu')
+    })
+
+    menu.addEventListener('click', () => {
+        menu.classList.remove('abrir-menu')
+    })
+
+    overlay.addEventListener('click', () => {
+        menu.classList.remove('abrir-menu')
+    })
+
+    btnFechar.addEventListener('click', () => {
+        menu.classList.remove('abrir-menu');
+        overlay.style.display = 'none';
+    });
+</script>

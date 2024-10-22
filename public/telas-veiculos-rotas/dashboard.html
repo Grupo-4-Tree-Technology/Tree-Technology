@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdVlQqVX8LqOcEtF5ZFAME0lUEC10YPMY&callback=initMap"></script>
+    <script src="../js/dashboard.js"></script>
+
+    <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/dashboard.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body onload="buildGraphic(), changeColorPercent(), initMap(), calculateRoute()">
+    <header>
+        <div class="session-title">
+            <div id="hamburguer">
+                <img src="../assets/Group 23.png" style="width: 23%;">
+            </div>
+            <div class="btn-abrir-menu" id="btn-menu">
+                <i class="bi bi-list"></i>
+            </div>
+
+            <div class="menu-mobile" id="menu-mobile">
+                <div class="btn-fechar">
+                    <i class="bi bi-x-lg"></i>
+                </div>
+
+                <nav>
+                    <ul>
+                        <li><a>DASHBOARD</a></li>
+                        <li><a href="lista-rotas.html">VISUALIZAR ROTAS</a></li>
+                        <li><a href="lista-veiculo.html">VISUAZALIZAR VEÍCULOS</a></li>
+                        <li><a href="../index.html">SAIR</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="overlay-menu" id="overlay-menu"></div>
+
+            <div id="title-dashboard">
+                Dashboard de Segurança Viária: Acidentes e Rotas
+            </div>
+
+            <div class="icons">
+                <a href="notificacoes.html"><img src="../assets/Bell.png" style="width: 44.34px;"></a>
+                <a href="info-pessoal.html"><img src="../assets/Icon.png" style="width: 36px;"></a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="left-side">
+            <div class="kpis">
+                <div id="first-kpi">
+                    <div style="position: relative;">
+                        <span>Acidentes por Fase do Dia</span>
+                        <div class="icon" id="infoIcon">
+                            <img src="../assets/tooltip.png" class="modal" id="infoModal">
+                            <img src="../assets/circle-help (white).png">
+                        </div>
+                    </div>
+                    <ul style="color: #0E3D0B;">
+                        <li>Amanhecer: 1.234 <span class="per-cent">(5,15%)</span></li>
+                        <li>Pleno dia: 2.456 <span class="per-cent">(10,26%)</span></li>
+                        <li>Anoitecer: 1.567 <span class="per-cent">(6,56%)</span></li>
+                        <li>Plena Noite: 19.910 <span class="per-cent">(85,03%)</span></li>
+                    </ul>
+                </div>
+                <div id="second-kpi">
+                    <div style="position: relative;">
+                        <span>Acidentes por Clima</span>
+                        <div class="icon-2" id="infoIcon-2">
+                            <img src="../assets/tooltip - metereologia.png" class="modal-2" id="infoModal-2">
+                            <img src="../assets/circle-help (white).png">
+                        </div>
+                    </div>
+                    <ul style="color: #0E3D0B;">
+                        <li>Céu Claro: 30.983 <span class="per-cent">(65,65%)</span></li>
+                        <li>Chuva: 5.081 <span class="per-cent">(10,77%)</span></li>
+                        <li>Nublado: 6.818 <span class="per-cent">(14,45%)</span></li>
+                        <li>Sol: 2.621 <span class="per-cent">(5,55%)</span></li>
+                        <li>Garoa/Chuvisco: 1.690 <span class="per-cent">(3,58%)</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="section-graphic">
+                <div id="title-graphic">
+                    Número de Acidentes X Dia da semana
+                </div>
+                <div id="graphic">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </section>
+        <section class="right-side">
+            <div class="side-maps">
+                <div class="custom-select">
+                    <div class="select-selected">
+                        <span class="text-icon">
+                            Rota Original
+                            <img src="../assets/icon (point a for b).png">
+                        </span>
+                        <span class="arrow" style="font-size: 32pt;" id="seta">&#9662;</span>
+                    </div>
+                    <div class="select-items">
+                        <div data-value="1" style="display: flex; justify-content: start; gap: 8em; padding: 0 27px;">
+                            Rota Original
+                            <img src="../assets/icon (point a for b).png">
+                        </div>
+                        <div data-value="2" style="display: flex; justify-content: start; gap: 2em; padding: 0 27px;">
+                            Rota Alternativa - Gemini
+                            <img src="../assets/logo-gemini.png">
+                        </div>
+                    </div>
+                </div>
+                <div id="info-rota">
+                    <span>Início: Avenida do Estado, 5533 - Final: Rua Haddock Lobo, 595</span>
+                    <span>DEFY872</span>
+                </div>
+                <div id="map"></div>
+                <div class="button-select-routes">
+                    <button onclick="irParaTelaRota()">Selecionar Rota</button>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const icon = document.getElementById('infoIcon');
+        const modal = document.getElementById('infoModal');
+        
+        const icon2 = document.getElementById('infoIcon-2');
+        const modal2 = document.getElementById('infoModal-2');
+
+        icon.addEventListener('mouseover', () => {
+            modal.classList.add('show');
+        });
+
+        icon.addEventListener('mouseout', () => {
+            modal.classList.remove('show');
+        });
+
+        icon2.addEventListener('mouseover', () => {
+            modal2.classList.add('show');
+        });
+
+        icon2.addEventListener('mouseout', () => {
+            modal2.classList.remove('show');
+        });
+    });
+
+    let hamburgu = document.getElementById('hamburguer');
+    let menu = document.getElementById('menu-mobile');
+    let overlay = document.getElementById('overlay-menu');
+    let btnFechar = document.querySelector('.btn-fechar');
+
+    hamburgu.addEventListener('click', () => {
+        menu.classList.add('abrir-menu')
+    })
+
+    menu.addEventListener('click', () => {
+        menu.classList.remove('abrir-menu')
+    })
+
+    overlay.addEventListener('click', () => {
+        menu.classList.remove('abrir-menu')
+    })
+
+    btnFechar.addEventListener('click', () => {
+        menu.classList.remove('abrir-menu');
+        overlay.style.display = 'none';
+    });
+
+    openSelectWithImages();
+
+    function changeColorPercent() {
+        let porcentagens = document.querySelectorAll('.per-cent');
+
+        porcentagens.forEach(function (porcentagem) {
+            let valorNumerico = parseFloat(porcentagem.textContent.replace('(', '').replace(')', '').replace('%', ''));
+            porcentagem.style.color = "#0AC800";
+
+            if (valorNumerico >= 50 && valorNumerico <= 84) {
+                porcentagem.style.color = "#F99203";
+
+            } else if (valorNumerico >= 85) {
+                porcentagem.style.color = "#F00000";
+
+            }
+        });
+    }
+
+    let map;
+    let directionsService;
+    let directionsRenderer;
+
+    function initMap() {
+        
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: -34.397, lng: 150.644 },
+            zoom: 8,
+        });
+
+        directionsService = new google.maps.DirectionsService();
+        directionsRenderer = new google.maps.DirectionsRenderer();
+        directionsRenderer.setMap(map);
+    }
+
+    document.querySelector(".select-items").addEventListener("click", function () {
+        calculateRoute();
+    });
+
+    function calculateRoute() {
+        /* let start = document.getElementById('start').value;
+        let waypoint1 = document.getElementById('waypoint1').value;
+        let waypoint2 = document.getElementById('waypoint2').value;
+        let end = document.getElementById('end').value; */
+
+        let start = 'Avenida do Estado, 5533';
+        let end = 'Rua Haddock Lobo, 595';
+
+        if (start === '' || end === '') {
+            alert('Por favor, insira endereços válidos!');
+            return;
+        }
+
+        /* let waypoints = [];
+        if (waypoint1 !== '') {
+            waypoints.push({
+                location: waypoint1,
+                stopover: true
+            });
+        }
+        if (waypoint2 !== '') {
+            waypoints.push({
+                location: waypoint2,
+                stopover: true
+            });
+        } */
+
+        let selectedRoute = document.querySelector(".select-selected .text-icon").textContent.trim();
+
+        let request = {};
+
+        if (selectedRoute.includes('Rota Original')) {
+            request = {
+                origin: start,
+                destination: end,
+                travelMode: 'TRANSIT' // Pode ser 'WALKING', 'BICYCLING', 'TRANSIT'
+            };
+        } else if (selectedRoute.includes('Gemini')) {
+            request = {
+                origin: start,
+                destination: end,
+                travelMode: 'DRIVING' // Pode ser 'WALKING', 'BICYCLING', 'TRANSIT'
+            };
+        }
+
+        directionsService.route(request, function (result, status) {
+            if (status === 'OK') {
+                directionsRenderer.setDirections(result);
+            } else {
+                alert('Falha ao traçar a rota: ' + status);
+            }
+        });
+    }
+</script>
+
+</html>
