@@ -219,7 +219,7 @@ main {
 
 .select-items {
     position: absolute;
-    background-color: white;
+    background-color: #f1f1f1;
     border: 1px solid #ddd;
     width: 48vw;
     display: none;
@@ -229,8 +229,8 @@ main {
 }
 
 .select-items img {
-    width: 20px;
-    height: 20px;
+    width: 50px;
+    height: 50px;
     vertical-align: middle;
     margin-right: 10px;
 }
@@ -244,7 +244,7 @@ main {
 }
 
 .select-items div:hover {
-    background-color: #f1f1f1;
+    background-color: #d7d5d5;
 }
 
 .select-selected {

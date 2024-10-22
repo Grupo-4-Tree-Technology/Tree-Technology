@@ -80,6 +80,13 @@ function openSelectWithImages() {
 
     selectSelected.addEventListener('click', function () {
         items.style.display = items.style.display == 'block' ? 'none' : 'block';
+        
+        if (items.style.display == 'block') {
+            seta.innerHTML = '&#9652;';
+        } else {
+            seta.innerHTML = '&#9662;';
+        }
+
     });
 
     document.querySelectorAll('.select-items div').forEach(item => {

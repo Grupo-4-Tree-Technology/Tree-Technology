@@ -72,6 +72,21 @@ function validarCadastro() {
             })
             .then(() => {
                 exibirMensagem("<p style='color:green;'>Cadastro realizado!</p>", 5000);
+
+                let contador = 5;
+
+                div_error.innerHTML = `Cadastro realizado com sucesso! Recarregando a página em ${contador}...`;
+                container.style.display = "flex";
+
+                let contagemRegressiva = setInterval(() => {
+                    contador--;
+                    div_error.innerHTML = `Cadastro realizado com sucesso! Recarregando a página em ${contador}...`;
+
+                    if (contador === 0) {
+                        clearInterval(contagemRegressiva);
+                        window.location = "cadastro-login.html";
+                    }
+                }, 1000);
             })
             .catch(error => {
                 console.error(error);
@@ -136,21 +151,44 @@ function validarLogin() {
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                    alert("Login efetuado com sucesso!");
-                    window.location = "";
-                });
+
+                    let contador = 4;
+
+                    div_error.innerHTML = `Login realizado com sucesso!`;
+                    container.style.display = "flex";
+
+                    /* setTimeout(() => {
+                        window.location = "telas-veiculos-rotas/dashboard.html";
+                    }, 1200); */
+
+                    let contagemRegressiva = setInterval(() => {
+                        contador--;
+                        div_error.innerHTML = `Login realizado com sucesso! Recarregando a página em ${contador}...`;
+                        
+                        if (contador === 0) {
+                            clearInterval(contagemRegressiva);
+                            window.location = "telas-veiculos-rotas/dashboard.html";
+                        }
+                    }, 400);
+                    
+                }).catch(erro => {
+                    console.error("Erro ao processar JSON:", erro);
+                    mensagemErro.innerHTML = "<p style='color:red;'>Erro ao processar resposta. Verifique se o e-mail está correto.</p>";
+                })
 
             } else {
-
-                mensagemErro.innerHTML = "<p style='color:red;'>Houve um erro ao tentar realizar o login!</p>";
-
                 resposta.text().then(texto => {
-                    console.error(texto);
+                    console.error("Erro na resposta:", texto);
+                    mensagemErro.innerHTML = `<p style='color:red;'>${texto}</p>`;
+                }).catch(erro => {
+                    console.error("Erro ao processar texto de erro:", erro);
+                    mensagemErro.innerHTML = "<p style='color:red;'>Erro desconhecido ao tentar realizar o login.</p>";
                 });
             }
 
         }).catch(function (erro) {
-            console.log(erro);
+            console.error("Erro no fetch:", erro);
+            mensagemErro.innerHTML = "<p style='color:red;'>Erro ao tentar se comunicar com o servidor.</p>";
         })
 
         return false;
