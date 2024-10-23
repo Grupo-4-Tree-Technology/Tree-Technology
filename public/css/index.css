@@ -71,6 +71,10 @@ form .btn-login-cadastro input:hover {
     transform: scale(1.05);
 }
 
+.verde{
+    color: #45a449;
+}
+
 /* FIM STYLE GERAL */
 
 
@@ -301,6 +305,11 @@ section.funcionalidades .descricao-projeto {
     margin: 15px 0;
 }
 
+.funcionalidades .funcionalidades-box p {
+    font-size: 20px;
+    
+}
+
 /* FIM STYLE FUNCIONALIDADES SITE */
 
 /* STYLE MINHA HISTORIA e SOBRE */
@@ -316,7 +325,7 @@ section.sobre .descricao-empresa {
 }
 
 .sobre .txt-sobre {
-    color: black;
+    color: #403939;
 }
 
 .sobre .txt-sobre h2 {
@@ -333,6 +342,7 @@ section.sobre .descricao-empresa {
 .sobre .txt-sobre p {
     margin: 20px 0;
     text-align: justify;
+    font-size: 20px;
 }
 
 .btn-social {
