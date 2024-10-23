@@ -21,7 +21,7 @@ var mensagemErro = document.querySelector("#mensagemErro");
 function validarCadastro() {
 
     if (
-        (   razao_social.value == "" ||
+        (razao_social.value == "" ||
             nome.value == "" ||
             email.value == "" ||
             senha.value == "" ||
@@ -87,6 +87,7 @@ function validarCadastro() {
                         window.location = "cadastro-login.html";
                     }
                 }, 1000);
+
             })
             .catch(error => {
                 console.error(error);
@@ -164,13 +165,13 @@ function validarLogin() {
                     let contagemRegressiva = setInterval(() => {
                         contador--;
                         div_error.innerHTML = `Login realizado com sucesso! Recarregando a página em ${contador}...`;
-                        
+
                         if (contador === 0) {
                             clearInterval(contagemRegressiva);
                             window.location = "telas-veiculos-rotas/dashboard.html";
                         }
                     }, 400);
-                    
+
                 }).catch(erro => {
                     console.error("Erro ao processar JSON:", erro);
                     mensagemErro.innerHTML = "<p style='color:red;'>Erro ao processar resposta. Verifique se o e-mail está correto.</p>";
@@ -200,13 +201,13 @@ function mascaraCNPJ() {
     // Está função será ativado toda vez que o usuário digitar algo (por conta do onkeyup):
 
     var cnpj = document.querySelector("#cnpj");
-    
+
     cnpj.value = cnpj.value.replace(/\D+/g, '')
-    .replace(/(\d{2})(\d)/, '$1.$2')
-    .replace(/(\d{3})(\d)/, '$1.$2')
-    .replace(/(\d{3})(\d)/, '$1/$2')
-    .replace(/(\d{4})(\d)/, '$1-$2')
-    .replace(/(-\d{2})\d+?$/, '$1')
+        .replace(/(\d{2})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d)/, '$1/$2')
+        .replace(/(\d{4})(\d)/, '$1-$2')
+        .replace(/(-\d{2})\d+?$/, '$1')
 }
 
 function formatarCNPJ() {
@@ -219,6 +220,10 @@ function logar() {
     telaLogin.style.display = "flex";
 
 }
+
+window.onload = function () {
+    logar();
+};
 
 function cadastrar() {
     telaCadastro.style.display = "flex";
