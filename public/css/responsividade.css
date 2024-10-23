@@ -8,6 +8,22 @@
     
 }
 
+@media screen and (max-width: 1760px) {
+    section.paginaInicial .div-paginaInicial {
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 1536px) {
+    section.paginaInicial .div-paginaInicial {
+        padding: 0;
+    }
+
+    .paginaInicial .img-paginaInicial img {
+        width: 85%;
+    }
+}
+
 @media screen and (max-width: 1440px) {
     .div-paginaInicial {
         padding: 0 7% !important;
@@ -26,7 +42,7 @@
     }
 
     section.funcionalidades {
-        height: 100vh;
+        height: 190vh;
     }
 }
 
@@ -48,7 +64,10 @@
 }
 
 @media screen and (max-width: 992px) {
-    
+    section.paginaInicial {
+        height: 64vh;
+    }
+
     section.paginaInicial .div-paginaInicial {
         height: 100%;
         
@@ -60,7 +79,7 @@
     }
     
     .img-paginaInicial {
-        width: 40%;
+        display: none;
     }
     
     .img-sobre {
@@ -71,7 +90,7 @@
         display: flex;
         justify-content: start;
 
-        height: 155vh;
+        height: 324vh;
         padding: 40px 4%;
         background-color: rgb(2, 2, 63);
   
