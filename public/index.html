@@ -51,8 +51,8 @@
             </nav>
 
             <div class="btn-login-cadastro">
-                <a href="cadastro-login.html">
-                    <button>ENTRAR</button>
+                <a onclick="entrarLogin()">
+                    <button>ENTRAR</button> 
                 </a>
             </div>
 
@@ -296,7 +296,15 @@
         </div>
 
     </footer>
-
 </body>
-
 </html>
+
+<script>
+    function entrarLogin() {
+        sessionStorage.LOGIN = true;
+        window.location = 'cadastro-login.html'
+
+        telaCadastro.style.display = "none";
+        telaLogin.style.display = "flex";
+    }
+</script>

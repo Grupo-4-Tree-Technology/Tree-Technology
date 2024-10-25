@@ -56,9 +56,11 @@
 
                     <span>Senha</span>
                     <input type="password" id="senha" placeholder="************" minlength="8" maxlength="16">
+                    <img id="olho" onclick="visualizarSenha()" src="./assets/olhoAberto.png" class="toggle-password">
 
                     <span>Confirmar senha</span>
                     <input type="password" id="confirma-senha" placeholder="************" minlength="8" maxlength="16">
+                    <img id="olho2" onclick="visualizarSenha2()" src="./assets/olhoAberto.png" class="toggle-password2">
 
                     <div id="mensagem"></div>
 
@@ -93,6 +95,7 @@
 
                     <span>Senha</span>
                     <input type="password" id="senha2" maxlength="16">
+                    <img id="olho3" onclick="visualizarSenha2()" src="./assets/olhoAberto.png" class="toggle-password3">
 
                     <span style="margin-bottom: 5vh;">
                         <a href="telas-redefinicao-senha/redefinir.html" class="link-redefinirsenha">Esqueci a senha</a>
@@ -117,6 +120,42 @@
 
 </html>
 <script>
+    function visualizarSenha() {
+        let inputSenha = document.getElementById("senha")
+        let imgSenha = document.getElementById("olho")
+        if (inputSenha.type == "password") {
+            imgSenha.src = "./assets/olhoFechado.png"
+            inputSenha.type = 'text'
+        } else {
+            imgSenha.src = "./assets/olhoAberto.png"
+            inputSenha.type = 'password'
+        }
+    }
+
+    function visualizarSenha2() {
+        let inputSenha2 = document.getElementById("confirma-senha")
+        let imgSenha2 = document.getElementById("olho2")
+        if (inputSenha2.type == "password") {
+            imgSenha2.src = "./assets/olhoFechado.png"
+            inputSenha2.type = 'text'
+        } else {
+            imgSenha2.src = "./assets/olhoAberto.png"
+            inputSenha2.type = 'password'
+        }
+    }
+
+    function visualizarSenha2() {
+        let inputSenha3 = document.getElementById("senha2")
+        let imgSenha3 = document.getElementById("olho3")
+        if (inputSenha3.type == "password") {
+            imgSenha3.src = "./assets/olhoFechado.png"
+            inputSenha3.type = 'text'
+        } else {
+            imgSenha3.src = "./assets/olhoAberto.png"
+            inputSenha3.type = 'password'
+        }
+    }
+
     function fecharModal() {
         container.style.display = "none";
     }

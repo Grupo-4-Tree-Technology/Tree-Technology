@@ -221,9 +221,6 @@ function logar() {
 
 }
 
-window.onload = function () {
-    logar();
-};
 
 function cadastrar() {
     telaCadastro.style.display = "flex";
