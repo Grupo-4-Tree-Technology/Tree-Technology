@@ -75,6 +75,8 @@ function validarCadastro() {
 
                 let contador = 5;
 
+                texto_modal.innerHTML = "Cadastro realizado";
+
                 div_error.innerHTML = `Cadastro realizado com sucesso! Recarregando a página em ${contador}...`;
                 container.style.display = "flex";
 
@@ -84,6 +86,7 @@ function validarCadastro() {
 
                     if (contador === 0) {
                         clearInterval(contagemRegressiva);
+                        sessionStorage.SESSAO_LOGIN = true;
                         window.location = "cadastro-login.html";
                     }
                 }, 1000);
@@ -158,9 +161,7 @@ function validarLogin() {
                     div_error.innerHTML = `Login realizado com sucesso!`;
                     container.style.display = "flex";
 
-                    /* setTimeout(() => {
-                        window.location = "telas-veiculos-rotas/dashboard.html";
-                    }, 1200); */
+                    texto_modal.innerHTML = "Login realizado";
 
                     let contagemRegressiva = setInterval(() => {
                         contador--;
