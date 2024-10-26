@@ -454,3 +454,110 @@ main {
     opacity: 1;
     visibility: visible;
 }
+
+/*MODAL LISTA-ROTAS*/
+
+.box{
+    background-color: #f1f5f1;
+    height: auto;
+    width: auto;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px  #68696977;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 100;
+    overflow-y: scroll;
+}
+
+.box img{
+    max-height: 30px;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.list-routes{
+    padding: 20px 10px;
+    border-radius: 10px;
+    border-bottom: 10px solid #46a54a;
+    margin-bottom: 10px;
+    justify-content:center;
+    align-items: center;
+    background-color: #ffff;
+    
+    font-size: larger;
+}
+
+.text{
+    display: flex;
+    justify-content: space-around;
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 40vw;
+    text-align: right;
+    color: #248829;
+}
+
+.rota{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.dots{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 40px;
+    margin-left: 10px;
+}
+
+.dots img{
+    max-height: 30px;
+    align-self: flex-start;
+    cursor: pointer;
+}
+
+.options{
+    background-color: #fff;
+    padding: 10px 10px;
+    display: flex;
+    position: fixed;
+    right: 2%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0px 10px 10px 10px;
+    border: 2px solid #61ab63;
+    width: 150px;
+}
+
+.options img{
+    max-height: 20px;
+    align-self: end;
+}
+
+button{
+    margin-top: 10px;
+    background-color: #248829;
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 40px;
+    padding: 10px 25px;
+    font-size: large;
+    text-align: center;
+    justify-self: center;
+    align-self: center;
+    cursor: pointer;
+   
+}

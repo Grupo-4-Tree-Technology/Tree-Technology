@@ -122,19 +122,71 @@
                     <span>Início: Avenida do Estado, 5533 - Final: Rua Haddock Lobo, 595</span>
                     <span>DEFY872</span>
                 </div>
+                <div class="box" id="box" style="display: none;">
+                    <img src="../assets/close.jpeg" alt="" onclick="fecharBox()">
+                    <div class="list-routes">
+                        <div class="text">
+                            <div class="title">
+                                <h4>Rota</h4>
+                                <h4>Placa</h4>
+                            </div>
+                            <div class="dots">
+                                <img src="../assets/dots.png" alt="" onclick="abrirDots()">
+                                <div class="options" style="display: none;" id="options">
+                                    <img src="../assets/close.jpeg" alt="" onclick="fecharDots()">
+                                    <button id="button-delete">Deletar rota</button>
+                                    <button onclick="telaCadastroRota()">Editar rota</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rota">
+                            <p>Rua Gomes de Carvalho - Rua Funchal</p>
+                            <p class="placa">AVCD256</p>
+                        </div>
+                    </div>
+                    <a href="cadastro-rota.html">
+                        <button>Adicionar Rota</button>
+                    </a>
+                </div>
                 <div id="map"></div>
                 <div class="button-select-routes">
-                    <button onclick="irParaTelaRota()">Selecionar Rota</button>
+                    <button onclick="abrirBox()">Selecionar Rota</button>
                 </div>
             </div>
         </section>
     </main>
 </body>
 <script>
+
+function telaCadastroRota(){
+    window.location.href = "./cadastro-rota.html";
+}
+
+function abrirBox(){
+    var instrucao = document.getElementById('box');
+
+    box.style.display = "flex"; 
+}
+
+function fecharBox(){
+    var instrucao = document.getElementById('box');
+
+    box.style.display = "none"; 
+}
+
+function abrirDots(){
+    var options = document.getElementById('options');
+    options.style.display = "flex"; 
+}
+
+function fecharDots(){
+    var options = document.getElementById('options');
+    options.style.display = "none"; 
+}
     document.addEventListener('DOMContentLoaded', () => {
         const icon = document.getElementById('infoIcon');
         const modal = document.getElementById('infoModal');
-        
+
         const icon2 = document.getElementById('infoIcon-2');
         const modal2 = document.getElementById('infoModal-2');
 
@@ -201,7 +253,7 @@
     let directionsRenderer;
 
     function initMap() {
-        
+
         map = new google.maps.Map(document.getElementById('map'), {
             center: { lat: -34.397, lng: 150.644 },
             zoom: 8,
