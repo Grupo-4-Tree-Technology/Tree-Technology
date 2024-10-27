@@ -71,8 +71,8 @@ body{
     background: none;
     border: none;
     font-family: 'Poppins';
-    font-size: large;
-    font-weight: medium;
+    font-size: 110%;
+    font-weight: 500;
     cursor: pointer;
 }
 
@@ -92,46 +92,43 @@ body{
     color: #001E30;
     font-weight: 600;
     justify-content: center;
-    margin: 5vw;
+    margin: 6%;
 }
 
-.forms input{
-    border:none;
+#div-senha, #confirmacao-senha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     border-bottom: 3px solid #001E30;
-    height: 30px;
-    margin-bottom: 30px;
+    height: 3.5vh;
+    margin-bottom: 2%;
+    padding: 0.5%
+}
+
+#div-senha input, #confirmacao-senha input {
+    border: none;
+    height: 100%;
+    width: 96%;
     font-size: large;
     outline: none;
 }
 
-.toggle-password {
-    position: absolute;
-    right: 105px;
-    top: 64%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    width: 20px;
-    height: 20px;
+.forms .inputs-forms {
+    border: none;
+    border-bottom: 3px solid #001E30;
+    height: 100%;
+    width: 100%;
+    font-size: large;
+    outline: none;
+    padding: 0.5%;
+    margin-bottom: 2%;
 }
 
-.toggle-password2 {
-    position: absolute;
-    right: 105px;
-    top: 75.5%;
-    transform: translateY(-50%);
-    cursor: pointer;
+.toggle-password, .toggle-password2, .toggle-password3 {
     width: 20px;
     height: 20px;
-}
-
-.toggle-password3 {
-    position: absolute;
-    left: 45.5%;
-    top: 48%;
-    transform: translateY(-50%);
     cursor: pointer;
-    width: 20px;
-    height: 20px;
 }
 
 .btn-entrar {
@@ -171,6 +168,7 @@ body{
     justify-content: center;
     background-image: url(../assets/background.png);
     background-size: cover;
+    background-position: right;
     width: 50%;
     text-align: center;
     height: 100%;
@@ -187,6 +185,24 @@ body{
     height: 100%;
     border-radius: 0px 0px 0px 30px;
     width: 60%;
+}
+
+#senha-login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #001E30;
+    height: 3.5vh;
+    margin-bottom: 2%;
+    padding: 0.5%;
+}
+
+#senha-login input {
+    border: none;
+    height: 100%;
+    width: 96%;
+    font-size: large;
+    outline: none;
 }
 
 .link-redefinirsenha{
@@ -241,35 +257,22 @@ body{
     margin-bottom: 10px;
 }
 
-/* MODAL */
-/* MODAL */
-/* MODAL */
-
-
-
 @media screen and (max-width: 1440px) {
-    body {
-        overflow: hidden;
-    }
-
+    
     .cadastro-content .first-column {
         height: 92vh;
-        margin-bottom: 5em;
     }
     
     .cadastro-content .second-column {
         height: 92vh;
-        margin-bottom: 5em;
     }
 
     .login-content .first-column {
         height: 92vh;
-        margin-bottom: 5em;
     }
     
     .login-content .second-column {
         height: 92vh;
-        margin-bottom: 5em;
     }
 
     .forms span, .forms input {

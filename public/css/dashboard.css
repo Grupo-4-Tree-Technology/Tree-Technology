@@ -166,9 +166,7 @@ main {
 
 #section-graphic {
     width: 42vw;
-    background-color: blue;
 
-    border-radius: 10.5px;
 }
 
 #title-graphic {
@@ -179,7 +177,7 @@ main {
     align-items: center;
     font-size: 20pt;
     color: #DEE4DD;
-    border-radius: 10.5px;
+    border-radius: 10.5px 10.5px 0px 0px;
 }
 
 #graphic {
@@ -283,7 +281,6 @@ main {
 
 #map {
     margin-top: 1em;
-    background-color: red;
     border: 1.5px solid #464444a9;
 
     height: 56vh;
