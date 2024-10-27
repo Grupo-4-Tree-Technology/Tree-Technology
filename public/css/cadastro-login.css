@@ -104,6 +104,36 @@ body{
     outline: none;
 }
 
+.toggle-password {
+    position: absolute;
+    right: 105px;
+    top: 64%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+.toggle-password2 {
+    position: absolute;
+    right: 105px;
+    top: 75.5%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+.toggle-password3 {
+    position: absolute;
+    left: 45.5%;
+    top: 48%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
 .btn-entrar {
     background-color: #76cc7a;
     text-align: center;

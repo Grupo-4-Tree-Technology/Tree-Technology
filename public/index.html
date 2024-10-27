@@ -52,7 +52,7 @@
 
             <div class="btn-login-cadastro">
                 <a href="cadastro-login.html">
-                    <button>ENTRAR</button>
+                    <button onclick="entrarSessaoLogin()">ENTRAR</button> 
                 </a>
             </div>
 
@@ -71,7 +71,7 @@
                         <li><a href="#sobre">SOBRE</a></li>
                         <li><a href="#projeto">PROJETO</a></li>
                         <li><a href="#equipe">EQUIPE</a></li>
-                        <li><a href="cadastro-login.html">ENTRAR</a></li>
+                        <li><a href="cadastro-login.html" onclick="entrarSessaoLogin()">ENTRAR</a></li>
                     </ul>
                 </nav>
             </div>
@@ -97,7 +97,7 @@
 
                     <div class="btn-cadastrar">
                         <a href="cadastro-login.html">
-                            <button>CADASTRO</button>
+                            <button onclick="entrarSessaoCadastro()">CADASTRO</button>
                         </a>
                     </div>
 
@@ -296,7 +296,15 @@
         </div>
 
     </footer>
-
 </body>
-
 </html>
+
+<script>
+    function entrarSessaoLogin() {
+        sessionStorage.SESSAO_LOGIN = true;
+    }
+    
+    function entrarSessaoCadastro() {
+        sessionStorage.SESSAO_LOGIN = false;
+    }
+</script>

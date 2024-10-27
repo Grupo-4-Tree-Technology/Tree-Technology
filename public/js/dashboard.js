@@ -125,6 +125,6 @@ function openSelectWithImages() {
     }
 }
 
-function irParaTelaRota() {
+/*function irParaTelaRota() {
     window.location = 'lista-rotas.html';
-}
+}*/

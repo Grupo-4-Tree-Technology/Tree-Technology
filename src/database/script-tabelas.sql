@@ -66,11 +66,12 @@ CONSTRAINT CHECK (condicao_metereologica IN ('Ceu Claro', 'Chuva', 'Sol', 'Nubla
 );
 
 CREATE TABLE IF NOT EXISTS log (
-id INT NOT NULL AUTO_INCREMENT,
-data_hora TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) COMMENT 'Data e hora da leitura com milissegundos',
-status VARCHAR(45) NOT NULL,
-titulo TEXT NOT NULL,
-descricao TEXT NOT NULL,
+id 						INT NOT NULL AUTO_INCREMENT,
+data_hora 				TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) COMMENT 'Data e hora da leitura com milissegundos',
+status 					VARCHAR(45) NOT NULL,
+arquivo_lido 			VARCHAR(45),
+titulo 					TEXT NOT NULL,
+descricao 				TEXT NOT NULL,
 
 PRIMARY KEY pk_log (id)
 );

@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
 </head>
 
-<body>
+<body onload="verificarSessao()">
     <img src="./assets/Arrow 1.png" alt="" class="voltar" onclick="voltar()">
     <main class="container">
         <!-- TELA DE CADASTRO -->
@@ -17,7 +17,7 @@
             <div class="close">
                 <div class="title">
                     <img class="img-modal" src="assets/treeLogo.jpeg" alt="">
-                    <span class="text">Recuperação de senha</span>
+                    <span class="text" id="texto_modal">Recuperação de senha</span>
                 </div>
                 <img class="img-modal" src="assets/close.jpeg" alt="" style="height: 30px;" onclick="fecharModal()">
             </div>
@@ -34,7 +34,7 @@
 
                 <h3>Já tem uma conta?</h3>
                 <span>
-                    <button class="btn-transicao" id="signin" onclick="logar()">Entre aqui</button>
+                    <button class="btn-transicao" id="signin" onclick="logar(), entrarSessaoLogin()">Entre aqui</button>
                 </span>
 
             </div>
@@ -52,13 +52,16 @@
                     <input type="email" id="email" placeholder="tree-technology@gmail.com">
 
                     <span>CNPJ</span>
-                    <input type="text" id="cnpj" onkeyup="mascaraCNPJ()" placeholder="00.000.000/0000-00" maxlength="18">
+                    <input type="text" id="cnpj" onkeyup="mascaraCNPJ()" placeholder="00.000.000/0000-00"
+                        maxlength="18">
 
                     <span>Senha</span>
                     <input type="password" id="senha" placeholder="************" minlength="8" maxlength="16">
+                    <img id="olho" onclick="visualizarSenha()" src="./assets/olhoAberto.png" class="toggle-password">
 
                     <span>Confirmar senha</span>
                     <input type="password" id="confirma-senha" placeholder="************" minlength="8" maxlength="16">
+                    <img id="olho2" onclick="visualizarSenha2()" src="./assets/olhoAberto.png" class="toggle-password2">
 
                     <div id="mensagem"></div>
 
@@ -80,7 +83,7 @@
 
                 <h3>Não tem uma conta?</h3>
                 <span>
-                    <button class="btn-transicao" id="signup" onclick="cadastrar()">Cadastre-se aqui</button>
+                    <button class="btn-transicao" id="signup" onclick="cadastrar(), entrarSessaoCadastro()">Cadastre-se aqui</button>
                 </span>
 
             </div>
@@ -93,6 +96,7 @@
 
                     <span>Senha</span>
                     <input type="password" id="senha2" maxlength="16">
+                    <img id="olho3" onclick="visualizarSenha2()" src="./assets/olhoAberto.png" class="toggle-password3">
 
                     <span style="margin-bottom: 5vh;">
                         <a href="telas-redefinicao-senha/redefinir.html" class="link-redefinirsenha">Esqueci a senha</a>
@@ -102,7 +106,7 @@
                      NOVASENHA.HTML = Tela de ALTERAÇÃO DE SENHA pós envio do e-mail !!  
                      -->
 
-                     <div id="mensagemErro"></div>
+                    <div id="mensagemErro"></div>
 
                     <button class="btn-entrar" onclick="validarLogin()">Entrar</button>
 
@@ -117,6 +121,60 @@
 
 </html>
 <script>
+    function verificarSessao() {
+        let verificarSessionStorage = sessionStorage.getItem("SESSAO_LOGIN");
+
+        if (sessionStorage.SESSAO_LOGIN == "true") {
+            logar();
+        } else {
+            cadastrar();
+        }
+    }
+
+    function entrarSessaoLogin() {
+        sessionStorage.SESSAO_LOGIN = true;
+    }
+    
+    function entrarSessaoCadastro() {
+        sessionStorage.SESSAO_LOGIN = false;
+    }
+
+    function visualizarSenha() {
+        let inputSenha = document.getElementById("senha")
+        let imgSenha = document.getElementById("olho")
+        if (inputSenha.type == "password") {
+            imgSenha.src = "./assets/olhoFechado.png"
+            inputSenha.type = 'text'
+        } else {
+            imgSenha.src = "./assets/olhoAberto.png"
+            inputSenha.type = 'password'
+        }
+    }
+
+    function visualizarSenha2() {
+        let inputSenha2 = document.getElementById("confirma-senha")
+        let imgSenha2 = document.getElementById("olho2")
+        if (inputSenha2.type == "password") {
+            imgSenha2.src = "./assets/olhoFechado.png"
+            inputSenha2.type = 'text'
+        } else {
+            imgSenha2.src = "./assets/olhoAberto.png"
+            inputSenha2.type = 'password'
+        }
+    }
+
+    function visualizarSenha2() {
+        let inputSenha3 = document.getElementById("senha2")
+        let imgSenha3 = document.getElementById("olho3")
+        if (inputSenha3.type == "password") {
+            imgSenha3.src = "./assets/olhoFechado.png"
+            inputSenha3.type = 'text'
+        } else {
+            imgSenha3.src = "./assets/olhoAberto.png"
+            inputSenha3.type = 'password'
+        }
+    }
+
     function fecharModal() {
         container.style.display = "none";
     }
