@@ -53,17 +53,17 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
     background-image: url(../assets/background.png);
     background-size: cover;
     border-radius: 0px 0px 0px 30px;
     width: 40%;
-    height: 100%;
+    height: 81vh;
 }
 
-.first-column h3{
-    margin-top: 20px;
-    
+#mensagem-cadastro {
+    margin: 2%;
 }
 
 .btn-transicao{
