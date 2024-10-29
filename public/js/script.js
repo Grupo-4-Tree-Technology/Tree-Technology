@@ -163,15 +163,9 @@ function validarLogin() {
 
                     texto_modal.innerHTML = "Login realizado";
 
-                    let contagemRegressiva = setInterval(() => {
-                        contador--;
-                        div_error.innerHTML = `Login realizado com sucesso! Recarregando a página em ${contador}...`;
-
-                        if (contador === 0) {
-                            clearInterval(contagemRegressiva);
-                            window.location = "telas-veiculos-rotas/dashboard.html";
-                        }
-                    }, 400);
+                    div_error.innerHTML = `Login realizado com sucesso!`;
+                    window.location = "telas-veiculos-rotas/dashboard.html";
+                    
 
                 }).catch(erro => {
                     console.error("Erro ao processar JSON:", erro);
