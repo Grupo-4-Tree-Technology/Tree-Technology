@@ -29,7 +29,8 @@
             <div class="first-column">
 
                 <h1>Cadastre-se</h1>
-                <p class="description" id="mensagem-cadastro">Insira os dados da sua empresa para criar uma conta em nossa plataforma!</p>
+                <p class="description" id="mensagem-cadastro">Insira os dados da sua empresa para criar uma conta em
+                    nossa plataforma!</p>
 
                 <h3>Já tem uma conta?</h3>
                 <span>
@@ -51,19 +52,22 @@
                     <input type="email" id="email" class="inputs-forms" placeholder="tree-technology@gmail.com">
 
                     <span>CNPJ</span>
-                    <input type="text" id="cnpj" class="inputs-forms" onkeyup="mascaraCNPJ()" placeholder="00.000.000/0000-00"
-                        maxlength="18">
+                    <input type="text" id="cnpj" class="inputs-forms" onkeyup="mascaraCNPJ()"
+                        placeholder="00.000.000/0000-00" maxlength="18">
 
                     <span>Senha</span>
                     <div id="div-senha">
                         <input type="password" id="senha" placeholder="************" minlength="8" maxlength="16">
-                        <img id="olho" onclick="visualizarSenha()" src="./assets/olhoAberto.png" class="toggle-password">
+                        <img id="olho" onclick="visualizarSenha()" src="./assets/olhoFechado.png"
+                            class="toggle-password">
                     </div>
 
                     <span>Confirmar senha</span>
                     <div id="confirmacao-senha">
-                        <input type="password" id="confirma-senha" placeholder="************" minlength="8" maxlength="16">
-                        <img id="olho2" onclick="visualizarSenha2()" src="./assets/olhoAberto.png" class="toggle-password2">
+                        <input type="password" id="confirma-senha" placeholder="************" minlength="8"
+                            maxlength="16">
+                        <img id="olho2" onclick="visualizarSenha2()" src="./assets/olhoFechado.png"
+                            class="toggle-password2">
                     </div>
 
                     <div id="mensagem"></div>
@@ -86,7 +90,8 @@
 
                 <h3>Não tem uma conta?</h3>
                 <span>
-                    <button class="btn-transicao" id="signup" onclick="cadastrar(), entrarSessaoCadastro()">Cadastre-se aqui</button>
+                    <button class="btn-transicao" id="signup" onclick="cadastrar(), entrarSessaoCadastro()">Cadastre-se
+                        aqui</button>
                 </span>
 
             </div>
@@ -100,7 +105,8 @@
                     <span>Senha</span>
                     <div id="senha-login">
                         <input type="password" id="senha2" maxlength="16">
-                        <img id="olho3" onclick="visualizarSenha3()" src="./assets/olhoAberto.png" class="toggle-password3">
+                        <img id="olho3" onclick="visualizarSenha3()" src="./assets/olhoFechado.png"
+                            class="toggle-password3">
                     </div>
 
                     <span style="margin-bottom: 5vh;">
@@ -139,7 +145,7 @@
     function entrarSessaoLogin() {
         sessionStorage.SESSAO_LOGIN = true;
     }
-    
+
     function entrarSessaoCadastro() {
         sessionStorage.SESSAO_LOGIN = false;
     }
@@ -147,36 +153,36 @@
     function visualizarSenha() {
         let inputSenha = document.getElementById("senha")
         let imgSenha = document.getElementById("olho")
-        if (inputSenha.type == "password") {
+        if (inputSenha.type == "text") {
             imgSenha.src = "./assets/olhoFechado.png"
-            inputSenha.type = 'text'
+            inputSenha.type = 'password'
         } else {
             imgSenha.src = "./assets/olhoAberto.png"
-            inputSenha.type = 'password'
+            inputSenha.type = 'text'
         }
     }
 
     function visualizarSenha2() {
         let inputSenha2 = document.getElementById("confirma-senha")
         let imgSenha2 = document.getElementById("olho2")
-        if (inputSenha2.type == "password") {
+        if (inputSenha2.type == "text") {
             imgSenha2.src = "./assets/olhoFechado.png"
-            inputSenha2.type = 'text'
+            inputSenha2.type = 'password'
         } else {
             imgSenha2.src = "./assets/olhoAberto.png"
-            inputSenha2.type = 'password'
+            inputSenha2.type = 'text'
         }
     }
 
     function visualizarSenha3() {
         let inputSenha3 = document.getElementById("senha2")
         let imgSenha3 = document.getElementById("olho3")
-        if (inputSenha3.type == "password") {
+        if (inputSenha3.type == "text") {
             imgSenha3.src = "./assets/olhoFechado.png"
-            inputSenha3.type = 'text'
+            inputSenha3.type = 'password'
         } else {
             imgSenha3.src = "./assets/olhoAberto.png"
-            inputSenha3.type = 'password'
+            inputSenha3.type = 'text'
         }
     }
 
