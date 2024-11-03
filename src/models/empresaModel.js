@@ -3,9 +3,11 @@ var database = require("../database/config")
 function autenticar(email, senha) {
 
     var instrucaoSql = `
-        SELECT id, nome_fantasia, email, cnpj 
-        FROM empresa 
-        WHERE email = '${email}' AND senha = '${senha}';
+        SELECT u.id, u.email, u.senha, emp.id as idEmpresa
+        FROM usuario as u
+        INNER JOIN empresa as emp
+        ON u.fkEmpresa = emp.id
+        WHERE u.email = '${email}' AND u.senha = '${senha}';
     `;
     
     console.log("Executando a instrução SQL: \n" + instrucaoSql);

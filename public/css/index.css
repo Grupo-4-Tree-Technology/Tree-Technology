@@ -484,9 +484,9 @@ section.sobre .descricao-empresa {
     flex-direction: column;
     height: 74vh;
     width: 65vw;
-    border-radius: 1.5em;
+    border-radius: 1em;
     box-shadow: 2px 2px 20px black;
-    padding: 1em; /* Adicionado para um pouco de espaçamento interno */
+    padding: 1em;
 }
 
 .contact-title {
@@ -531,7 +531,7 @@ label {
 
 .inputs input {
     height: 4vh;
-    border-radius: 20px;
+    border-radius: 5px;
     border: none;
     margin-bottom: 1.5em;
     padding: 10px;
@@ -550,7 +550,7 @@ textarea {
     height: 15vh;
     width: 100%;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 5px;
     box-sizing: border-box;
 }
 

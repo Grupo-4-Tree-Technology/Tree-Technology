@@ -9,12 +9,22 @@
     <link rel="shortcut icon" href="assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
 </head>
 
-<body onload="verificarSessao()">
+<body>
     <img src="./assets/Arrow 1.png" alt="" class="voltar" onclick="voltar()">
     <main class="container">
         
 
         <!-- TELA DE LOGIN -->
+        <div class="container-modal" id="container" style="display: none;">
+            <div class="close">
+                <div class="title">
+                    <img class="img-modal" src="assets/treeLogo.jpeg" alt="">
+                    <span class="text" id="texto_modal">Recuperação de senha</span>
+                </div>
+                <img class="img-modal" src="assets/close.jpeg" alt="" style="height: 30px;" onclick="fecharModal()">
+            </div>
+            <span class="text" id="div_error"></span>
+        </div>
 
         <section class="login-content" id="login">
 
@@ -24,7 +34,7 @@
 
                 <h3>Não tem uma conta?</h3>
                 <a href="index.html#contato">
-                    <button class="btn-transicao" id="signup" onclick="cadastrar(), entrarSessaoCadastro()">Entre em contato!</button>
+                    <button class="btn-transicao" id="signup" onclick="entrarSessaoCadastro()">Entre em contato!</button>
                 </a>
 
             </div>
@@ -65,23 +75,6 @@
 
 </html>
 <script>
-    function verificarSessao() {
-        let verificarSessionStorage = sessionStorage.getItem("SESSAO_LOGIN");
-
-        if (sessionStorage.SESSAO_LOGIN == "true") {
-            logar();
-        } else {
-            cadastrar();
-        }
-    }
-
-    function entrarSessaoLogin() {
-        sessionStorage.SESSAO_LOGIN = true;
-    }
-
-    function entrarSessaoCadastro() {
-        sessionStorage.SESSAO_LOGIN = false;
-    }
 
     function visualizarSenha() {
         let inputSenha = document.getElementById("senha")

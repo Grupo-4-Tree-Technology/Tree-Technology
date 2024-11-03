@@ -17,6 +17,7 @@ nome 				VARCHAR(45) NOT NULL,
 cpf 				CHAR(11) NOT NULL UNIQUE,
 email 				VARCHAR(45) NOT NULL UNIQUE,
 senha 				VARCHAR(16) NOT NULL,
+data_nascimento		DATE NOT NULL,
 permissao 			CHAR(7) NOT NULL,
 status 				CHAR(10) NOT NULL,
 data_contratacao 	DATE NOT NULL,
@@ -87,17 +88,16 @@ ponto_destino 	VARCHAR(100) NOT NULL,
 PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS veiculo_rota (
+CREATE TABLE IF NOT EXISTS trajeto (
 fkRota 			INT NOT NULL,
 fkPlaca 		VARCHAR(7) NOT NULL,
-tempo_estimado 	TIME NOT NULL,
 
 PRIMARY KEY (fkRota, fkPlaca),
 FOREIGN KEY (fkRota) REFERENCES rota (id),
 FOREIGN KEY (fkPlaca) REFERENCES veiculo (placa)
 );
 
-CREATE TABLE IF NOT EXISTS ruas_intermediarias (
+CREATE TABLE IF NOT EXISTS rua_intermediaria (
 id 		INT NOT NULL AUTO_INCREMENT,
 rua 	VARCHAR(100) NOT NULL,
 ordem 	INT NOT NULL,
@@ -142,7 +142,7 @@ VALUES
 ('CET - Centro de Ensino Técnico', 'CET - Centro de Ensino Técnico', '42.411.685/0001-09');
 
 INSERT INTO usuario
-(nome, cpf, email, senha, permissao, status, data_contratacao, fkEmpresa)
+(nome, cpf, email, senha, data_nascimento, permissao, status, data_contratacao, fkEmpresa)
 VALUES
-('Robson', '49123956846', 'robson@gmail.com', '123', 'total', 'ativado', '2022-11-03', 1),
-('Jair', '91723956168', 'jair.j@gmail.com', '321', 'total', 'ativado', '2015-01-11', 2);
+('Robson', '49123956846', 'robson@gmail.com', '123','1989-12-24', 'total', 'ativado', '2022-11-03', 1),
+('Jair', '91723956168', 'jair.j@gmail.com', '321', '1999-02-04', 'total', 'ativado', '2015-01-11', 2);

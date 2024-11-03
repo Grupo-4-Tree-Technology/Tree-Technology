@@ -252,8 +252,7 @@
                     <h2>ENTRE EM CONTATO</h2>
                 </div>
                 <div class="container">
-                    <form action="https://formsubmit.co/tree.technology05@gmail.com" method="POST"
-                        onsubmit="redirecionaAposEnvio(event)">
+                    <form onsubmit="enviarEmail(event)" method="POST">
 
                         <div class="contact-inputs">
                             <div class="inputs">
@@ -341,33 +340,44 @@
 
 <script>
     let botaoSubmit = document.querySelector('#button-submit');
-    function redirecionaAposEnvio(event) {
+    
+    async function enviarEmail(event) {
+        botaoSubmit.innerHTML = `<img src="assets/loading.gif" style="width: 3vw;">`
         event.preventDefault();
+        
+        const nameInput = document.querySelector('#name').value;
+        const emailInput = document.querySelector('#email').value;
+        const phoneInput = document.querySelector('#phone').value;
+        const messageInput = document.querySelector('#text-help').value;
 
-        fetch("https://formsubmit.co/ajax/tree.technology05@gmail.com", {
-            method: "POST",
-            body: new FormData(event.target),
-        }).then(response => {
-            if (response.ok) {
-                setTimeout(() => {
-                    botaoSubmit.innerHTML
-                }, 5000);
-                animaBotao();
-            }
-        }).catch(error => console.error("Erro ao enviar o formulário:", error));
+        const response = await fetch('/send-emailContact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                toName: nameInput,
+                toEmail: emailInput,
+                toPhone: phoneInput,
+                toMessage: messageInput,
+            }),
+        });
+
+        const message = await response.text();
+        
+        if (message == 'Email enviado com sucesso!') {
+            animaBotao();
+        }
     }
 
     function animaBotao() {
         let icone = document.querySelector('.check-icon');
-
         botaoSubmit.classList.add('clicked');
         botaoSubmit.innerHTML = 'ENVIADO <span class="check-icon"><i class="fa-solid fa-check" style="color: #f9f9f959"></i></span>';
         botaoSubmit.disabled = true;
-
         botaoSubmit.style.background = '#4dce5f7d';
         botaoSubmit.style.color = '#fdfdfd59';
         botaoSubmit.style.cursor = 'not-allowed';
-
         icone.style.color = '#ffffff99';
     }
 
