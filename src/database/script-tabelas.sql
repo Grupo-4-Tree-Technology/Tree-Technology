@@ -7,6 +7,7 @@ id 			 	INT AUTO_INCREMENT,
 razao_social 	VARCHAR(100) NOT NULL UNIQUE,
 nome_fantasia 	VARCHAR(45) NOT NULL,
 cnpj 			VARCHAR(18) NOT NULL UNIQUE,
+cep 			VARCHAR(8) NOT NULL,
 
 PRIMARY KEY (id)
 );
@@ -136,10 +137,10 @@ PRIMARY KEY (id)
 );
 
 INSERT INTO empresa
-(razao_social, nome_fantasia, cnpj)
+(razao_social, nome_fantasia, cnpj, cep)
 VALUES
-('Tree Technology Brasil Ltda', 'Tree Technology', '39.529.500/0001-50'),
-('CET - Centro de Ensino Técnico', 'CET - Centro de Ensino Técnico', '42.411.685/0001-09');
+('Tree Technology Brasil Ltda', 'Tree Technology', '39.529.500/0001-50', '03132020'),
+('CET - Centro de Ensino Técnico', 'CET - Centro de Ensino Técnico', '42.411.685/0001-09', '03166123');
 
 INSERT INTO usuario
 (nome, cpf, email, senha, data_nascimento, permissao, status, data_contratacao, fkEmpresa)

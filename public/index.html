@@ -344,7 +344,7 @@
     async function enviarEmail(event) {
         botaoSubmit.innerHTML = `<img src="assets/loading.gif" style="width: 3vw;">`
         event.preventDefault();
-        
+
         const nameInput = document.querySelector('#name').value;
         const emailInput = document.querySelector('#email').value;
         const phoneInput = document.querySelector('#phone').value;
@@ -371,9 +371,10 @@
     }
 
     function animaBotao() {
-        let icone = document.querySelector('.check-icon');
         botaoSubmit.classList.add('clicked');
         botaoSubmit.innerHTML = 'ENVIADO <span class="check-icon"><i class="fa-solid fa-check" style="color: #f9f9f959"></i></span>';
+        let icone = document.querySelector('.check-icon');
+        
         botaoSubmit.disabled = true;
         botaoSubmit.style.background = '#4dce5f7d';
         botaoSubmit.style.color = '#fdfdfd59';
