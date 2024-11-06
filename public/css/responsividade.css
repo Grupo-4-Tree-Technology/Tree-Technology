@@ -12,6 +12,10 @@
     section.paginaInicial .div-paginaInicial {
         padding: 0;
     }
+
+    .contact-inputs > img {
+        width: 12vw;
+    }
 }
 
 @media screen and (max-width: 1536px) {
@@ -60,6 +64,20 @@
        width: 75%;
        display: grid;
        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .div-image {
+        display: none;
+    }
+
+    .inputs input {
+        width: 45vw;
+    }
+
+    .contact-title h2 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #4DCE5F;
     }
 }
 
@@ -273,6 +291,12 @@
     .endereco .estado {
         text-align: center;
         width: 50%;
+    }
+
+    .contact-title h2 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #4DCE5F;
     }
 }
 
