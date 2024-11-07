@@ -72,12 +72,13 @@ FOREIGN KEY (fkEmpresa) REFERENCES empresa (id)
 );
 
 CREATE TABLE IF NOT EXISTS veiculo (
-placa 		VARCHAR(7),
+id			INT UNIQUE,
+placa 		VARCHAR(7) UNIQUE,
 modelo		VARCHAR(45) NOT NULL,
 ano			INT NOT NULL,
 fkEmpresa 	INT NOT NULL,
 
-PRIMARY KEY (placa),
+PRIMARY KEY (id),
 FOREIGN KEY (fkEmpresa) REFERENCES empresa (id)
 );
 
