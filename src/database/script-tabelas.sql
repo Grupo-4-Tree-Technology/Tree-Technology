@@ -72,7 +72,7 @@ FOREIGN KEY (fkEmpresa) REFERENCES empresa (id)
 );
 
 CREATE TABLE IF NOT EXISTS veiculo (
-id			INT UNIQUE,
+id			INT NOT NULL UNIQUE AUTO_INCREMENT ,
 placa 		VARCHAR(7) UNIQUE,
 modelo		VARCHAR(45) NOT NULL,
 ano			INT NOT NULL,
@@ -92,11 +92,11 @@ PRIMARY KEY (id)
 
 CREATE TABLE IF NOT EXISTS trajeto (
 fkRota 			INT NOT NULL,
-fkPlaca 		VARCHAR(7) NOT NULL,
+fkVeiculo 		INT NOT NULL,
 
-PRIMARY KEY (fkRota, fkPlaca),
+PRIMARY KEY (fkRota, fkVeiculo),
 FOREIGN KEY (fkRota) REFERENCES rota (id),
-FOREIGN KEY (fkPlaca) REFERENCES veiculo (placa)
+FOREIGN KEY (fkVeiculo) REFERENCES veiculo (id)
 );
 
 CREATE TABLE IF NOT EXISTS rua_intermediaria (
