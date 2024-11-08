@@ -152,20 +152,16 @@ function validarLogin() {
                 console.log(resposta);
 
                 resposta.json().then(json => {
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-
-                    let contador = 4;
+                    
+                    sessionStorage.ID_USUARIO = json.response[0].id;
+                    sessionStorage.EMAIL_USUARIO = json.response[0].email;
+                    sessionStorage.ID_EMPRESA = json.response[0].idEmpresa;
 
                     div_error.innerHTML = `Login realizado com sucesso!`;
                     container.style.display = "flex";
 
                     texto_modal.innerHTML = "Login realizado";
-
-                    div_error.innerHTML = `Login realizado com sucesso!`;
                     window.location = "telas-veiculos-rotas/dashboard.html";
-                    
 
                 }).catch(erro => {
                     console.error("Erro ao processar JSON:", erro);

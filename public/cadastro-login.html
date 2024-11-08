@@ -9,10 +9,12 @@
     <link rel="shortcut icon" href="assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
 </head>
 
-<body onload="verificarSessao()">
+<body>
     <img src="./assets/Arrow 1.png" alt="" class="voltar" onclick="voltar()">
     <main class="container">
-        <!-- TELA DE CADASTRO -->
+        
+
+        <!-- TELA DE LOGIN -->
         <div class="container-modal" id="container" style="display: none;">
             <div class="close">
                 <div class="title">
@@ -24,75 +26,16 @@
             <span class="text" id="div_error"></span>
         </div>
 
-        <section class="cadastro-content" id="cadastro">
-
-            <div class="first-column">
-
-                <h1>Cadastre-se</h1>
-                <p class="description" id="mensagem-cadastro">Insira os dados da sua empresa para criar uma conta em
-                    nossa plataforma!</p>
-
-                <h3>Já tem uma conta?</h3>
-                <span>
-                    <button class="btn-transicao" id="signin" onclick="logar(), entrarSessaoLogin()">Entre aqui</button>
-                </span>
-
-            </div>
-
-            <div class="second-column">
-
-                <div class="forms">
-                    <span>Razão social</span>
-                    <input type="text" id="razao_social" class="inputs-forms" placeholder="Tree Technology Brasil Ltda">
-
-                    <span>Nome fantasia</span>
-                    <input type="text" id="nome_fantasia" class="inputs-forms" placeholder="Tree Technology">
-
-                    <span>E-mail</span>
-                    <input type="email" id="email" class="inputs-forms" placeholder="tree-technology@gmail.com">
-
-                    <span>CNPJ</span>
-                    <input type="text" id="cnpj" class="inputs-forms" onkeyup="mascaraCNPJ()"
-                        placeholder="00.000.000/0000-00" maxlength="18">
-
-                    <span>Senha</span>
-                    <div id="div-senha">
-                        <input type="password" id="senha" placeholder="************" minlength="8" maxlength="16">
-                        <img id="olho" onclick="visualizarSenha()" src="./assets/olhoFechado.png"
-                            class="toggle-password">
-                    </div>
-
-                    <span>Confirmar senha</span>
-                    <div id="confirmacao-senha">
-                        <input type="password" id="confirma-senha" placeholder="************" minlength="8"
-                            maxlength="16">
-                        <img id="olho2" onclick="visualizarSenha2()" src="./assets/olhoFechado.png"
-                            class="toggle-password2">
-                    </div>
-
-                    <div id="mensagem"></div>
-
-                    <button class="btn-entrar" onclick="validarCadastro(), mascaraCNPJ()">Cadastrar</button>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- FIM TELA DE CADASTRO -->
-
-        <!-- TELA DE LOGIN -->
-
-        <section class="login-content" id="login" style="display: none;">
+        <section class="login-content" id="login">
 
             <div class="first-column">
                 <h2>Login</h2>
                 <p class="description">Faça login na sua conta!</p>
 
                 <h3>Não tem uma conta?</h3>
-                <span>
-                    <button class="btn-transicao" id="signup" onclick="cadastrar(), entrarSessaoCadastro()">Cadastre-se
-                        aqui</button>
-                </span>
+                <a href="index.html#contato">
+                    <button class="btn-transicao" id="signup" onclick="entrarSessaoCadastro()">Entre em contato!</button>
+                </a>
 
             </div>
 
@@ -132,23 +75,6 @@
 
 </html>
 <script>
-    function verificarSessao() {
-        let verificarSessionStorage = sessionStorage.getItem("SESSAO_LOGIN");
-
-        if (sessionStorage.SESSAO_LOGIN == "true") {
-            logar();
-        } else {
-            cadastrar();
-        }
-    }
-
-    function entrarSessaoLogin() {
-        sessionStorage.SESSAO_LOGIN = true;
-    }
-
-    function entrarSessaoCadastro() {
-        sessionStorage.SESSAO_LOGIN = false;
-    }
 
     function visualizarSenha() {
         let inputSenha = document.getElementById("senha")

@@ -72,12 +72,13 @@ FOREIGN KEY (fkEmpresa) REFERENCES empresa (id)
 );
 
 CREATE TABLE IF NOT EXISTS veiculo (
-placa 		VARCHAR(7),
-modelo		VARCHAR(45) NOT NULL,
-ano			INT NOT NULL,
+id			    INT NOT NULL UNIQUE AUTO_INCREMENT ,
+placa 		  VARCHAR(7) UNIQUE,
+modelo		  VARCHAR(45) NOT NULL,
+ano			    INT NOT NULL,
 fkEmpresa 	INT NOT NULL,
 
-PRIMARY KEY (placa),
+PRIMARY KEY (id),
 FOREIGN KEY (fkEmpresa) REFERENCES empresa (id)
 );
 
@@ -91,11 +92,11 @@ PRIMARY KEY (id)
 
 CREATE TABLE IF NOT EXISTS trajeto (
 fkRota 			INT NOT NULL,
-fkPlaca 		VARCHAR(7) NOT NULL,
+fkVeiculo 		INT NOT NULL,
 
-PRIMARY KEY (fkRota, fkPlaca),
+PRIMARY KEY (fkRota, fkVeiculo),
 FOREIGN KEY (fkRota) REFERENCES rota (id),
-FOREIGN KEY (fkPlaca) REFERENCES veiculo (placa)
+FOREIGN KEY (fkVeiculo) REFERENCES veiculo (id)
 );
 
 CREATE TABLE IF NOT EXISTS rua_intermediaria (
@@ -147,13 +148,3 @@ INSERT INTO usuario
 VALUES
 ('Robson', '49123956846', 'robson@gmail.com', '123','1989-12-24', 'total', 'ativado', '2022-11-03', 1),
 ('Jair', '91723956168', 'jair.j@gmail.com', '321', '1999-02-04', 'total', 'ativado', '2015-01-11', 2);
-
--- CRUDS
-
-SELECT fase_dia, COUNT(*) AS total_fase_dia
-FROM acidente_transito
-GROUP BY fase_dia;
-
-SELECT condicao_metereologica, COUNT(*) AS total_fase_dia
-FROM acidente_transito
-GROUP BY condicao_metereologica;

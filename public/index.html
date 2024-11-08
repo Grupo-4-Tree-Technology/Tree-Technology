@@ -7,6 +7,7 @@
 
     <!--ICONES-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <!--ICONES-->
 
     <!--FONTS-->
@@ -52,7 +53,7 @@
 
             <div class="btn-login-cadastro">
                 <a href="cadastro-login.html">
-                    <button onclick="entrarSessaoLogin()">ENTRAR</button> 
+                    <button class="botao">ENTRAR</button>
                 </a>
             </div>
 
@@ -71,7 +72,7 @@
                         <li><a href="#sobre">SOBRE</a></li>
                         <li><a href="#projeto">PROJETO</a></li>
                         <li><a href="#equipe">EQUIPE</a></li>
-                        <li><a href="cadastro-login.html" onclick="entrarSessaoLogin()">ENTRAR</a></li>
+                        <li><a href="cadastro-login.html">ENTRAR</a></li>
                     </ul>
                 </nav>
             </div>
@@ -96,8 +97,8 @@
                     </strong>
 
                     <div class="btn-cadastrar">
-                        <a href="cadastro-login.html">
-                            <button onclick="entrarSessaoCadastro()">CADASTRO</button>
+                        <a href="#contato">
+                            <button class="botao">ENTRE EM CONTATO</button>
                         </a>
                     </div>
 
@@ -222,18 +223,20 @@
                             </p>
 
                             <p>
-                                Promovendo a eficiência corporativa e a <span class="verde">satisfação dos colaboradores </span> por meio de
+                                Promovendo a eficiência corporativa e a <span class="verde">satisfação dos colaboradores
+                                </span> por meio de
                                 <span class="verde"> tecnologia avançada. </span>
                             </p>
 
                             <p>
-                                Nossos valores: Inovação, sustentabilidade, personalização, excelência e colaboração
+                                Nossos valores: Inovação, sustentabilidade, personalização, excelência e colaboração.
                             </p>
 
                             <p>
                                 Guiam nosso compromisso com os clientes e com o meio ambiente, refletindo nossa
                                 determinação
-                                em oferecer <span class="verde">serviços de alta qualidade </span> que beneficiem tanto as empresas quanto a
+                                em oferecer <span class="verde">serviços de alta qualidade </span> que beneficiem tanto
+                                as empresas quanto a
                                 sociedade.
                             </p>
                         </Strong>
@@ -243,7 +246,42 @@
             </div>
         </section>
 
+        <section class="entre-contato" id="contato">
+            <div class="contact">
+                <div class="contact-title">
+                    <h2>ENTRE EM CONTATO</h2>
+                </div>
+                <div class="container">
+                    <form onsubmit="enviarEmail(event)" method="POST">
 
+                        <div class="contact-inputs">
+                            <div class="inputs">
+                                <label for="name">NOME:</label>
+                                <input type="text" id="name" name="name" required>
+
+                                <label for="email">E-MAIL:</label>
+                                <input type="email" id="email" name="email" required>
+
+                                <label for="phone">TELEFONE:</label>
+                                <input type="text" id="phone" name="phone" onkeyup="mascaraTelefone()" maxlength="15">
+                            </div>
+                            <div class="div-image">
+                                <img src="assets/Tree_Technology_(2).png" style="width: 15vw;">
+                            </div>
+                        </div>
+                        <div class="suport-text">
+                            <label for="text-help">COMO PODEMOS TE AJUDAR?</label>
+                            <textarea name="message" id="text-help" required></textarea>
+                        </div>
+                        <div class="button-send">
+                            <button type="submit" id="button-submit" style="display: flex; align-items: center; justify-content: center;">ENVIAR</button>
+                        </div>
+
+                        <input type="hidden" name="_captcha" value="false">
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -297,14 +335,59 @@
 
     </footer>
 </body>
+
 </html>
 
 <script>
-    function entrarSessaoLogin() {
-        sessionStorage.SESSAO_LOGIN = true;
-    }
+    let botaoSubmit = document.querySelector('#button-submit');
     
-    function entrarSessaoCadastro() {
-        sessionStorage.SESSAO_LOGIN = false;
+    async function enviarEmail(event) {
+        botaoSubmit.innerHTML = `<img src="assets/loading.gif" style="width: 3vw;">`
+        event.preventDefault();
+
+        const nameInput = document.querySelector('#name').value;
+        const emailInput = document.querySelector('#email').value;
+        const phoneInput = document.querySelector('#phone').value;
+        const messageInput = document.querySelector('#text-help').value;
+
+        const response = await fetch('/send-emailContact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                toName: nameInput,
+                toEmail: emailInput,
+                toPhone: phoneInput,
+                toMessage: messageInput,
+            }),
+        });
+
+        const message = await response.text();
+        
+        if (message == 'Email enviado com sucesso!') {
+            animaBotao();
+        }
+    }
+
+    function animaBotao() {
+        botaoSubmit.classList.add('clicked');
+        botaoSubmit.innerHTML = 'ENVIADO <span class="check-icon"><i class="fa-solid fa-check" style="color: #f9f9f959"></i></span>';
+        let icone = document.querySelector('.check-icon');
+        
+        botaoSubmit.disabled = true;
+        botaoSubmit.style.background = '#4dce5f7d';
+        botaoSubmit.style.color = '#fdfdfd59';
+        botaoSubmit.style.cursor = 'not-allowed';
+        icone.style.color = '#ffffff99';
+    }
+
+    function mascaraTelefone() {
+        var phone = document.querySelector("#phone");
+
+        phone.value = phone.value.replace(/\D+/g, '')
+            .replace(/(\d{2})(\d)/, '($1) $2')
+            .replace(/(\d{5})(\d)/, '$1-$2')
+            .replace(/(-\d{4})\d+?$/, '$1')
     }
 </script>
