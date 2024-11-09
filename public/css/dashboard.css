@@ -6,6 +6,26 @@
     box-sizing: border-box;
 }
 
+/*SCROLL MODAL DE ROTAS*/
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #004306;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #12c406;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #0d7d05;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     font-weight: bold;
@@ -454,6 +474,11 @@ main {
 
 /*MODAL LISTA-ROTAS*/
 
+.scroll-list{
+    overflow-y: scroll;
+    height: 200px;
+}
+
 .box{
     background-color: #f1f5f1;
     height: auto;
@@ -468,7 +493,6 @@ main {
     align-items: center;
     position: fixed;
     z-index: 100;
-    overflow-y: scroll;
 }
 
 .box img{
