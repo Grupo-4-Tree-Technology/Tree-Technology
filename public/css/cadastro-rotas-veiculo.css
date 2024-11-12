@@ -290,6 +290,36 @@ button:hover{
     margin-left: 5px;
 }
 
+/*Tela registro trajeto*/
+
+.registro-trajeto-title {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente, se necessário */
+    font-size: x-small;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ESTILO DO MENU MOBILE */
 /* ESTILO DO MENU MOBILE */
 /* ESTILO DO MENU MOBILE */

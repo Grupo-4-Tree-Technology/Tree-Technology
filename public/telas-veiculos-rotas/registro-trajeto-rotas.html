@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/cadastro-rotas-veiculo.css">
-    <title>Lista de Rotas Cadastradas</title>
+    <title>Registro de Trajeto</title>
     <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
 </head>
 
 <body>
+
     <div class="top-menu">
-        
         <div id="hamburguer">
             <img src="../assets/Group 23.png" style="width: 50%;">
         </div>
@@ -35,53 +35,65 @@
         </div>
 
         <div class="overlay-menu" id="overlay-menu"></div>
-
+       
         <div class="icons">
             <img src="../assets/Bell.png" onclick="telaNotificação()">
             <img src="../assets/Icon.png" id="user" onclick="telaUser()">
             <img src="../assets/icon dashboard.png" id="dash" onclick="telaDash()">
         </div>
+
     </div>
+
     <main class="container">
-        <h1>Rotas cadastradas</h1>
+
+        <div class="box-2"  id="confirmarcao" style="display: none;">
+            <span>Tem certeza que deseja excluir sua conta?</span>
+            <div class="buttons">
+                <button style="background-color: #f75050;">Deletar conta</button>
+                <button onclick="cancelarMensagem()">Cancelar</button>
+            </div>
+        </div>
+        
+        <h1>Registro de Trajeto</h1>
 
         <div class="box">
 
-            <div class="list-routes">
+            <div class="forms">
 
-                <div class="text">
-                    <div class="title">
-                        <h4>Rota</h4>
-                        <h4>Placa</h4>
 
-                    </div>
+                <div class="registro-trajeto-title">
 
-                    <div class="dots">
-                        <img src="../assets/dots.png" alt="" onclick="abrirDots()">
-                        <div class="options" style="display: none;" id="options">
-                            <img src="../assets/close.jpeg" alt="" onclick="fecharDots()">
-                            <button id="button-delete">Deletar rota</button>
-                            <button onclick="telaCadastroRota()">Editar rota</button>
-                        </div>
+                <h1>Cadastro de rotas</h1>
 
-                    </div>
                 </div>
 
-                <div class="rota">
-                    <p>Rua Gomes de Carvalho - Rua Funchal</p>
-                    <p class="placa">AVCD256</p>
-                </div>
+
+
+                <p>Partida</p>
+                <input type="text" name="" id="">
+
+                <button>Adicionar rua intermediaria</button>
+
+
+                <p>Destino</p>
+                <input type="text" name="" id="">
+
+                
+            
+                <button>Registrar</button>
+
+               
+                
             </div>
-            <a href="cadastro-rota.html">
-                <button>Adicionar Rota</button>
-            </a>
+
         </div>
+
     </main>
 </body>
 
 <script src="../js/icons.js"></script>
-
 </html>
+
 <script>
     let hamburgu = document.getElementById('hamburguer');
     let menu = document.getElementById('menu-mobile');
