@@ -58,8 +58,6 @@ function fecharDots(){
 
 
 
-
-
 document.addEventListener('DOMContentLoaded', function() {
     var addRua = document.getElementById('adicionarRua');
     var ruasIntermediarias = document.getElementById('ruasIntermediarias');
@@ -77,9 +75,11 @@ document.addEventListener('DOMContentLoaded', function() {
         novoInput.setAttribute('placeholder', 'Digite a rua intermediária');
         novoInput.setAttribute('id', 'inputRua' + contadorRua);
         
-        var btnRemoverRua = document.createElement('button');
-        btnRemoverRua.setAttribute('type', 'button');
+        var btnRemoverRua = document.createElement('p');
+        btnRemoverRua.setAttribute('type', 'p');
         btnRemoverRua.innerText = 'Remover';
+        btnRemoverRua.style.color = 'red';
+        btnRemoverRua.style.cursor = 'pointer';
         btnRemoverRua.setAttribute('onclick', 'removerRua("rua' + contadorRua + '")');
 
         ruaDiv.appendChild(novoInput);
