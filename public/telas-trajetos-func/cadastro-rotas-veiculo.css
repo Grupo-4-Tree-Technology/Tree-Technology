@@ -123,13 +123,24 @@
     
 }
 
+.divisão{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 40px;
+    background-color:  #F4F4F4;
+    padding: 20px 10px;
+    margin-top: 20px;
+}
 .forms{
     display: flex;
     flex-direction: column;
+    align-items: center;
     font-size: large;
-    justify-content: center;
-    
-    
+    background-color:  #F4F4F4;
+    padding: 10px 10px;
+    margin-top: 20px;
+    border-radius: 10px;
 }
 
 .forms p{
@@ -139,7 +150,7 @@
 }
 
 
-.forms input{
+.forms input, select{
     padding: 10px 5px;
     max-width: auto;
     border-radius: 10px;

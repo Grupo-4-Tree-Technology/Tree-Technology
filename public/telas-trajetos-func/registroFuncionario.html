@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./cadastro-rotas-veiculo.css">
+    <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
+    <title>Registro funcionário</title>
+</head>
+
+<body>
+    <div class="top-menu">
+
+        <div id="hamburguer">
+            <img src="../assets/Group 23.png" style="width: 50%;">
+        </div>
+        <div class="btn-abrir-menu" id="btn-menu">
+            <i class="bi bi-list"></i>
+        </div>
+
+        <div class="menu-mobile" id="menu-mobile">
+            <div class="btn-fechar">
+                <i class="bi bi-x-lg"></i>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">DASHBOARD</a></li>
+                    <li><a href="lista-rotas.html">VISUALIZAR ROTAS</a></li>
+                    <li><a href="lista-veiculo.html">VISUALIZAR VEÍCULOS</a></li>
+                    <li><a href="lista-veiculo.html">VISUALIZAR FUNCIONÁRIOS</a></li>
+                    <li><a href="../index.html">SAIR</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <h1>Registro de Novo funcionário</h1>
+        <div class="overlay-menu" id="overlay-menu"></div>
+
+        <div class="icons">
+            <img src="../assets/Bell.png" onclick="telaNotificação()">
+            <img src="../assets/Icon.png" id="user" onclick="telaUser()">
+            <img src="../assets/icon dashboard.png" id="dash" onclick="telaDash()">
+        </div>
+    </div>
+    <main class="container">
+        <div class="forms">
+            <div class="divisão">
+                <div class="coluna1">
+
+                    <p>Nome</p>
+                    <input type="text" placeholder="Tree Technology Brasil Ltda.">
+    
+                    <p>E-mail</p>
+                    <input type="text" placeholder="treeTechnology@gmail.com">
+    
+                    <p>Senha</p>
+                    <input type="password" placeholder="*******" maxlength="16">
+    
+                    <p>Data de Nascimento</p>
+                    <input type="text" placeholder="24/12/1989">
+    
+                </div>
+                <div class="coluna2">
+                    <p>CPF</p>
+                    <input type="text" placeholder="000.000.000-00">
+    
+                    <p>Permissão</p>
+                    <select name="" id="" >
+                        <option value="total" >Total</option>
+                        <option value="leitura">Leitura</option>
+                    </select>
+    
+                    <p>Status</p>
+                    <select name="" id="" >
+                        <option value="ativado">Ativado</option>
+                        <option value="desativado">Desativado</option>
+                    </select>
+    
+                    <p>Data de contratação</p>
+                    <input type="text" placeholder="03/11/2015">
+                </div>
+            </div>
+        
+            <button>Registrar</button>
+        </div>
+    </main>
+
+</body>
+
+</html>
