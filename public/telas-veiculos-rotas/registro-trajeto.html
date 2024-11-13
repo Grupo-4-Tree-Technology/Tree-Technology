@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../css/registro-trajeto.css">
     <title>Registro de Trajeto</title>
     <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
+    
 </head>
 <body>
     <div class="top-menu">
@@ -64,6 +65,8 @@
         </div>
 
         <!-- Seção de Cadastro de Rotas -->
+
+        
         <div class="box" id="cadastro-rotas" style="display: none;">
             <div class="forms">
                 <div class="registro-trajeto-title">
@@ -71,7 +74,10 @@
                 </div>
                 <p>Partida</p>
                 <input type="text" name="" id="">
-                <button>Adicionar rua intermediaria</button>
+                
+                <div id="ruasIntermediarias" class="novoInput"></div>
+                <button id="adicionarRua">Adicionar rua intermediária</button>
+
                 <p>Destino</p>
                 <input type="text" name="" id="">
                 <button>Registrar</button>
@@ -88,15 +94,15 @@
 
         hamburgu.addEventListener('click', () => {
             menu.classList.add('abrir-menu')
-        })
+        });
 
         menu.addEventListener('click', () => {
             menu.classList.remove('abrir-menu')
-        })
+        });
 
         overlay.addEventListener('click', () => {
             menu.classList.remove('abrir-menu')
-        })
+        });
 
         btnFechar.addEventListener('click', () => {
             menu.classList.remove('abrir-menu');
@@ -107,6 +113,8 @@
             document.getElementById('cadastro-veiculos').style.display = 'none';
             document.getElementById('cadastro-rotas').style.display = 'block';
         }
+
+        
     </script>
 </body>
 </html>
