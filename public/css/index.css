@@ -467,6 +467,66 @@ section.sobre .descricao-empresa {
 
 /* FIM STYLE MINHASARTES */
 
+/* MODAL FORMULÁRIO DE CONTATO */
+
+.container-modal {
+    top: 0;
+    margin-top: 30vh;
+    background-color: rgb(252, 245, 245);
+    height: auto;
+    width: auto;
+    border-radius: 15px;
+    flex-direction: column;
+    box-shadow: 0px 8px 8px 0px #707070;
+    display: flex;
+    justify-content: start;
+    border-top: 5px solid #19b755;
+    padding: 12px 10px;
+    font-family: Poppins;
+    animation: animar-card 1s forwards ease-in-out;
+    position:fixed;
+    z-index: 100;
+}
+
+.title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: #165b30;
+}
+
+.text{
+    font-size: medium;
+}
+
+.img-modal{
+    height: 50px;
+    cursor: pointer;
+}
+
+.close{
+    display: flex;
+    gap: 18vw;
+    margin-bottom: 10px;
+}
+
+#button-modal{
+    background-color: #45a449;
+    border: none;
+    padding: 10px 10px;
+    width: 180px;
+    border-radius: 10px;
+    font-size: large;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 10px;
+    align-self: center;
+    cursor: pointer;
+}
+
+/* FIM FORMULÁRIO DE CONTATO */
+
 /* SESSÃO ENTRE EM CONTATO */
 
 .entre-contato {
