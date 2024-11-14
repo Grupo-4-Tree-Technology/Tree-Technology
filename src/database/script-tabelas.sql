@@ -75,3 +75,11 @@ descricao 				TEXT NOT NULL,
 
 PRIMARY KEY pk_log (id)
 );
+
+SELECT fase_dia, COUNT(*) AS total_fase_dia
+FROM acidente_transito
+GROUP BY fase_dia;
+
+SELECT condicao_metereologica, COUNT(*) AS total_fase_dia
+FROM acidente_transito
+GROUP BY condicao_metereologica;

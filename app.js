@@ -20,6 +20,7 @@ var HOST_APP = process.env.APP_HOST;
 
 var app = express();
 
+var dashboardRouter = require("./src/routes/dashboardCrud");
 var empresaRouter = require("./src/routes/empresa");
 
 // Criação da data e hora atual para enviar no e-mail:
@@ -46,6 +47,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cors());
 app.use("/empresa", empresaRouter);
+app.use("/dashboardCrud", dashboardRouter)
 
 const smtp = nodemailer.createTransport({
     host: 'smtp.gmail.com',

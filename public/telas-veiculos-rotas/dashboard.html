@@ -17,7 +17,7 @@
 
 </head>
 
-<body onload="buildGraphic(), changeColorPercent(), initMap(), calculateRoute()">
+<body onload="changeColorPercent(), initMap(), calculateRoute(), obterFasesDoDia(), obterAcidentesDia(), obterDadosGrafico()">
     <header>
         <div class="session-title">
             <div id="hamburguer">
@@ -66,10 +66,10 @@
                         </div>
                     </div>
                     <ul style="color: #0E3D0B;">
-                        <li>Amanhecer: 1.234 <span class="per-cent">(5,15%)</span></li>
-                        <li>Pleno dia: 2.456 <span class="per-cent">(10,26%)</span></li>
-                        <li>Anoitecer: 1.567 <span class="per-cent">(6,56%)</span></li>
-                        <li>Plena Noite: 19.910 <span class="per-cent">(85,03%)</span></li>
+                        <li>Amanhecer: <span id="amanhecer"></span> <span class="per-cent">(5,15%)</span></li>
+                        <li>Pleno dia: <span id="pleno_dia"></span> <span class="per-cent">(10,26%)</span></li>
+                        <li>Anoitecer: <span id="anoitecer"></span> <span class="per-cent">(6,56%)</span></li>
+                        <li>Plena Noite: <span id="plena_noite"></span> <span class="per-cent">(85,03%)</span></li>
                     </ul>
                 </div>
                 <div id="second-kpi">
@@ -81,11 +81,10 @@
                         </div>
                     </div>
                     <ul style="color: #0E3D0B;">
-                        <li>Céu Claro: 30.983 <span class="per-cent">(65,65%)</span></li>
-                        <li>Chuva: 5.081 <span class="per-cent">(10,77%)</span></li>
-                        <li>Nublado: 6.818 <span class="per-cent">(14,45%)</span></li>
-                        <li>Sol: 2.621 <span class="per-cent">(5,55%)</span></li>
-                        <li>Garoa/Chuvisco: 1.690 <span class="per-cent">(3,58%)</span></li>
+                        <li>Céu Claro: <span id="ceu_claro"></span> <span class="per-cent">(65,65%)</span></li>
+                        <li>Chuva: <span id="chuva"> <span class="per-cent">(10,77%)</span></li>
+                        <li>Nublado: <span id="nublado"></span> <span class="per-cent">(14,45%)</span></li>
+                        <li>Sol: <span id="sol"></span> <span class="per-cent">(5,55%)</span></li>
                     </ul>
                 </div>
             </div>
@@ -159,31 +158,31 @@
 </body>
 <script>
 
-function telaCadastroRota(){
-    window.location.href = "./cadastro-rota.html";
-}
+    function telaCadastroRota() {
+        window.location.href = "./cadastro-rota.html";
+    }
 
-function abrirBox(){
-    var instrucao = document.getElementById('box');
+    function abrirBox() {
+        var instrucao = document.getElementById('box');
 
-    box.style.display = "flex"; 
-}
+        box.style.display = "flex";
+    }
 
-function fecharBox(){
-    var instrucao = document.getElementById('box');
+    function fecharBox() {
+        var instrucao = document.getElementById('box');
 
-    box.style.display = "none"; 
-}
+        box.style.display = "none";
+    }
 
-function abrirDots(){
-    var options = document.getElementById('options');
-    options.style.display = "flex"; 
-}
+    function abrirDots() {
+        var options = document.getElementById('options');
+        options.style.display = "flex";
+    }
 
-function fecharDots(){
-    var options = document.getElementById('options');
-    options.style.display = "none"; 
-}
+    function fecharDots() {
+        var options = document.getElementById('options');
+        options.style.display = "none";
+    }
     document.addEventListener('DOMContentLoaded', () => {
         const icon = document.getElementById('infoIcon');
         const modal = document.getElementById('infoModal');
