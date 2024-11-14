@@ -65,7 +65,7 @@ h2.titulo span {
     color: #45a449;
 }
 
-button:hover,
+.botao:hover,
 form .btn-login-cadastro input:hover {
     box-shadow: 0px 0px 8px white;
     transform: scale(1.05);
@@ -212,7 +212,7 @@ section.paginaInicial .div-paginaInicial {
 
 .paginaInicial .txt-paginaInicial p {
     color: #fff;
-    font-size: 15pt;
+    font-size: 17pt;
     margin: 30px 0;
 
 }
@@ -467,6 +467,127 @@ section.sobre .descricao-empresa {
 
 /* FIM STYLE MINHASARTES */
 
+/* SESSÃO ENTRE EM CONTATO */
+
+.entre-contato {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    background-color: aliceblue;
+    padding-bottom: 5em;
+}
+
+.contact {
+    background-color: #001E30;
+    display: flex;
+    flex-direction: column;
+    height: 74vh;
+    width: 65vw;
+    border-radius: 1em;
+    box-shadow: 2px 2px 20px black;
+    padding: 1em;
+}
+
+.contact-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 13vh;
+}
+
+.contact-title h2 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #4DCE5F;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.contact-inputs {
+    display: flex;
+    justify-content: start;
+    gap: 5%;
+    height: 30vh;
+    width: 46vw;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    justify-content: end;
+}
+
+label {
+    color: #92F596;
+    margin-left: 0.5em;
+}
+
+.inputs input {
+    height: 4vh;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 1.5em;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.suport-text {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 46vw;
+}
+
+textarea {
+    height: 15vh;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.button-send {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 13vh;
+}
+
+.button-send button {
+    width: 20vw;
+    height: 5vh;
+    border-radius: 10px;
+    border: none;
+    background-color: #499A54;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#button-submit.clicked {
+    background-color: #4CAF50; 
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.check-icon {
+    font-size: 1.5rem;
+    margin-left: 5px;
+}
+
+/* SESSÃO ENTRE EM CONTATO */
 
 /* STYLE RODAPE */
 footer {

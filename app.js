@@ -49,6 +49,82 @@ app.use(cors());
 app.use("/empresa", empresaRouter);
 app.use("/dashboardCrud", dashboardRouter)
 
+function formataDataHora() {
+    const now = new Date();
+    return new Intl.DateTimeFormat("pt-BR", {
+        timeZone: "America/Sao_Paulo",
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    }).format(now);
+}
+
+/* ENVIAR E-MAIL PARA ENTRAR EM CONTATO*/
+const smtpContato = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
+    auth: {
+        user: 'tree.technology05@gmail.com',
+        pass: 'bzrq zvbe wcty cktn',
+    },
+    tls: {
+        rejectUnauthorized: false,
+    }
+});
+
+app.post('/send-emailContact', (req, res) => {
+    const { toName, toEmail, toPhone, toMessage } = req.body;
+
+    const configEmailContact = {
+        from: 'tree.technology05@gmail.com',
+        to: 'tree.technology05@gmail.com',
+        replyTo: toEmail,
+        subject: `Contato de ${toName}`,
+        html: `
+    <div>
+        <strong>Nome: </strong>
+        <br>
+        
+        <pre style="margin: 0; white-space: pre-wrap;">${toName}</pre>
+        
+        <hr>
+        <strong>E-mail: </strong>
+
+        <pre style="margin: 0; white-space: pre-wrap;">${toEmail}</pre>
+        <hr>
+        <strong>Telefone: </strong>
+        <br>
+        
+        <pre style="margin: 0; white-space: pre-wrap;">${toPhone}</pre>
+        <hr>
+        <strong>Mensagem: </strong>
+        <br>
+        <pre style="margin: 0; white-space: pre-wrap; word-wrap: break-word">${toMessage}</pre>
+        <hr>
+        <p style="text-align: center;">Enviado em ${formataDataHora()}</p>
+    </div>
+        `
+    };
+
+    smtpContato.sendMail(configEmailContact)
+        .then(info => {
+            console.log('Email enviado:', info.response);
+            res.status(200).send('Email enviado com sucesso!');
+        })
+        .catch(error => {
+            console.error('Erro ao enviar email:', error);
+            res.status(500).send('Erro ao enviar email.');
+        });
+});
+
+/* ENVIAR E-MAIL PARA ENTRAR EM CONTATO*/
+
+/* ENVIAR E-MAIL COM TOKEN */
 const smtp = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 587,
@@ -71,9 +147,9 @@ app.post('/send-email', (req, res) => {
         to: toEmail,
         subject: `TOKEN DE VERIFICAÇÃO`,
         html: `<p>Seu token é: <strong>${generatedToken}</strong>! <br> <br>
-               Se você não solicitou este token, ignore este e-mail.<br>
-               Data atual: <strong>${dataAtual}</strong><br>
-               Horário atual: <strong>${horaAtual}</strong></p>`
+        Se você não solicitou este token, ignore este e-mail.<br>
+        Data atual: <strong>${dataAtual}</strong><br>
+        Horário atual: <strong>${horaAtual}</strong></p>`
     };
 
     smtp.sendMail(configEmail)
@@ -86,6 +162,7 @@ app.post('/send-email', (req, res) => {
             res.status(500).send('Erro ao enviar email.');
         });
 });
+/* ENVIAR E-MAIL COM TOKEN */
 
 app.post('/novaSenha', (req, res) => {
     const { token } = req.body;
@@ -99,7 +176,7 @@ app.post('/novaSenha', (req, res) => {
 });
 
 console.log(`Lembre-se sempre de utilizar o comando: \n
-            "npm install express nodemailer body-parser cors"\n
+            "npm install"\n
             Ela irá instalar os pacotes:
 
             express: para configurar seu servidor.
