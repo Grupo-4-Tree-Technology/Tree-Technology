@@ -104,6 +104,8 @@ function obterAcidentesDia() {
                     sessionStorage.CHUVA = resposta[1].total_fase_dia
                     sessionStorage.NUBLADO = resposta[2].total_fase_dia
                     sessionStorage.SOL = resposta[3].total_fase_dia
+                    sessionStorage.GAROA_CHUVISCO = resposta[4].total_fase_dia
+
                     
                     let ceu_claro = sessionStorage.CEU_CLARO;
                     document.querySelector('#ceu_claro').innerHTML = ceu_claro
@@ -116,6 +118,9 @@ function obterAcidentesDia() {
 
                     let sol = sessionStorage.SOL;
                     document.querySelector('#sol').innerHTML = sol
+
+                    let garoa_chuvisco = sessionStorage.GAROA_CHUVISCO;
+                    document.querySelector('#garoa_chuvisco').innerHTML = garoa_chuvisco
 
                 });
             } else {
