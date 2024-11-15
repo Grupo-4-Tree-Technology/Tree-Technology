@@ -1,0 +1,428 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #004306;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #12c406;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #0d7d05;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Poppins;
+}
+
+/*TELA NOTIFICAÇÕES*/
+
+.top-menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; 
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #DEE4DD;
+    gap: 150px;
+    color: #004306;
+}
+
+.icons{
+    display: flex;
+    justify-content: space-around;
+    width: 15vw;
+  
+}
+
+.icons img{
+    max-width: 10.5%;
+    cursor: pointer;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Poppins;
+    color: #21432c;
+}
+
+.box{
+    background-color: #F4F4F4;
+    height: auto;
+    width: auto;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px  #68696977;
+    display: flex;
+    flex-direction: column;
+}
+
+.box-notificacoes {
+    background-color: #F4F4F4;
+    height: 75vh;
+    width: auto;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px  #68696977;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.box a {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.message{
+    padding: 20px 10px;
+    border-radius: 10px;
+    border-left: 10px solid #335135;
+    margin-bottom: 10px;
+    justify-content:center;
+    align-items: center;
+    background-color: #ffff;
+}
+
+
+
+
+
+/*TELA INFORMAÇÕES PESSOAIS*/
+
+.box-2{
+    background-color: #ffff;
+    height: auto;
+    width: auto;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 2px solid #7ae09a;
+    box-shadow: 10px 10px 10px  #68696977;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    
+}
+
+.forms{
+    display: flex;
+    flex-direction: column;
+    font-size: large;
+    justify-content: center;
+    
+    
+}
+
+.forms p{
+    background-color: transparent;
+    margin-top: 10px;
+    
+}
+
+
+.forms input{
+    padding: 10px 5px;
+    max-width: auto;
+    border-radius: 10px;
+    outline: none;
+    font-size: large;
+    width: 30vw;
+    border: none;
+    box-shadow: 5px 5px 5px #21432c1c;
+}
+
+button{
+    margin-top: 10px;
+    background-color: #77D17A;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 40px;
+    padding: 10px 10px;
+    font-size: large;
+    width: 20vw;
+    text-align: center;
+    justify-self: center;
+    align-self: center;
+    cursor: pointer;
+   
+}
+
+button:hover{
+    background-color: #61ab63;
+}
+
+#button-delete {
+    background-color: #dc5656;
+}
+
+#button-delete:hover {
+    background-color: #d21414;
+}
+
+.forms span{
+    margin-top: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #f75050;
+    justify-self: right;
+    align-self: end;
+}
+
+.forms img{
+    max-height: 20px;
+    max-width: 20px;
+    align-self: end;
+    cursor: pointer;
+}
+
+/*TELA LISTA DE ROTAS CADASTRADAS*/
+
+.list-routes{
+    padding: 20px 10px;
+    border-radius: 10px;
+    border-bottom: 10px solid #46a54a;
+    margin-bottom: 10px;
+    justify-content:center;
+    align-items: center;
+    background-color: #ffff;
+}
+
+.text{
+    display: flex;
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20vw;
+    text-align: right;
+}
+
+.rota{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 5vh;
+    width: 30vw;
+    gap: 40px;
+    
+}
+
+
+.dots{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 40px;
+    margin-left: 10px;
+}
+
+.dots img{
+    max-height: 30px;
+    align-self: flex-start;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.options{
+    background-color: #fff;
+    padding: 10px 10px;
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0px 10px 10px 10px;
+    border: 2px solid #61ab63;
+}
+
+.options img{
+    max-height: 20px;
+    align-self: end;
+}
+
+/*Tela cadastrar rotas*/
+
+.box-3{
+    background-color: #ffff;
+    height: auto;
+    max-width: 400px;
+    margin-top: 20px;
+    margin-left: 30vw;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 2px solid #7ae09a;
+    box-shadow: 10px 10px 10px  #68696977;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    font-size: small;
+    line-height: 25px;
+    overflow-y: auto;
+    max-height: 100vh;
+    
+}
+
+.box-3 img{
+    max-height: 15px;
+    display: flex;
+    justify-self: right;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.novoInput button{
+    margin-left: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ESTILO DO MENU MOBILE */
+/* ESTILO DO MENU MOBILE */
+/* ESTILO DO MENU MOBILE */
+/* ESTILO DO MENU MOBILE */
+
+.btn-abrir-menu {
+    display: block;
+}
+
+.btn-abrir-menu i { 
+    color: #00FF08;
+    font-size: 40px;
+}
+
+.menu-mobile {
+    background-color: #0A2003;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 0%;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.menu-mobile.abrir-menu {
+    width: 25%;
+
+}
+
+.menu-mobile.abrir-menu ~ .overlay-menu {
+    display: block;
+}
+
+.menu-mobile .btn-fechar {
+    padding: 20px 5%;
+}
+
+.menu-mobile .btn-fechar i {
+    color: #00FF08;
+    font-size: 30px;
+}
+
+.menu-mobile nav ul {
+    text-align: left;
+
+}
+
+.menu-mobile nav ul li a {
+    list-style: none;
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 20px 8%;
+    display: block;
+
+}
+
+.menu-mobile nav ul li a:hover {
+    background-color: #B5CFB6;
+    color: #000;
+}
+
+.overlay-menu {
+    background-color: #000000a7;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 8888;
+    display: none;
+}
+
+@media (max-width: 800px) {
+    .icons{
+       width: 50vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .icons{
+        width: 50vw;
+    }
+
+    .icons img{
+        width: 10%;
+        cursor: pointer;
+    }
+
+    #dash {
+        width: 5.5vw
+    }
+
+    .forms button{
+    
+        width: 30vw;
+        
+    }
+
+   
+
+}
+
+ 
+@media (max-width: 400px) {
+    .icons{
+       width: 50%;
+    }
+
+    
+}
+
+
