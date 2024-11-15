@@ -8,8 +8,8 @@ router.get("/obterFasesDoDia", function (req, res) {
     dashboardController.obterFasesDoDia(req, res);
 })
 
-router.get("/obterAcidentesDia", function (req, res) {
-    dashboardController.obterAcidentesDia(req, res);
+router.get("/obterAcidentesClima", function (req, res) {
+    dashboardController.obterAcidentesClima(req, res);
 })
 
 router.get("/obterDadosGrafico", function (req, res) {

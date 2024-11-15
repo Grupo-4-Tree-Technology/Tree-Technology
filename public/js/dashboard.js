@@ -1,4 +1,86 @@
+function buildGraphic() {
+    let dadosAcidentes = JSON.parse(sessionStorage.getItem("ACIDENTES_SEMANA"))
 
+    const ctx = document.getElementById('myChart').getContext('2d');
+
+    const labels = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'];
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'Número de Acidentes X Dia da semana',
+            data: [ dadosAcidentes[0].total_fase_dia, 
+                    dadosAcidentes[1].total_fase_dia, 
+                    dadosAcidentes[2].total_fase_dia,
+                    dadosAcidentes[3].total_fase_dia,
+                    dadosAcidentes[4].total_fase_dia,
+                    dadosAcidentes[5].total_fase_dia,
+                    dadosAcidentes[6].total_fase_dia],
+            backgroundColor: '#fff',
+            borderColor: '#0F7A09',
+            borderWidth: 3.5,
+            tension: 0.4,
+            animations: {
+                y: {
+                    duration: 0
+                }
+            }
+        }]
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Dias da semana',
+                        font: {
+                            size: 18,
+                            weight: 'bold'
+                        },
+                        color: '#0E3D0B'
+                    },
+                    ticks: {
+                        font: {
+                            size: 14,
+                            color: '#0E3D0B'
+                        }
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: "Número de acidentes",
+                        font: {
+                            size: 18,
+                            weight: 'bold'
+                        },
+                        color: '#0E3D0B'
+                    }
+                }
+            },
+            elements: {
+                line: {
+                    borderWidth: 5,
+                    borderColor: '#000'
+                },
+                point: {
+                    backgroundColor: 'rgb(75, 192, 192)'
+                }
+            }
+        }
+    };
+
+    const myChart = new Chart(ctx, config);
+}
 
 function openSelectWithImages() {
     const selectSelected = document.querySelector('.select-selected');
@@ -62,25 +144,20 @@ function obterFasesDoDia() {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    // resposta.reverse();
-                    // console.log(JSON.stringify(response[0].total_fase_dia))
-                    sessionStorage.PLENO_DIA = resposta[0].total_fase_dia
-                    sessionStorage.ANOITECER = resposta[1].total_fase_dia
-                    sessionStorage.AMANHECER = resposta[2].total_fase_dia
-                    sessionStorage.PLENA_NOITE = resposta[3].total_fase_dia
                     
-                    let pleno_dia = sessionStorage.PLENO_DIA;
-                    document.querySelector('#pleno_dia').innerHTML = pleno_dia
-
-                    let anoitecer = sessionStorage.ANOITECER;
-                    document.querySelector('#anoitecer').innerHTML = anoitecer
-
-                    let amanhecer = sessionStorage.AMANHECER;
-                    document.querySelector('#amanhecer').innerHTML = amanhecer
-
-                    let plena_noite = sessionStorage.PLENA_NOITE;
+                    sessionStorage.ACIDENTES_FASES_DIA = JSON.stringify(resposta);
+                    
+                    let plena_noite = resposta[0].total_fase_dia;
                     document.querySelector('#plena_noite').innerHTML = plena_noite
 
+                    let pleno_dia = resposta[1].total_fase_dia;
+                    document.querySelector('#pleno_dia').innerHTML = pleno_dia
+
+                    let anoitecer = resposta[2].total_fase_dia;
+                    document.querySelector('#anoitecer').innerHTML = anoitecer
+
+                    let amanhecer = resposta[3].total_fase_dia;
+                    document.querySelector('#amanhecer').innerHTML = amanhecer
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -91,35 +168,29 @@ function obterFasesDoDia() {
         });
 }
 
-function obterAcidentesDia() {
+function obterAcidentesClima() {
 
-    fetch(`/dashboardCrud/obterAcidentesDia`, { cache: 'no-store' })
+    fetch(`/dashboardCrud/obterAcidentesClima`, { cache: 'no-store' })
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    // resposta.reverse();
-                    // console.log(JSON.stringify(response[0].total_fase_dia))
-                    sessionStorage.CEU_CLARO = resposta[0].total_fase_dia
-                    sessionStorage.CHUVA = resposta[1].total_fase_dia
-                    sessionStorage.NUBLADO = resposta[2].total_fase_dia
-                    sessionStorage.SOL = resposta[3].total_fase_dia
-                    sessionStorage.GAROA_CHUVISCO = resposta[4].total_fase_dia
 
+                    sessionStorage.ACIDENTES_CLIMA = JSON.stringify(resposta);
                     
-                    let ceu_claro = sessionStorage.CEU_CLARO;
+                    let ceu_claro = resposta[0].total_fase_dia;
                     document.querySelector('#ceu_claro').innerHTML = ceu_claro
 
-                    let chuva = sessionStorage.CHUVA;
-                    document.querySelector('#chuva').innerHTML = chuva
-
-                    let nublado = sessionStorage.NUBLADO;
+                    let sol = resposta[1].total_fase_dia;
+                    document.querySelector('#sol').innerHTML = sol
+                    
+                    let nublado = resposta[2].total_fase_dia;
                     document.querySelector('#nublado').innerHTML = nublado
 
-                    let sol = sessionStorage.SOL;
-                    document.querySelector('#sol').innerHTML = sol
+                    let chuva = resposta[3].total_fase_dia;
+                    document.querySelector('#chuva').innerHTML = chuva
 
-                    let garoa_chuvisco = sessionStorage.GAROA_CHUVISCO;
+                    let garoa_chuvisco = resposta[4].total_fase_dia;
                     document.querySelector('#garoa_chuvisco').innerHTML = garoa_chuvisco
 
                 });
@@ -139,9 +210,8 @@ function obterDadosGrafico() {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    resposta.reverse();
-                    plotarGrafico(resposta);
-
+                    sessionStorage.ACIDENTES_SEMANA = JSON.stringify(resposta);
+                    buildGraphic();
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -151,302 +221,4 @@ function obterDadosGrafico() {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 }
-
-// function plotarGrafico(resposta, idUsuario) {
-
-//     console.log('iniciando plotagem do gráfico...');
-
-//     // Criando estrutura para plotar gráfico - labels
-//     let labels = ["fase1", "fase2"];
-
-//     // Criando estrutura para plotar gráfico - dados
-//     let dados = {
-//         labels: labels,
-//         datasets: [{
-//             label: 'Número de Acidentes X Dia da semana',
-//             data: [],
-//             fill: false,
-//             backgroundColor: ['rgb(149, 108, 70)', 'rgb(114, 173, 74)',],
-//             borderColor: 'rgb(75, 192, 192)',
-//             tension: 0.1,
-//         }]
-//     };
-
-//     console.log('----------------------------------------------')
-//     console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-//     console.log(resposta)
-
-//     // Inserindo valores recebidos em estrutura para plotar o gráfico
-//     for (i = 0; i < resposta.length; i++) {
-//         var registro = resposta[i];
-//         // labels.push(registro.momento_grafico);
-//         dados.datasets[0].data.push(registro.fase1);
-//         dados.datasets[0].data.push(registro.fase2);
-//         // dados.datasets[0].data.push(registro.total);
-//     }
-
-//     console.log('----------------------------------------------')
-//     console.log('O gráfico será plotado com os respectivos valores:')
-//     console.log('Labels:')
-//     console.log(labels)
-//     console.log('Dados:')
-//     console.log(dados.datasets)
-//     console.log('----------------------------------------------')
-
-//     // Criando estrutura para plotar gráfico - config
-//     const config = {
-//         type: 'bar',
-//         data: dados,
-//         options: {
-//             scales: {
-//                 y: {
-//                     ticks: {
-//                         stepSize: 1
-//                     }
-//                 }
-//             }
-//         }
-//     };
-
-//     // Adicionando gráfico criado em div na tela
-//     let myChart = new Chart(
-//         document.getElementById(`myChart`),
-//         config
-//     );
-
-// }
-
-// function plotarGrafico(resposta) {
-
-//     console.log('iniciando plotagem do gráfico...');
-
-//     const ctx = document.getElementById('myChart').getContext('2d');
-
-//     const labels = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'];
-//     const data = {
-//         labels: labels,
-//         datasets: [{
-//             label: 'Número de Acidentes X Dia da semana',
-//             data: [12, 19, 3, 10, 2, 3, 7],
-//             backgroundColor: '#fff',
-//             borderColor: '#0F7A09',
-//             borderWidth: 3.5,
-//             tension: 0.4,
-//             animations: {
-//                 y: {
-//                     duration: 0
-//                 }
-//             }
-//         }]
-//     };
-
-//     console.log('----------------------------------------------')
-//     console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-//     console.log(resposta)
-
-//     // Inserindo valores recebidos em estrutura para plotar o gráfico
-//     for (i = 0; i < resposta.length; i++) {
-//         var total_fase_dia = resposta[i];
-//         // labels.push(registro.momento_grafico);
-//         dados.datasets[0].data.push(total_fase_dia.Seg);
-//         dados.datasets[1].data.push(total_fase_dia.Ter);
-//         dados.datasets[2].data.push(total_fase_dia.Qua);
-//         dados.datasets[3].data.push(total_fase_dia.Qui);
-//         dados.datasets[4].data.push(total_fase_dia.Sex);
-//         dados.datasets[5].data.push(total_fase_dia.Sab);
-//         dados.datasets[6].data.push(total_fase_dia.Dom);
-//         // dados.datasets[0].data.push(registro.total);
-//     }
-
-//     console.log('----------------------------------------------')
-//     console.log('O gráfico será plotado com os respectivos valores:')
-//     console.log('Labels:')
-//     console.log(labels)
-//     console.log('Dados:')
-//     console.log(dados.datasets)
-//     console.log('----------------------------------------------')
-
-//     const config = {
-//         type: 'line',
-//         data: data,
-//         options: {
-//             plugins: {
-//                 legend: {
-//                     display: false
-//                 }
-//             },
-//             scales: {
-//                 x: {
-//                     title: {
-//                         display: true,
-//                         text: 'Dias da semana',
-//                         font: {
-//                             size: 18,
-//                             weight: 'bold'
-//                         },
-//                         color: '#0E3D0B'
-//                     },
-//                     ticks: {
-//                         font: {
-//                             size: 14,
-//                             color: '#0E3D0B'
-//                         }
-//                     }
-//                 },
-//                 y: {
-//                     beginAtZero: true,
-//                     title: {
-//                         display: true,
-//                         text: "Número de acidentes",
-//                         font: {
-//                             size: 18,
-//                             weight: 'bold'
-//                         },
-//                         color: '#0E3D0B'
-//                     }
-//                 }
-//             },
-//             elements: {
-//                 line: {
-//                     borderWidth: 5,
-//                     borderColor: '#000'
-//                 },
-//                 point: {
-//                     backgroundColor: 'rgb(75, 192, 192)'
-//                 }
-//             }
-//         }
-//     };
-
-//     const myChart = new Chart(ctx, config);
-// }
-
-function plotarGrafico(resposta) {
-
-    console.log('iniciando plotagem do gráfico...');
-
-    const ctx = document.getElementById('myChart').getContext('2d');
-
-    const labels = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'];
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: 'Número de Acidentes X Dia da semana',
-            data: [0, 0, 0, 0, 0, 0, 0], // Inicializa com 0 para cada dia da semana
-            backgroundColor: '#fff',
-            borderColor: '#0F7A09',
-            borderWidth: 3.5,
-            tension: 0.4,
-            animations: {
-                y: {
-                    duration: 0
-                }
-            }
-        }]
-    };
-
-    console.log('----------------------------------------------')
-    console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-    console.log(resposta)
-
-    // Mapeando os valores de 'resposta' para os dias da semana corretos
-    for (let i = 0; i < resposta.length; i++) {
-        const item = resposta[i];
-        
-        switch (item.dia_semana) {
-            case 'Segunda-feira':
-                data.datasets[0].data[0] = item.total_fase_dia;
-                break;
-            case 'Terça-feira':
-                data.datasets[0].data[1] = item.total_fase_dia;
-                break;
-            case 'Quarta-feira':
-                data.datasets[0].data[2] = item.total_fase_dia;
-                break;
-            case 'Quinta-feira':
-                data.datasets[0].data[3] = item.total_fase_dia;
-                break;
-            case 'Sexta-feira':
-                data.datasets[0].data[4] = item.total_fase_dia;
-                break;
-            case 'Sabado':
-                data.datasets[0].data[5] = item.total_fase_dia;
-                break;
-            case 'Domingo':
-                data.datasets[0].data[6] = item.total_fase_dia;
-                break;
-            default:
-                console.warn(`Dia da semana "${item.dia_semana}" não reconhecido.`);
-        }
-    }
-
-    console.log('----------------------------------------------')
-    console.log('O gráfico será plotado com os respectivos valores:')
-    console.log('Labels:')
-    console.log(labels)
-    console.log('Dados:')
-    console.log(data.datasets[0].data)
-    console.log('----------------------------------------------')
-
-    const config = {
-        type: 'line',
-        data: data,
-        options: {
-            plugins: {
-                legend: {
-                    display: false
-                }
-            },
-            scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Dias da semana',
-                        font: {
-                            size: 18,
-                            weight: 'bold'
-                        },
-                        color: '#0E3D0B'
-                    },
-                    ticks: {
-                        font: {
-                            size: 14,
-                            color: '#0E3D0B'
-                        }
-                    }
-                },
-                y: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: "Número de acidentes",
-                        font: {
-                            size: 18,
-                            weight: 'bold'
-                        },
-                        color: '#0E3D0B'
-                    },
-                    ticks: {
-                        // Exibir apenas números inteiros
-                        callback: function(value) {
-                            return Number.isInteger(value) ? value : null;
-                        }
-                    }
-                }
-            },
-            elements: {
-                line: {
-                    borderWidth: 5,
-                    borderColor: '#000'
-                },
-                point: {
-                    backgroundColor: 'rgb(75, 192, 192)'
-                }
-            }
-        }
-    };
-
-    const myChart = new Chart(ctx, config);
-}
-
 

@@ -13,8 +13,8 @@ function obterFasesDoDia() {
     return database.executar(instrucaoSql);
 }
 
-function obterAcidentesDia() {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function obterAcidentesDia():");
+function obterAcidentesClima() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function obterAcidentesClima():");
 
     var instrucaoSql = `
         SELECT condicao_metereologica, COUNT(*) AS total_fase_dia
@@ -40,6 +40,6 @@ function obterDadosGrafico() {
 
 module.exports = {
     obterFasesDoDia,
-    obterAcidentesDia,
+    obterAcidentesClima,
     obterDadosGrafico,
 };

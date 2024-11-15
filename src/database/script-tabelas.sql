@@ -134,18 +134,6 @@ arquivo_lido 			VARCHAR(45),
 titulo 					TEXT NOT NULL,
 descricao 				TEXT NOT NULL,
 
-<<<<<<< HEAD
-PRIMARY KEY pk_log (id)
-);
-
-SELECT fase_dia, COUNT(*) AS total_fase_dia
-FROM acidente_transito
-GROUP BY fase_dia;
-
-SELECT condicao_metereologica, COUNT(*) AS total_fase_dia
-FROM acidente_transito
-GROUP BY condicao_metereologica;
-=======
 PRIMARY KEY (id)
 );
 
@@ -160,4 +148,3 @@ INSERT INTO usuario
 VALUES
 ('Robson', '49123956846', 'robson@gmail.com', '123','1989-12-24', 'total', 'ativado', '2022-11-03', 1),
 ('Jair', '91723956168', 'jair.j@gmail.com', '321', '1999-02-04', 'total', 'ativado', '2015-01-11', 2);
->>>>>>> 4e31ae40309841dd9e0d0d132fbee96191f2aeb0

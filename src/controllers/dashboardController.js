@@ -14,8 +14,8 @@ function obterFasesDoDia(req, res) {
     });
 }
 
-function obterAcidentesDia(req, res) {
-    dashboardModel.obterAcidentesDia().then(function (resultado) {
+function obterAcidentesClima(req, res) {
+    dashboardModel.obterAcidentesClima().then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -44,6 +44,6 @@ function obterDadosGrafico(req, res) {
 
 module.exports = {
     obterFasesDoDia,
-    obterAcidentesDia,
+    obterAcidentesClima,
     obterDadosGrafico,
 }
