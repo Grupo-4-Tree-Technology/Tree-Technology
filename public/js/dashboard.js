@@ -1,4 +1,6 @@
 function buildGraphic() {
+    let dadosAcidentes = JSON.parse(sessionStorage.getItem("ACIDENTES_SEMANA"))
+
     const ctx = document.getElementById('myChart').getContext('2d');
 
     const labels = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'];
@@ -6,7 +8,13 @@ function buildGraphic() {
         labels: labels,
         datasets: [{
             label: 'Número de Acidentes X Dia da semana',
-            data: [12, 19, 3, 10, 2, 3, 7],
+            data: [ dadosAcidentes[0].total_fase_dia, 
+                    dadosAcidentes[1].total_fase_dia, 
+                    dadosAcidentes[2].total_fase_dia,
+                    dadosAcidentes[3].total_fase_dia,
+                    dadosAcidentes[4].total_fase_dia,
+                    dadosAcidentes[5].total_fase_dia,
+                    dadosAcidentes[6].total_fase_dia],
             backgroundColor: '#fff',
             borderColor: '#0F7A09',
             borderWidth: 3.5,
@@ -80,7 +88,7 @@ function openSelectWithImages() {
 
     selectSelected.addEventListener('click', function () {
         items.style.display = items.style.display == 'block' ? 'none' : 'block';
-        
+
         if (items.style.display == 'block') {
             seta.innerHTML = '&#9652;';
         } else {
@@ -128,3 +136,89 @@ function openSelectWithImages() {
 /*function irParaTelaRota() {
     window.location = 'lista-rotas.html';
 }*/
+
+function obterFasesDoDia() {
+
+    fetch(`/dashboardCrud/obterFasesDoDia`, { cache: 'no-store' })
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    
+                    sessionStorage.ACIDENTES_FASES_DIA = JSON.stringify(resposta);
+                    
+                    let plena_noite = resposta[0].total_fase_dia;
+                    document.querySelector('#plena_noite').innerHTML = plena_noite
+
+                    let pleno_dia = resposta[1].total_fase_dia;
+                    document.querySelector('#pleno_dia').innerHTML = pleno_dia
+
+                    let anoitecer = resposta[2].total_fase_dia;
+                    document.querySelector('#anoitecer').innerHTML = anoitecer
+
+                    let amanhecer = resposta[3].total_fase_dia;
+                    document.querySelector('#amanhecer').innerHTML = amanhecer
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+}
+
+function obterAcidentesClima() {
+
+    fetch(`/dashboardCrud/obterAcidentesClima`, { cache: 'no-store' })
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    sessionStorage.ACIDENTES_CLIMA = JSON.stringify(resposta);
+                    
+                    let ceu_claro = resposta[0].total_fase_dia;
+                    document.querySelector('#ceu_claro').innerHTML = ceu_claro
+
+                    let sol = resposta[1].total_fase_dia;
+                    document.querySelector('#sol').innerHTML = sol
+                    
+                    let nublado = resposta[2].total_fase_dia;
+                    document.querySelector('#nublado').innerHTML = nublado
+
+                    let chuva = resposta[3].total_fase_dia;
+                    document.querySelector('#chuva').innerHTML = chuva
+
+                    let garoa_chuvisco = resposta[4].total_fase_dia;
+                    document.querySelector('#garoa_chuvisco').innerHTML = garoa_chuvisco
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+}
+
+function obterDadosGrafico() {
+
+    fetch(`/dashboardCrud/obterDadosGrafico`, { cache: 'no-store' })
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    sessionStorage.ACIDENTES_SEMANA = JSON.stringify(resposta);
+                    buildGraphic();
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+}
+

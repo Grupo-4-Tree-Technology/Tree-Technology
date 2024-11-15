@@ -17,7 +17,8 @@
 
 </head>
 
-<body onload="buildGraphic(), changeColorPercent(), initMap(), calculateRoute()">
+<body
+    onload="initMap(), calculateRoute(), chamaFuncoes()">
     <header>
         <div class="session-title">
             <div id="hamburguer">
@@ -66,10 +67,14 @@
                         </div>
                     </div>
                     <ul style="color: #0E3D0B;">
-                        <li>Amanhecer: 1.234 <span class="per-cent">(5,15%)</span></li>
-                        <li>Pleno dia: 2.456 <span class="per-cent">(10,26%)</span></li>
-                        <li>Anoitecer: 1.567 <span class="per-cent">(6,56%)</span></li>
-                        <li>Plena Noite: 19.910 <span class="per-cent">(85,03%)</span></li>
+                        <li>Amanhecer: <span id="amanhecer" class="acidente-por-faseDia"></span> <span
+                                class="per-cent">(5,15%)</span></li>
+                        <li>Pleno dia: <span id="pleno_dia" class="acidente-por-faseDia"></span> <span
+                                class="per-cent">(10,26%)</span></li>
+                        <li>Anoitecer: <span id="anoitecer" class="acidente-por-faseDia"></span> <span
+                                class="per-cent">(6,56%)</span></li>
+                        <li>Plena Noite: <span id="plena_noite" class="acidente-por-faseDia"></span> <span
+                                class="per-cent">(85,03%)</span></li>
                     </ul>
                 </div>
                 <div id="second-kpi">
@@ -81,11 +86,16 @@
                         </div>
                     </div>
                     <ul style="color: #0E3D0B;">
-                        <li>Céu Claro: 30.983 <span class="per-cent">(65,65%)</span></li>
-                        <li>Chuva: 5.081 <span class="per-cent">(10,77%)</span></li>
-                        <li>Nublado: 6.818 <span class="per-cent">(14,45%)</span></li>
-                        <li>Sol: 2.621 <span class="per-cent">(5,55%)</span></li>
-                        <li>Garoa/Chuvisco: 1.690 <span class="per-cent">(3,58%)</span></li>
+                        <li>Céu Claro: <span id="ceu_claro" class="acidente-por-clima"></span> <span
+                                class="per-cent">(65,65%)</span></li>
+                        <li>Chuva: <span id="chuva" class="acidente-por-clima"></span> <span
+                                class="per-cent">(10,77%)</span></li>
+                        <li>Nublado: <span id="nublado" class="acidente-por-clima"></span> <span
+                                class="per-cent">(14,45%)</span></li>
+                        <li>Sol: <span id="sol" class="acidente-por-clima"></span> <span class="per-cent">(5,55%)</span>
+                        </li>
+                        <li>Garoa/Chuvisco: <span id="garoa_chuvisco" class="acidente-por-clima"></span> <span
+                                class="per-cent">(3,58%)</span></li>
                     </ul>
                 </div>
             </div>
@@ -125,68 +135,24 @@
                 </div>
                 <div class="box" id="box" style="display: none;">
                     <img src="../assets/close.jpeg" alt="" onclick="fecharBox()">
-                    <div class="scroll-list">
-                        <div class="list-routes">
-                            <div class="text">
-                                <div class="title">
-                                    <h4>Rota</h4>
-                                    <h4>Placa</h4>
-                                </div>
-                                <div class="dots">
-                                    <img src="../assets/dots.png" alt="" onclick="abrirDots()">
-                                    <div class="options" style="display: none;" id="options">
-                                        <img src="../assets/close.jpeg" alt="" onclick="fecharDots()">
-                                        <button id="button-delete">Deletar rota</button>
-                                        <button onclick="telaCadastroRota()">Editar rota</button>
-                                    </div>
-                                </div>
+                    <div class="list-routes">
+                        <div class="text">
+                            <div class="title">
+                                <h4>Rota</h4>
+                                <h4>Placa</h4>
                             </div>
-                            <div class="rota">
-                                <p>Rua Gomes de Carvalho - Rua Funchal</p>
-                                <p class="placa">AVCD256</p>
+                            <div class="dots">
+                                <img src="../assets/dots.png" alt="" onclick="abrirDots()">
+                                <div class="options" style="display: none;" id="options">
+                                    <img src="../assets/close.jpeg" alt="" onclick="fecharDots()">
+                                    <button id="button-delete">Deletar rota</button>
+                                    <button onclick="telaCadastroRota()">Editar rota</button>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="list-routes">
-                            <div class="text">
-                                <div class="title">
-                                    <h4>Rota</h4>
-                                    <h4>Placa</h4>
-                                </div>
-                                <div class="dots">
-                                    <img src="../assets/dots.png" alt="" onclick="abrirDots()">
-                                    <div class="options" style="display: none;" id="options">
-                                        <img src="../assets/close.jpeg" alt="" onclick="fecharDots()">
-                                        <button id="button-delete">Deletar rota</button>
-                                        <button onclick="telaCadastroRota()">Editar rota</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="rota">
-                                <p>Rua Gomes de Carvalho - Rua Funchal</p>
-                                <p class="placa">AVCD256</p>
-                            </div>
-                        </div>
-
-                        <div class="list-routes">
-                            <div class="text">
-                                <div class="title">
-                                    <h4>Rota</h4>
-                                    <h4>Placa</h4>
-                                </div>
-                                <div class="dots">
-                                    <img src="../assets/dots.png" alt="" onclick="abrirDots()">
-                                    <div class="options" style="display: none;" id="options">
-                                        <img src="../assets/close.jpeg" alt="" onclick="fecharDots()">
-                                        <button id="button-delete">Deletar rota</button>
-                                        <button onclick="telaCadastroRota()">Editar rota</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="rota">
-                                <p>Rua Gomes de Carvalho - Rua Funchal</p>
-                                <p class="placa">AVCD256</p>
-                            </div>
+                        <div class="rota">
+                            <p>Rua Gomes de Carvalho - Rua Funchal</p>
+                            <p class="placa">AVCD256</p>
                         </div>
                     </div>
                     <a href="cadastro-rota.html">
@@ -202,6 +168,16 @@
     </main>
 </body>
 <script>
+    function chamaFuncoes() {
+        obterFasesDoDia() 
+        obterAcidentesClima()
+        obterDadosGrafico()
+        changeColorPercent();
+    }
+
+    setInterval(() => {
+        chamaFuncoes();
+    }, 2500);
 
     function telaCadastroRota() {
         window.location.href = "./cadastro-rota.html";
@@ -277,20 +253,59 @@
     openSelectWithImages();
 
     function changeColorPercent() {
-        let porcentagens = document.querySelectorAll('.per-cent');
+        let acidentesFasesDia = JSON.parse(sessionStorage.ACIDENTES_FASES_DIA);
+        let totalAcidentesFasesDia = 0;
 
-        porcentagens.forEach(function (porcentagem) {
-            let valorNumerico = parseFloat(porcentagem.textContent.replace('(', '').replace(')', '').replace('%', ''));
-            porcentagem.style.color = "#0AC800";
+        acidentesFasesDia.forEach(function (acidente) {
+            totalAcidentesFasesDia += acidente.total_fase_dia;
+        });
 
-            if (valorNumerico >= 50 && valorNumerico <= 84) {
-                porcentagem.style.color = "#F99203";
+        
+        function definirCor(porcentagem) {
+            if (porcentagem >= 85) {
+                return "#F00000"; // Vermelho
+            } else if (porcentagem >= 50 && porcentagem < 85) {
+                return "#F99203"; // Amarelo
+            } else {
+                return "#0AC800"; // Verde
+            }
+        }
 
-            } else if (valorNumerico >= 85) {
-                porcentagem.style.color = "#F00000";
+        
+        acidentesFasesDia.forEach(function (acidente) {
+            let faseDiaId = acidente.fase_dia.toLowerCase().replace(/ /g, "_");
+            let elementoNumero = document.getElementById(faseDiaId);
+            let elementoPorcentagem = elementoNumero?.nextElementSibling;
 
+            if (elementoNumero && elementoPorcentagem) {
+                let porcentagem = ((acidente.total_fase_dia / totalAcidentesFasesDia) * 100).toFixed(2);
+                elementoNumero.textContent = acidente.total_fase_dia;
+                elementoPorcentagem.textContent = `(${porcentagem}%)`;
+                elementoPorcentagem.style.color = definirCor(porcentagem);
             }
         });
+
+        let acidentesClima = JSON.parse(sessionStorage.ACIDENTES_CLIMA);
+        let totalAcidentesClima = 0;
+
+        acidentesClima.forEach(function (acidente) {
+            totalAcidentesClima += acidente.total_fase_dia;
+        });
+
+        // Calcula e insere as porcentagens para as condições meteorológicas
+        acidentesClima.forEach(function (acidente) {
+            let climaId = acidente.condicao_metereologica.toLowerCase().replace(/ /g, "_").replace("/", "_");
+            let elementoNumero = document.getElementById(climaId);
+            let elementoPorcentagem = elementoNumero?.nextElementSibling;
+
+            if (elementoNumero && elementoPorcentagem) {
+                let porcentagem = ((acidente.total_fase_dia / totalAcidentesClima) * 100).toFixed(2);
+                elementoNumero.textContent = acidente.total_fase_dia;
+                elementoPorcentagem.textContent = `(${porcentagem}%)`;
+                elementoPorcentagem.style.color = definirCor(porcentagem);
+            }
+        });
+
     }
 
     let map;

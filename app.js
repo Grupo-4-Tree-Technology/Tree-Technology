@@ -20,7 +20,18 @@ var HOST_APP = process.env.APP_HOST;
 
 var app = express();
 
+var dashboardRouter = require("./src/routes/dashboardCrud");
 var empresaRouter = require("./src/routes/empresa");
+
+app.use(bodyParser.json());
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, "public")));
+
+app.use(cors());
+app.use("/empresa", empresaRouter);
+app.use("/dashboardCrud", dashboardRouter)
 
 // Criação da data e hora atual para enviar no e-mail:
 
@@ -37,15 +48,6 @@ const dia = doisDigitos(now.getDate());
 
 // Formatar para DD-MM-YYYY
 const dataAtual = `${dia}-${mes}-${ano}`;
-
-app.use(bodyParser.json());
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "public")));
-
-app.use(cors());
-app.use("/empresa", empresaRouter);
 
 function formataDataHora() {
     const now = new Date();
