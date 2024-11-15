@@ -50,17 +50,19 @@
 
         <!-- Seção de Cadastro de Veículos -->
         <div class="box" id="cadastro-veiculos">
+            
             <div class="forms">
-                <div class="registro-trajeto-title">
-                    <h1>Cadastro de Veículos</h1>
+                <div class="registro-trajeto-title-veic">
+                    <h1>Cadastro de Veículo</h1>
+                    
                 </div>
                 <p>Placa</p>
-                <input type="text" name="" id="" maxlength="7">
+                <input type="text" class="input-veic" maxlength="7">
                 <p>Modelo</p>
-                <input type="text" name="" id="">
+                <input type="text" class="input-veic">
                 <p>Ano</p>
-                <input type="text" name="" id="" maxlength="4">
-                <button onclick="mostrarCadastroRotas()">Avançar</button>
+                <input type="text" class="input-veic" maxlength="4">
+                <button onclick="mostrarCadastroRotas()">AVANÇAR</button>
             </div>
         </div>
 
@@ -68,18 +70,39 @@
 
         
         <div class="box" id="cadastro-rotas" style="display: none;">
+            <div class="box-3" id="instrucao" style="display: none;">
+
+                <img src="../assets/close.jpeg" alt="" onclick="fechar()">
+
+                <h4>Partida:</h4>
+                <p>O campo "Partida" se refere ao ponto de onde a rota será iniciada. Insira o endereço ou nome do
+                    local
+                    de partida.</p>
+
+                <h4>Destino:</h4>
+                <p>O campo "Destino" é o ponto final da rota, ou seja, o local para onde o veículo está se
+                    dirigindo.
+                </p>
+
+                <h4>Adicionar Rua Intermediária:</h4>
+                <p>Esse campo permite adicionar ruas ou locais intermediários pelos quais a rota deve passar antes
+                    de
+                    chegar ao destino final.</p>
+
+            </div>
             <div class="forms">
                 <div class="registro-trajeto-title">
-                    <h1>Cadastro de Rotas</h1>
+                    <h1>Cadastro de Rota</h1>
+                    <img src="../assets/circle-help.png" alt="" onclick="instrucao()">
                 </div>
                 <p>Partida</p>
-                <input type="text" name="" id="">
+                <input type="text" name="" class="input-rota">
                 
                 <div id="ruasIntermediarias" class="novoInput"></div>
-                <button id="adicionarRua">Adicionar rua intermediária</button>
+                <button id="adicionarRua">+ Adicionar Rua Intermediária</button>
 
                 <p>Destino</p>
-                <input type="text" name="" id="">
+                <input type="text" name="" class="input-rota">
                 <button>Registrar</button>
             </div>
         </div>

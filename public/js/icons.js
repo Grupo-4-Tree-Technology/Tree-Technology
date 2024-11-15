@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
         novoInput.setAttribute('name', 'ruaIntermediaria');
         novoInput.setAttribute('placeholder', 'Digite a rua intermediária');
         novoInput.setAttribute('id', 'inputRua' + contadorRua);
+        novoInput.setAttribute('class', 'input-rua');
         
         var btnRemoverRua = document.createElement('p');
         btnRemoverRua.setAttribute('type', 'p');
@@ -81,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         btnRemoverRua.style.color = 'red';
         btnRemoverRua.style.cursor = 'pointer';
         btnRemoverRua.setAttribute('onclick', 'removerRua("rua' + contadorRua + '")');
+
 
         ruaDiv.appendChild(novoInput);
         ruaDiv.appendChild(btnRemoverRua);

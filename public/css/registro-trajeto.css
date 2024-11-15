@@ -75,10 +75,33 @@
 
 .forms p {
     background-color: transparent;
-    margin-top: 10px;
 }
 
 .forms input {
+    margin-top: 15px;
+    padding: 10px 5px;
+    max-width: auto;
+    border-radius: 10px;
+    outline: none;
+    font-size: large;
+    width: 30vw;
+    border: none;
+    box-shadow: 5px 5px 5px #21432c1c;
+}
+
+.input-rua {
+    margin-top: 15px;
+    padding: 10px 5px;
+    max-width: auto;
+    border-radius: 10px;
+    outline: none;
+    font-size: large;
+    width: 30vw;
+    border: none;
+    box-shadow: 5px 5px 5px #21432c1c;
+}
+
+.input-veic {
     margin-bottom: 15px;
     padding: 10px 5px;
     max-width: auto;
@@ -106,11 +129,55 @@ button {
     cursor: pointer;
 }
 
+.box-3{
+    background-color: #ffff;
+    height: auto;
+    max-width: 400px;
+    margin-top: 20px;
+    margin-left: 30vw;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 2px solid #7ae09a;
+    box-shadow: 10px 10px 10px  #68696977;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    font-size: small;
+    line-height: 25px;
+    overflow-y: auto;
+    max-height: 100vh;
+    
+}
+
+.box-3 img{
+    max-height: 15px;
+    display: flex;
+    justify-self: right;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.forms img{
+    max-height: 20px;
+    max-width: 20px;
+    align-self: end;
+    cursor: pointer;
+}
+
 button:hover {
     background-color: #61ab63;
 }
 
 .registro-trajeto-title {
+    display: flex;
+    justify-content: end;
+    gap: 30%;
+    align-items: center;
+    font-size: x-small;
+}
+
+.registro-trajeto-title-veic {
     display: flex;
     justify-content: center;
     align-items: center;
