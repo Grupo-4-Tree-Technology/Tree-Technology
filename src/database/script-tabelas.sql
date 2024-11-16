@@ -73,10 +73,10 @@ FOREIGN KEY (fkEmpresa) REFERENCES empresa (id)
 
 CREATE TABLE IF NOT EXISTS veiculo (
 id			    INT NOT NULL UNIQUE AUTO_INCREMENT ,
-placa 		  VARCHAR(7) UNIQUE,
-modelo		  VARCHAR(45) NOT NULL,
+placa 		  	VARCHAR(7) UNIQUE,
+modelo		  	VARCHAR(45) NOT NULL,
 ano			    INT NOT NULL,
-fkEmpresa 	INT NOT NULL,
+fkEmpresa 		INT NOT NULL,
 
 PRIMARY KEY (id),
 FOREIGN KEY (fkEmpresa) REFERENCES empresa (id)
@@ -86,8 +86,10 @@ CREATE TABLE IF NOT EXISTS rota (
 id 				INT NOT NULL AUTO_INCREMENT,
 ponto_partida 	VARCHAR(100) NOT NULL,
 ponto_destino 	VARCHAR(100) NOT NULL,
+fkEmpresa 		INT NOT NULL,
 
-PRIMARY KEY (id)
+PRIMARY KEY (id),
+FOREIGN KEY (fkEmpresa) REFERENCES empresa (id)
 );
 
 CREATE TABLE IF NOT EXISTS trajeto (
@@ -148,3 +150,41 @@ INSERT INTO usuario
 VALUES
 ('Robson', '49123956846', 'robson@gmail.com', '123','1989-12-24', 'total', 'ativado', '2022-11-03', 1),
 ('Jair', '91723956168', 'jair.j@gmail.com', '321', '1999-02-04', 'total', 'ativado', '2015-01-11', 2);
+
+INSERT INTO empresa (razao_social, nome_fantasia, cnpj, cep) VALUES 
+('Empresa A', 'Nome Fantasia A', '11111111111111', '1222222'),
+('Empresa B', 'Nome Fantasia B', '21111111111111', '2222222'),
+('Empresa C', 'Nome Fantasia C', '31111111111111', '3222222');
+INSERT INTO veiculo (placa, modelo, ano, fkEmpresa) VALUES
+('ABC1234', 'Modelo X', 2020, 1),
+('DEF5678', 'Modelo Y', 2019, 1),
+('GHI9012', 'Modelo Z', 2021, 2),
+('MNO7890', 'Modelo V', 2020, 2),
+('JKL3456', 'Modelo W', 2022, 3);
+INSERT INTO rota (ponto_partida, ponto_destino, fkEmpresa) VALUES
+('São Paulo', 'Rio de Janeiro', 1),
+('Belo Horizonte', 'Brasília', 2),
+('Curitiba', 'Florianópolis', 2),
+('Porto Alegre', 'Caxias do Sul', 3),
+('Recife', 'Salvador', 1);
+INSERT INTO trajeto (fkRota, fkVeiculo) VALUES
+(1, 1),
+(1, 2),
+(2, 3),
+(3, 4),
+(4, 5),
+(5, 1);
+INSERT INTO rua_intermediaria (rua, ordem, fkRota) VALUES
+('Rua A', 1, 1),
+('Rua B', 2, 1),
+('Rua C', 3, 1),
+('Rua D', 1, 2),
+('Rua E', 2, 2),
+('Rua F', 1, 3),
+('Rua G', 2, 3),
+('Rua H', 3, 3),
+('Rua I', 1, 4),
+('Rua J', 2, 4),
+('Rua K', 1, 5),
+('Rua L', 2, 5);
+

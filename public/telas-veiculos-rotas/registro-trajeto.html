@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/registro-trajeto.css">
+    <script src="../js/cruds.js"></script>
     <title>Registro de Trajeto</title>
     <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
     
@@ -57,11 +58,13 @@
                     
                 </div>
                 <p>Placa</p>
-                <input type="text" class="input-veic" maxlength="7">
+                <input type="text" class="input-veic"  id="placa" maxlength="7">
                 <p>Modelo</p>
-                <input type="text" class="input-veic">
+                <input type="text" class="input-veic" id="modelo" >
                 <p>Ano</p>
-                <input type="text" class="input-veic" maxlength="4">
+                <input type="text" class="input-veic" id="anoVeiculo"  maxlength="4">
+                <span id="mensagemErro"></span>
+                <!-- <button onclick="cadastrarVeiculo()">AVANÇAR</button> -->
                 <button onclick="mostrarCadastroRotas()">AVANÇAR</button>
             </div>
         </div>
@@ -96,14 +99,15 @@
                     <img src="../assets/circle-help.png" alt="" onclick="instrucao()">
                 </div>
                 <p>Partida</p>
-                <input type="text" name="" class="input-rota">
+                <input type="text" name="" id="rua_inicial" class="input-rota">
                 
                 <div id="ruasIntermediarias" class="novoInput"></div>
                 <button id="adicionarRua">+ Adicionar Rua Intermediária</button>
 
                 <p>Destino</p>
-                <input type="text" name="" class="input-rota">
-                <button>Registrar</button>
+                <input type="text" name="" id="rua_final" class="input-rota">
+                <span id="mensagem"></span>
+                <button onclick="cadastrarRota()">Registrar</button>
             </div>
         </div>
     </main>
