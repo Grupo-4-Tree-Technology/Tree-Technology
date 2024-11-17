@@ -70,8 +70,8 @@
     box-shadow: 10px 10px 10px  #68696977;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
-
 
 .box-notificacoes {
     background-color: #F4F4F4;
@@ -92,6 +92,19 @@
     text-decoration: none;
 }
 
+.message{
+    padding: 20px 10px;
+    border-radius: 10px;
+    border-left: 10px solid #335135;
+    margin-bottom: 10px;
+    justify-content:center;
+    align-items: center;
+    background-color: #ffff;
+}
+
+
+
+
 
 /*TELA INFORMAÇÕES PESSOAIS*/
 
@@ -105,8 +118,7 @@
     border: 2px solid #7ae09a;
     box-shadow: 10px 10px 10px  #68696977;
     justify-content: center;
-    top: 40%;
-    justify-self: center;
+    align-items: center;
     flex-direction: column;
     position: fixed;
     
@@ -132,22 +144,36 @@
     border-radius: 10px;
 }
 
-#containerComScroll{
-    height: 150px; 
-    overflow-y: auto; 
-    margin-top: 8px;
-}
-
 .forms p{
     background-color: transparent;
     margin-top: 10px;
     
 }
 
+.paragrafoRua {
+    margin-left: -5%;
+    margin-bottom: 1%;
+    font-weight: 700;
+    font-size: large;
+}
+
+.input-ruas {
+    width: 98%;
+    height: 41%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: transparent;
+}
+
+.input-rua {
+    width: 30vw !important;
+    margin: 10px 5px;
+}
 
 .forms input, select{
     padding: 10px 5px;
-    max-width: auto;
+    /* max-width: auto; */
     border-radius: 10px;
     outline: none;
     font-size: large;
@@ -157,7 +183,7 @@
 }
 
 button{
-    margin-top: 10px;
+    margin: 10px;
     background-color: #77D17A;
     border: none;
     color: white;
@@ -215,7 +241,6 @@ button:hover{
 
 .text{
     display: flex;
-    
 }
 
 .title{
@@ -229,7 +254,7 @@ button:hover{
 .rota{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 40px;
     
 }
@@ -256,9 +281,9 @@ button:hover{
     display: flex;
     position: fixed;
     flex-direction: column;
-    margin-top: 80px;
-    margin-left: 60px;
-    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0px 10px 10px 10px;
     border: 2px solid #61ab63;
 }
 
@@ -416,5 +441,3 @@ button:hover{
 
     
 }
-
-
