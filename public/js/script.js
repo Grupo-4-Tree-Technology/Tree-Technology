@@ -29,6 +29,7 @@ var mensagem = document.querySelector("#mensagem");
 var mensagemErro = document.querySelector("#mensagemErro");
 
 function validarCadastroFunc() {
+    let fkEmpresa = sessionStorage.getItem("ID_EMPRESA");
 
     cpfFunc.value = limparCPF(cpfFunc.value);
 
@@ -67,7 +68,7 @@ function validarCadastroFunc() {
             dataContratacaoServer: dataContratacao.value
         }
 
-        fetch("/funcionario/cadastrar", {
+        fetch(`/funcionario/cadastrar/${fkEmpresa}`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
@@ -84,6 +85,10 @@ function validarCadastroFunc() {
                 // let contador = 5;
 
                 mensagem.innerHTML = "Cadastro realizado";
+
+                setTimeout(() => {
+                    window.location = "registroFuncionario.html";
+                }, 2000);
 
                 // div_error.innerHTML = `Cadastro realizado com sucesso! Recarregando a página em ${contador}...`;
                 // container.style.display = "flex";
@@ -117,7 +122,9 @@ function exibirMensagem(mensagem, tempo) {
 }
 
 function buscarFuncionarios() {
-    fetch("/funcionario/listar", {
+    let fkEmpresa = sessionStorage.getItem("ID_EMPRESA");
+
+    fetch(`/funcionario/listar/${fkEmpresa}`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
     })
@@ -150,7 +157,7 @@ function exibirFuncionariosNaTela(funcionarios) {
             </div>
             <div class="dots">
                 <img src="../assets/dots.png" alt="" onclick="abrirDots(${funcionario.id})">
-                <div class="options" id="options-${funcionario.id}" style="display:none; width: 300px;">
+                <div class="options" id="options-${funcionario.id}" style="display:none; width: 387px;">
                     <img src="../assets/close.jpeg" alt="" onclick="fecharDots(${funcionario.id})">
                     <button  class="button-delete" onclick="deletarFuncionario(${funcionario.id})" style="background-color:#f75050;">Deletar funcionário</button>
                     <button onclick="editarFuncionario(${funcionario.id})">Editar funcionário</button>
@@ -167,7 +174,11 @@ function exibirFuncionariosNaTela(funcionarios) {
     });
 }
 
+function editarFuncionario(id) {
+    sessionStorage.ID_FUNCIONARIO = id;
 
+    window.location = '../telas-veiculos-rotas/modificacao-funcionario.html'; 
+}
 
 function formatarData(dataBanco) {
     let data = new Date(dataBanco);
@@ -361,6 +372,8 @@ function validarLogin() {
                     sessionStorage.ID_USUARIO = json.response[0].id;
                     sessionStorage.EMAIL_USUARIO = json.response[0].email;
                     sessionStorage.ID_EMPRESA = json.response[0].idEmpresa;
+                    sessionStorage.PERMISSAO = json.response[0].permissao;
+                    sessionStorage.STATUS = json.response[0].status;
 
                     div_error.innerHTML = `Login realizado com sucesso!`;
                     container.style.display = "flex";

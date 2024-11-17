@@ -1,7 +1,9 @@
 var funcionarioModel = require("../models/funcionarioModel");
 
 function listar(req, res) {
-    funcionarioModel.listar().then(function (resultado) {
+    let fkEmpresa = req.params.fkEmpresa;
+
+    funcionarioModel.listar(fkEmpresa).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -37,6 +39,7 @@ function listar(req, res) {
 // }
 
 function cadastrar(req, res) {
+    var fkEmpresa = req.params.fkEmpresa;
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
 
     var nome = req.body.nomeServer;
@@ -67,10 +70,12 @@ function cadastrar(req, res) {
         res.status(400).send("Seu status está undefined!");
     } else if (dataContratacao == undefined) {
         res.status(400).send("Sua data de contratação está undefined!");
+    } else if (fkEmpresa == undefined) {
+        res.status(400).send("Sua fkEmpresa está undefined!");
     } else  {
 
         // Passe os valores como parâmetro e vá para o arquivo empresaModel.js
-        funcionarioModel.cadastrar(nome, cpfFunc, email, senha, dataNasc, permissao, statusFunc, dataContratacao)
+        funcionarioModel.cadastrar(nome, cpfFunc, email, senha, dataNasc, permissao, statusFunc, dataContratacao, fkEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);

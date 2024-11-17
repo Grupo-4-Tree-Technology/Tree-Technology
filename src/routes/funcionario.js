@@ -4,7 +4,7 @@
     var funcionarioController = require("../controllers/funcionarioController");
 
     //Recebendo os dados do html e direcionando para a função cadastrar de empresaController.js
-    router.post("/cadastrar", function (req, res) {
+    router.post("/cadastrar/:fkEmpresa", function (req, res) {
         funcionarioController.cadastrar(req, res);
     })
 
@@ -12,7 +12,7 @@
     //     empresaController.autenticar(req, res);
     // });
 
-    router.get("/listar", function (req, res) {
+    router.get("/listar/:fkEmpresa", function (req, res) {
         funcionarioController.listar(req, res);
     });
 
