@@ -205,7 +205,7 @@ function cadastrarTrajeto() {
         mensagem.innerHTML = "<p style='color: green;'>Trajeto registrado com sucesso!</p>";
 
         setTimeout(() => {
-            window.location = "registro-trajeto.html";
+            window.location = "lista-trajetos.html";
         }, 1500);
 
     }).catch(error => {

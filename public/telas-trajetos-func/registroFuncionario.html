@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styleTrajetoFunc.css">
     <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
-    <title>Registro funcionário</title>
+    <title>Registro de Funcionário</title>
 </head>
 
 <body>
@@ -30,7 +30,7 @@
                     <li><a href="lista-rotas.html">VISUALIZAR ROTAS</a></li>
                     <li><a href="lista-veiculo.html">VISUALIZAR VEÍCULOS</a></li>
                     <li><a href="lista-funcionario.html">VISUALIZAR FUNCIONÁRIOS</a></li>
-                    <li><a href="../index.html">SAIR</a></li>
+                    <li onclick="sairDaSessao()"><a href="../index.html">SAIR</a></li>
                 </ul>
             </nav>
         </div>
@@ -69,14 +69,14 @@
     
                     <p>Permissão</p>
                     <select name="" id="permissaoFunc" >
-                        <option value="total" >Total</option>
-                        <option value="leitura">Leitura</option>
+                        <option value="Total" >Total</option>
+                        <option value="Leitura">Leitura</option>
                     </select>
     
                     <p>Status</p>
                     <select name="" id="statusFunc" >
-                        <option value="ativado">Ativado</option>
-                        <option value="desativado">Desativado</option>
+                        <option value="Ativado">Ativado</option>
+                        <option value="Desativado">Desativado</option>
                     </select>
     
                     <p>Data de contratação</p>

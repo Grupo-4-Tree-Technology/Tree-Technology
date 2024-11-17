@@ -1,13 +1,13 @@
 function telaUser(){
-    window.location.href = "./info-pessoal.html";
+    window.location.href = "../telas-veiculos-rotas/atualizar-info.html";
 }
 
 function telaDash(){
-    window.location.href = "./dashboard.html";
+    window.location.href = "../telas-veiculos-rotas/dashboard.html";
 }
 
 function telaNotificação(){
-    window.location.href = "./notificacoes.html";
+    window.location.href = "../telas-veiculos-rotas/notificacoes.html";
 }
 
 function telaListaRota(){

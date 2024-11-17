@@ -87,7 +87,7 @@ function validarCadastroFunc() {
                 mensagem.innerHTML = "Cadastro realizado";
 
                 setTimeout(() => {
-                    window.location = "registroFuncionario.html";
+                    window.location = "lista-funcionario.html";
                 }, 2000);
 
                 // div_error.innerHTML = `Cadastro realizado com sucesso! Recarregando a página em ${contador}...`;
@@ -140,8 +140,6 @@ function buscarFuncionarios() {
 function exibirFuncionariosNaTela(funcionarios) {
     const listaFuncionarios = document.getElementById('scroll');
 
-    listaFuncionarios.innerHTML = '';
-
     funcionarios.forEach(funcionario => {
 
         const dataContratacaoFormatada = formatarData(funcionario.data_contratacao);
@@ -156,7 +154,7 @@ function exibirFuncionariosNaTela(funcionarios) {
                 <h4>Data de contratação</h4>
             </div>
             <div class="dots">
-                <img src="../assets/dots.png" alt="" onclick="abrirDots(${funcionario.id})">
+                <img src="../assets/dots.png" alt="" class="open-dots" onclick="abrirDots(${funcionario.id})">
                 <div class="options" id="options-${funcionario.id}" style="display:none; width: 387px;">
                     <img src="../assets/close.jpeg" alt="" onclick="fecharDots(${funcionario.id})">
                     <button  class="button-delete" onclick="deletarFuncionario(${funcionario.id})" style="background-color:#f75050;">Deletar funcionário</button>

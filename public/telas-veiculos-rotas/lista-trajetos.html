@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="../css/lista-trajetos.css">
     <title>Lista de Trajetos Cadastrados</title>
     <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
+    
     <script src="../js/cruds.js"></script>
+    <script src="../js/verificacaoSeguranca.js"></script>
 </head>
 
 <body onload="carregarTrajetos()">
@@ -30,7 +32,7 @@
                     <li><a href="dashboard.html">DASHBOARD</a></li>
                     <li><a href="lista-rotas.html">VISUALIZAR ROTAS</a></li>
                     <li><a href="lista-veiculo.html">VISUALIZAR VEÍCULOS</a></li>
-                    <li><a href="../index.html">SAIR</a></li>
+                    <li onclick="sairDaSessao()"><a href="../index.html">SAIR</a></li>
                 </ul>
             </nav>
         </div>
@@ -49,7 +51,6 @@
         <div class="box">
 
             <div id="scroll" style="overflow-y: auto; padding-top: 0.75em;">
-
             </div>
 
             <div style="display: flex; justify-content: center; align-items: center; width: 34vw;">

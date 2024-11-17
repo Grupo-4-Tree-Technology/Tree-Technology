@@ -26,8 +26,8 @@ fkEmpresa 			INT NOT NULL,
 
 PRIMARY KEY (id),
 FOREIGN KEY (fkEmpresa) REFERENCES empresa (id),
-CONSTRAINT CHECK (permissao IN ('total', 'leitura')),
-CONSTRAINT CHECK (status IN ('ativado', 'desativado'))
+CONSTRAINT CHECK (permissao IN ('Total', 'Leitura')),
+CONSTRAINT CHECK (status IN ('Ativado', 'Desativado'))
 );
 
 CREATE TABLE IF NOT EXISTS recomendacao (
@@ -149,8 +149,15 @@ VALUES
 INSERT INTO usuario
 (nome, cpf, email, senha, data_nascimento, permissao, status, data_contratacao, fkEmpresa)
 VALUES
-('Robson', '49123956846', 'robson@gmail.com', '123','1989-12-24', 'total', 'ativado', '2022-11-03', 1),
-('Jair', '91723956168', 'jair.j@gmail.com', '321', '1999-02-04', 'total', 'ativado', '2015-01-11', 2);
+('Robson', '49123956846', 'robson@gmail.com', '123','1995-01-12', 'Total', 'Ativado', '2024-11-03', 1),
+('Gabriel', '49123956841', 'gabriel@gmail.com', '123','1993-02-02', 'Leitura', 'Ativado', '2023-11-03', 1),
+('João', '49123956842', 'joao@gmail.com', '123','1991-09-21', 'Leitura', 'Desativado', '2022-11-03', 1),
+('Ronaldo', '49123956843', 'ronaldo@gmail.com', '123','2001-09-21', 'Total', 'Ativado', '2012-11-03', 1),
+
+('Jair', '91723956161', 'jair.j@gmail.com', '321', '1979-05-01', 'Total', 'Ativado', '2015-01-11', 2),
+('Angela', '91723956162', 'angela@gmail.com', '321', '2000-05-01', 'Total', 'Ativado', '2022-01-11', 2),
+('Alexandre', '91723956168', 'alexandre@gmail.com', '321', '1989-06-14', 'Leitura', 'Ativado', '2023-01-11', 2),
+('Edson', '91723956163', 'edson@gmail.com', '321', '1999-01-24', 'Leitura', 'Desativado', '2024-01-11', 2);
 
 INSERT INTO empresa (razao_social, nome_fantasia, cnpj, cep) VALUES 
 ('Empresa A', 'Nome Fantasia A', '11111111111111', '1222222'),
