@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/styleTrajetoFunc.css">
+    <link rel="stylesheet" href="./cadastro-rotas-veiculo.css">
     <title>Lista de Rotas Cadastradas</title>
     <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
 </head>
 
-<body onload="buscarFuncionarios()">
+<body>
     <div class="top-menu">
-
+        
         <div id="hamburguer">
             <img src="../assets/Group 23.png" style="width: 50%;">
         </div>
@@ -29,15 +29,14 @@
                     <li><a href="dashboard.html">DASHBOARD</a></li>
                     <li><a href="lista-rotas.html">VISUALIZAR ROTAS</a></li>
                     <li><a href="lista-veiculo.html">VISUALIZAR VEÍCULOS</a></li>
-                    <li><a href="lista-funcionario.html">VISUALIZAR FUNCIONÁRIOS</a></li>
+                    <li><a href="lista-veiculo.html">VISUALIZAR FUNCIONÁRIOS</a></li>
                     <li><a href="../index.html">SAIR</a></li>
                 </ul>
             </nav>
         </div>
 
-        <h1 >Funcionários cadastrados</h1>
-        
-        <div  class="overlay-menu" id="overlay-menu"></div>
+        <h1>Funcionários cadastrados</h1>
+        <div class="overlay-menu" id="overlay-menu"></div>
 
         <div class="icons">
             <img src="../assets/Bell.png" onclick="telaNotificação()">
@@ -47,24 +46,42 @@
     </div>
     <main class="container">
         <div class="box">
-            <div id="mensagem" style="align-self: center;"></div>
-            <div id="scroll" style="overflow-y: auto; ">
 
+            <div id="scroll" style="overflow-y: auto; padding-top: 0.75em;">
+                <div class="list-routes">
+                    <div class="text">
+                        <div class="title">
+                            <h4>ROBERTO</h4>
+                            <h4>Data de contratação</h4>
+                        </div>
+                        <div class="dots">
+                            <img src="../assets/dots.png" alt="" onclick="abrirDots()">
+                            <div class="options" style="display: none;" id="options">
+                                <img src="../assets/close.jpeg" alt="" onclick="fecharDots()">
+                                <button id="button-delete">Deletar funcionário</button>
+                                <button onclick="telaCadastroRota()">Editar funcionário</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rota">
+                        <p>Permissão: total | Status: Desativado</p>
+                        <p >24/07/2024</p>
+                    </div>
+                </div>
             </div>
-
-            <a href="registroFuncionario.html">
-                <button>Adicionar funcionário</button>
-            </a>
+            <div style="display: flex; justify-content: center; align-items: center; width: 34vw;">
+                <a href="registroFuncionario.html">
+                    <button>Adicionar funcionário</button>
+                </a>
+            </div>
         </div>
     </main>
 </body>
 
 <script src="../js/icons.js"></script>
-<script src="../js/script.js"></script>
 
 </html>
 <script>
-
     let hamburgu = document.getElementById('hamburguer');
     let menu = document.getElementById('menu-mobile');
     let overlay = document.getElementById('overlay-menu');
@@ -86,6 +103,4 @@
         menu.classList.remove('abrir-menu');
         overlay.style.display = 'none';
     });
-
-    
 </script>
