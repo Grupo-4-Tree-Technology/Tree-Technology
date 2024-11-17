@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./cadastro-rotas-veiculo.css">
+    <link rel="stylesheet" href="../css/styleTrajetoFunc.css">
     <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
     <title>Registro funcionário</title>
 </head>
@@ -29,7 +29,7 @@
                     <li><a href="dashboard.html">DASHBOARD</a></li>
                     <li><a href="lista-rotas.html">VISUALIZAR ROTAS</a></li>
                     <li><a href="lista-veiculo.html">VISUALIZAR VEÍCULOS</a></li>
-                    <li><a href="lista-veiculo.html">VISUALIZAR FUNCIONÁRIOS</a></li>
+                    <li><a href="lista-funcionario.html">VISUALIZAR FUNCIONÁRIOS</a></li>
                     <li><a href="../index.html">SAIR</a></li>
                 </ul>
             </nav>
@@ -45,48 +45,73 @@
         </div>
     </div>
     <main class="container">
-        <div class="forms">
+        <div class="forms" >
+            <div id="mensagem"></div>
             <div class="divisão">
                 <div class="coluna1">
 
                     <p>Nome</p>
-                    <input type="text" placeholder="Tree Technology Brasil Ltda.">
+                    <input type="text" placeholder="Tree Technology Brasil Ltda." id="nomeFunc">
     
                     <p>E-mail</p>
-                    <input type="text" placeholder="treeTechnology@gmail.com">
+                    <input type="text" placeholder="treeTechnology@gmail.com" id="emailFunc">
     
                     <p>Senha</p>
-                    <input type="password" placeholder="*******" maxlength="16">
+                    <input type="password" placeholder="*******" maxlength="16" id="senhaFunc">
     
                     <p>Data de Nascimento</p>
-                    <input type="text" placeholder="24/12/1989">
+                    <input type="date" placeholder="24/12/1989" id="dataNascFunc" >
     
                 </div>
                 <div class="coluna2">
                     <p>CPF</p>
-                    <input type="text" placeholder="000.000.000-00">
+                    <input type="text" placeholder="000.000.000-00" id="cpfFunc" onkeypress="mascaraCPF()">
     
                     <p>Permissão</p>
-                    <select name="" id="" >
+                    <select name="" id="permissaoFunc" >
                         <option value="total" >Total</option>
                         <option value="leitura">Leitura</option>
                     </select>
     
                     <p>Status</p>
-                    <select name="" id="" >
+                    <select name="" id="statusFunc" >
                         <option value="ativado">Ativado</option>
                         <option value="desativado">Desativado</option>
                     </select>
     
                     <p>Data de contratação</p>
-                    <input type="text" placeholder="03/11/2015">
+                    <input type="date" placeholder="03/11/2015" id="dataContratacaoFunc">
                 </div>
             </div>
         
-            <button>Registrar</button>
+            <button onclick="validarCadastroFunc()">Registrar</button>
         </div>
     </main>
-
+    <script src="../js/script.js"></script>
 </body>
+
+<script>
+    let hamburgu = document.getElementById('hamburguer');
+    let menu = document.getElementById('menu-mobile');
+    let overlay = document.getElementById('overlay-menu');
+    let btnFechar = document.querySelector('.btn-fechar');
+
+    hamburgu.addEventListener('click', () => {
+        menu.classList.add('abrir-menu')
+    })
+
+    menu.addEventListener('click', () => {
+        menu.classList.remove('abrir-menu')
+    })
+
+    overlay.addEventListener('click', () => {
+        menu.classList.remove('abrir-menu')
+    })
+
+    btnFechar.addEventListener('click', () => {
+        menu.classList.remove('abrir-menu');
+        overlay.style.display = 'none';
+    });
+</script>
 
 </html>
