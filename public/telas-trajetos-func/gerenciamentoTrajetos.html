@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/styleTrajetoFunc.css">
+    <link rel="stylesheet" href="./cadastro-rotas-veiculo.css">
     <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
+    <script src="../js/cruds.js"></script>
     <title>Gerenciamento de trajeto</title>
 </head>
 
-<body>
+<body onload="buscarInfoTrajeto()">
     <div class="top-menu">
 
         <div id="hamburguer">
@@ -35,7 +36,7 @@
             </nav>
         </div>
 
-        <h1>Gerenciamento de trajeto</h1>
+        <h1>Gerenciamento de Trajeto</h1>
         <div class="overlay-menu" id="overlay-menu"></div>
 
         <div class="icons">
@@ -50,30 +51,30 @@
                 <div class="coluna1" >
 
                     <p>Placa</p>
-                    <input type="text" style="margin-bottom: 60px;">
+                    <input type="text" id="placa" style="margin-bottom: 60px;" maxlength="7">
     
                     <p>Modelo</p>
-                    <input type="text" style="margin-bottom: 60px;">
+                    <input type="text" id="modelo" style="margin-bottom: 60px;">
     
                     <p>Ano</p>
-                    <input type="text">
+                    <input type="text" id="ano" maxlength="4">
     
                 </div>
                 <div class="coluna2" style="display: flex; flex-direction: column;">
-                    <p>Partida</p>
-                    <input type="text">
+                    <p>Ponto de Partida</p>
+                    <input type="text" id="ponto_partida" style="margin-bottom: 2.5em;">
 
-                    <button id="adicionarRua" style="font-size: medium;">+ Adicionar rua intermediária</button>
-                    <div id="containerComScroll" >
+                    <!-- <button id="adicionarRua" style="font-size: medium; visibility: hidden;">+ Adicionar rua intermediária</button> -->
+                    <div id="containerComScroll" style="height: 150px; overflow-y: auto; margin-top: 8px;">
                         <div id="ruasIntermediarias"></div>
                     </div>
     
-                    <p>Destino</p>
-                    <input type="text">
+                    <p>Ponto de Destino</p>
+                    <input type="text" id="ponto_destino">
                 </div>
             </div>
         
-            <button>Salvar</button>
+            <button onclick="atualizarVeiculo()">Salvar</button>
         </div>
     </main>
 
