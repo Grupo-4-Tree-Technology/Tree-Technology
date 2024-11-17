@@ -25,7 +25,19 @@ function pegarIdUltimaRota(fkEmpresa) {
     return database.executar(query);
 }
 
+function atualizarRota(ponto_partida, ponto_destino, idRota) {
+    console.log("ACESSEI O ROTA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function atualizarRota():", ponto_partida, ponto_destino, idRota);
+
+    var query = `UPDATE rota
+                SET ponto_partida = '${ponto_partida}', ponto_destino = '${ponto_destino}'
+                WHERE id = ${idRota};`;
+
+    console.log("Executando a instrução SQL: \n" + query);
+    return database.executar(query);
+}
+
 module.exports = {
     cadastrarRota,
-    pegarIdUltimaRota
+    pegarIdUltimaRota,
+    atualizarRota
 }

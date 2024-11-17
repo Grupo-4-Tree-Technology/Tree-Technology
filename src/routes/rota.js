@@ -11,4 +11,8 @@ router.get("/pegarIdUltimaRota/:fkEmpresa", function (req, res) {
     rotaController.pegarIdUltimaRota(req, res);
 })
 
+router.post("/atualizarRota/:idRota", function (req, res) {
+    rotaController.atualizarRota(req, res);
+})
+
 module.exports = router;

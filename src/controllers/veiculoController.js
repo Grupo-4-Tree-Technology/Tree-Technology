@@ -8,7 +8,7 @@ function cadastrarVeiculo(req, res) {
 
     console.log("ACESSEI O VEICULO CONTROLLER \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarVeiculo():", placa, modelo, ano, fkEmpresa);
 
-    console.log(req.body)
+    console.log("req.body: " + req.body)
 
     if (placa == undefined) {
         res.status(400).send("A placa está undefined!");
@@ -55,7 +55,41 @@ function pegarIdUltimoVeiculo(req, res) {
     }
 }
 
+function atualizarVeiculo(req, res) {
+    let placa = req.body.placa;
+    let modelo = req.body.modelo;
+    let ano = req.body.ano;
+
+    var idVeiculo = req.params.idVeiculo;
+
+    console.log("ACESSEI O VEICULO CONTROLLER \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function atualizarVeiculo():", idVeiculo);
+
+    if (placa == undefined) {
+        res.status(400).send("A placa está undefined!");
+    } else if (modelo == undefined) {
+        res.status(400).send("O modelo está undefined!");
+    } else if (ano == undefined) {
+        res.status(400).send("O ano está undefined!");
+    } else if (idVeiculo == undefined) {
+        res.status(400).send("O idVeiculo está undefined!");
+    } else {
+        veiculoModel.atualizarVeiculo(placa, modelo, ano, idVeiculo)
+            .then(function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        )
+    }
+}
+
 module.exports = {
     cadastrarVeiculo,
-    pegarIdUltimoVeiculo
+    pegarIdUltimoVeiculo,
+    atualizarVeiculo
 }

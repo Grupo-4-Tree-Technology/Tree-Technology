@@ -12,4 +12,8 @@ router.get("/pegarIdUltimoVeiculo/:fkEmpresa", function (req, res) {
     veiculoController.pegarIdUltimoVeiculo(req, res);
 })
 
+router.post("/atualizarVeiculo/:idVeiculo", function (req, res) {
+    veiculoController.atualizarVeiculo(req, res);
+})
+
 module.exports = router;

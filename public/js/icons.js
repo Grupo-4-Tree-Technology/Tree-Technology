@@ -18,8 +18,23 @@ function telaListaVeiculo(){
     window.location.href = "./lista-veiculo.html";
 }
 
-function telaCadastroRota(){
-    window.location.href = "./cadastro-rota.html";
+function telaCadastroRota(button){
+
+    // Encontro a div mais próxima com a classe "list-routes"
+    var parentDiv = button.closest(".list-routes");
+
+    if (parentDiv) {
+        // Obtenho o atributo data-setIdTrajeto e transformo em INTEIRO!
+        var dataSetNumber = parseInt(parentDiv.getAttribute("data-setIdTrajeto"), 10);
+        console.log(`ID Trajeto selecionado: ${dataSetNumber}`);
+
+        // Estou inserindo o ID do trajeto no sessionStorage
+        sessionStorage.ID_TRAJETO = dataSetNumber;
+        window.location.href = "../telas-trajetos-func/gerenciamentoTrajetos.html";
+    } else {
+        console.error("Não foi possível encontrar o trajeto associado.");
+    }
+
 }
 
 function mensagemConfirmar() {
@@ -91,8 +106,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
-function removerRua(id) {
-    var ruaParaRemover = document.getElementById(id);
-    ruaParaRemover.remove();
-}

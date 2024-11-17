@@ -93,10 +93,11 @@ FOREIGN KEY (fkEmpresa) REFERENCES empresa (id)
 );
 
 CREATE TABLE IF NOT EXISTS trajeto (
+id 				INT NOT NULL AUTO_INCREMENT,
 fkRota 			INT NOT NULL,
 fkVeiculo 		INT NOT NULL,
 
-PRIMARY KEY (fkRota, fkVeiculo),
+PRIMARY KEY (id, fkRota, fkVeiculo),
 FOREIGN KEY (fkRota) REFERENCES rota (id),
 FOREIGN KEY (fkVeiculo) REFERENCES veiculo (id)
 );

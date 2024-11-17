@@ -8,4 +8,12 @@ router.post("/cadastrarRua/:fkRota", function (req, res) {
     ruaController.cadastrarRua(req, res);
 })
 
+router.post("/deletarRua/:idRua", function (req, res) {
+    ruaController.deletarRua(req, res);
+})
+
+router.post("/atualizarRua/:idRuaAtualizado", function (req, res) {
+    ruaController.atualizarRua(req, res);
+})
+
 module.exports = router;
