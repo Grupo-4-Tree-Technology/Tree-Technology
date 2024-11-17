@@ -62,7 +62,7 @@
 
 .box{
     background-color: #F4F4F4;
-    height: auto;
+    height: 400px;
     width: auto;
     margin-top: 20px;
     padding: 10px 20px;
@@ -70,6 +70,7 @@
     box-shadow: 10px 10px 10px  #68696977;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .box-notificacoes {
@@ -149,10 +150,30 @@
     
 }
 
+.paragrafoRua {
+    margin-left: -5%;
+    margin-bottom: 1%;
+    font-weight: 700;
+    font-size: large;
+}
+
+.input-ruas {
+    width: 98%;
+    height: 41%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: transparent;
+}
+
+.input-rua {
+    width: 30vw !important;
+    margin: 10px 5px;
+}
 
 .forms input, select{
     padding: 10px 5px;
-    max-width: auto;
+    /* max-width: auto; */
     border-radius: 10px;
     outline: none;
     font-size: large;
@@ -162,7 +183,7 @@
 }
 
 button{
-    margin-top: 10px;
+    margin: 10px;
     background-color: #77D17A;
     border: none;
     color: white;
@@ -233,7 +254,7 @@ button:hover{
 .rota{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 40px;
     
 }

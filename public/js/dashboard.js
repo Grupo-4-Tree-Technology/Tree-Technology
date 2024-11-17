@@ -133,10 +133,6 @@ function openSelectWithImages() {
     }
 }
 
-/*function irParaTelaRota() {
-    window.location = 'lista-rotas.html';
-}*/
-
 function obterFasesDoDia() {
 
     fetch(`/dashboardCrud/obterFasesDoDia`, { cache: 'no-store' })

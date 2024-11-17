@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/lista-trajetos.css">
-    <title>Lista de Rotas Cadastradas</title>
+    <title>Lista de Trajetos Cadastrados</title>
     <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
+    <script src="../js/cruds.js"></script>
 </head>
 
-<body>
+<body onload="carregarTrajetos()">
     <div class="top-menu">
-        
+
         <div id="hamburguer">
             <img src="../assets/Group 23.png" style="width: 50%;">
         </div>
@@ -43,39 +44,19 @@
         </div>
     </div>
     <main class="container">
-        <h1>Trajetos cadastrados</h1>
+        <h1>Trajetos Cadastrados</h1>
 
         <div class="box">
 
-            <div class="list-routes">
+            <div id="scroll" style="overflow-y: auto; padding-top: 0.75em;">
 
-                <div class="text">
-                    <div class="title">
-                        <h4>Rota (Início - Fim)</h4>
-                        <h4>Placa</h4>
-
-                    </div>
-
-                    <div class="dots">
-                        <img src="../assets/dots.png" alt="" onclick="abrirDots()">
-                        <div class="options" style="display: none;" id="options">
-                            <img src="../assets/close.jpeg" alt="" onclick="fecharDots()">
-                            <button id="button-delete">Deletar Trajeto</button>
-                            <button onclick="telaCadastroRota()">Editar Trajeto</button>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="rota">
-                    <p>Rua Gomes de Carvalho - Rua Funchal</p>
-                    
-                    <p class="placa">AVCD256</p>
-                </div>
             </div>
-            <a href="registro-trajeto.html">
-                <button>Adicionar Trajeto</button>
-            </a>
+
+            <div style="display: flex; justify-content: center; align-items: center; width: 34vw;">
+                <a href="registro-trajeto.html">
+                    <button>Adicionar Trajeto</button>
+                </a>
+            </div>
         </div>
     </main>
 </body>
@@ -105,4 +86,30 @@
         menu.classList.remove('abrir-menu');
         overlay.style.display = 'none';
     });
+
+    document.addEventListener('click', (event) => {
+        
+    // Abrir o menu de opções associado ao botão "dots"
+    if (event.target.classList.contains('open-dots')) {
+        const dots = event.target; // Botão dots clicado
+        const options = dots.closest('.dots').querySelector('.options'); // Menu associado
+
+        // Calcula a posição do botão clicado
+        const rect = dots.getBoundingClientRect();
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
+
+        // Define dinamicamente a posição do menu
+        options.style.top = `${rect.top + rect.height + scrollTop}px`; // Abaixo do botão
+        options.style.left = `${rect.left + scrollLeft}px`; // Alinhado à esquerda do botão
+        options.style.display = 'flex'; // Mostra o menu
+    }
+
+    // Fechar o menu de opções associado ao botão "close"
+    if (event.target.classList.contains('close-dots')) {
+        const options = event.target.closest('.options'); // Menu associado
+        options.style.display = 'none'; // Oculta o menu
+    }
+});
+
 </script>
