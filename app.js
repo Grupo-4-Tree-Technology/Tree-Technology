@@ -21,7 +21,8 @@ var HOST_APP = process.env.APP_HOST;
 var app = express();
 
 var empresaRouter = require("./src/routes/empresa");
-
+var usuarioRouter = require("./src/routes/usuario");
+var modificacaoRouter = require("./src/routes/modificacao");
 // Criação da data e hora atual para enviar no e-mail:
 
 const now = new Date();
@@ -46,6 +47,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cors());
 app.use("/empresa", empresaRouter);
+app.use("/usuario", usuarioRouter);
+app.use("/modificacao", modificacaoRouter);
 
 function formataDataHora() {
     const now = new Date();

@@ -1,5 +1,5 @@
 function telaUser(){
-    window.location.href = "./info-pessoal.html";
+    window.location.href = "./atualizar-info.html";
 }
 
 function telaDash(){
