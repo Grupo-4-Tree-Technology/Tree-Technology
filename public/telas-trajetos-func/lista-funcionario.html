@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styleTrajetoFunc.css">
+    <title>Lista de Funcionários Cadastrados</title>
+    <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
+
+    <script src="../js/verificacaoSeguranca.js"></script>
+</head>
+
+<body onload="buscarFuncionarios()">
+    <div class="top-menu">
+
+        <div id="hamburguer">
+            <img src="../assets/Group 23.png" style="width: 50%;">
+        </div>
+        <div class="btn-abrir-menu" id="btn-menu">
+            <i class="bi bi-list"></i>
+        </div>
+
+        <div class="menu-mobile" id="menu-mobile">
+            <div class="btn-fechar">
+                <i class="bi bi-x-lg"></i>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="../telas-veiculos-rotas/dashboard.html">DASHBOARD</a></li>
+                    <li><a href="../telas-veiculos-rotas/lista-trajetos.html">VISUALIZAR TRAJETOS</a></li>
+                    <li><a href="lista-funcionario.html">VISUALIZAR FUNCIONÁRIOS</a></li>
+                    <li onclick="sairDaSessao()"><a href="../index.html">SAIR</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <h1 >Funcionários cadastrados</h1>
+        
+        <div  class="overlay-menu" id="overlay-menu"></div>
+
+        <div class="icons">
+            <img src="../assets/Bell.png" onclick="telaNotificação()">
+            <img src="../assets/Icon.png" id="user" onclick="telaUser()">
+            <img src="../assets/icon dashboard.png" id="dash" onclick="telaDash()">
+        </div>
+    </div>
+    <main class="container">
+        <div class="box">
+            <div id="mensagem" style="align-self: center;"></div>
+            <div id="scroll" style="overflow-y: auto;">
+                
+            </div>
+
+            <a href="registroFuncionario.html">
+                <button>Adicionar funcionário</button>
+            </a>
+        </div>
+    </main>
+</body>
+
+<script src="../js/icons.js"></script>
+<script src="../js/script.js"></script>
+
+</html>
+<script>
+
+    let hamburgu = document.getElementById('hamburguer');
+    let menu = document.getElementById('menu-mobile');
+    let overlay = document.getElementById('overlay-menu');
+    let btnFechar = document.querySelector('.btn-fechar');
+
+    hamburgu.addEventListener('click', () => {
+        menu.classList.add('abrir-menu')
+    })
+
+    menu.addEventListener('click', () => {
+        menu.classList.remove('abrir-menu')
+    })
+
+    overlay.addEventListener('click', () => {
+        menu.classList.remove('abrir-menu')
+    })
+
+    btnFechar.addEventListener('click', () => {
+        menu.classList.remove('abrir-menu');
+        overlay.style.display = 'none';
+    });
+
+    document.addEventListener('click', (event) => {
+        
+        // Abrir o menu de opções associado ao botão "dots"
+        if (event.target.classList.contains('open-dots')) {
+            const dots = event.target; // Botão dots clicado
+            const options = dots.closest('.dots').querySelector('.options'); // Menu associado
+    
+            // Calcula a posição do botão clicado
+            const rect = dots.getBoundingClientRect();
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
+    
+            // Define dinamicamente a posição do menu
+            options.style.top = `${rect.top + rect.height + scrollTop}px`; // Abaixo do botão
+            options.style.left = `${rect.left + scrollLeft}px`; // Alinhado à esquerda do botão
+            options.style.display = 'flex'; // Mostra o menu
+        }
+    
+        // Fechar o menu de opções associado ao botão "close"
+        if (event.target.classList.contains('close-dots')) {
+            const options = event.target.closest('.options'); // Menu associado
+            options.style.display = 'none'; // Oculta o menu
+        }
+    });
+</script>

@@ -20,9 +20,34 @@ var HOST_APP = process.env.APP_HOST;
 
 var app = express();
 
+var dashboardRouter = require("./src/routes/dashboardCrud");
 var empresaRouter = require("./src/routes/empresa");
+var trajetoRouter = require("./src/routes/trajeto");
+var veiculoRouter = require("./src/routes/veiculo");
+var rotaRouter = require("./src/routes/rota");
+var ruaRouter = require("./src/routes/rua");
+var funcionarioRouter = require("./src/routes/funcionario");
 var usuarioRouter = require("./src/routes/usuario");
 var modificacaoRouter = require("./src/routes/modificacao");
+
+app.use(bodyParser.json());
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, "public")));
+
+app.use(cors());
+
+app.use("/empresa", empresaRouter);
+app.use("/dashboardCrud", dashboardRouter);
+app.use("/trajeto", trajetoRouter);
+app.use("/veiculo", veiculoRouter);
+app.use("/rota", rotaRouter);
+app.use("/rua", ruaRouter);
+app.use("/funcionario", funcionarioRouter);
+app.use("/usuario", usuarioRouter);
+app.use("/modificacao", modificacaoRouter);
+
 // Criação da data e hora atual para enviar no e-mail:
 
 const now = new Date();
@@ -38,17 +63,6 @@ const dia = doisDigitos(now.getDate());
 
 // Formatar para DD-MM-YYYY
 const dataAtual = `${dia}-${mes}-${ano}`;
-
-app.use(bodyParser.json());
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "public")));
-
-app.use(cors());
-app.use("/empresa", empresaRouter);
-app.use("/usuario", usuarioRouter);
-app.use("/modificacao", modificacaoRouter);
 
 function formataDataHora() {
     const now = new Date();

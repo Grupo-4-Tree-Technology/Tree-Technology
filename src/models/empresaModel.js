@@ -3,7 +3,7 @@ var database = require("../database/config")
 function autenticar(email, senha) {
 
     var instrucaoSql = `
-        SELECT u.id, u.email, u.senha, emp.id as idEmpresa
+        SELECT u.id, u.email, u.senha, emp.id as idEmpresa, u.permissao, u.status
         FROM usuario as u
         INNER JOIN empresa as emp
         ON u.fkEmpresa = emp.id

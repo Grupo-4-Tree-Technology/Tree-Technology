@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/cadastro-rotas-veiculo.css">
-    <title>Lista de Rotas Cadastradas</title>
+    <link rel="stylesheet" href="../css/styleTrajetoFunc.css">
     <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
+    <script src="../js/cruds.js"></script>
+    <title>Gerenciamento de trajeto</title>
 </head>
 
-<body>
+<body onload="buscarInfoTrajeto()">
     <div class="top-menu">
-        
+
         <div id="hamburguer">
             <img src="../assets/Group 23.png" style="width: 50%;">
         </div>
@@ -27,13 +28,14 @@
             <nav>
                 <ul>
                     <li><a href="dashboard.html">DASHBOARD</a></li>
-                    <li><a href="lista-rotas.html">VISUALIZAR ROTAS</a></li>
-                    <li><a href="lista-veiculo.html">VISUALIZAR VEÍCULOS</a></li>
-                    <li><a href="../index.html">SAIR</a></li>
+                    <li><a href="../telas-veiculos-rotas/lista-trajetos.html">VISUALIZAR TRAJETOS</a></li>
+                    <li><a href="lista-veiculo.html">VISUALIZAR FUNCIONÁRIOS</a></li>
+                    <li onclick="sairDaSessao()"><a href="../index.html">SAIR</a></li>
                 </ul>
             </nav>
         </div>
 
+        <h1>Gerenciamento de Trajeto</h1>
         <div class="overlay-menu" id="overlay-menu"></div>
 
         <div class="icons">
@@ -43,45 +45,42 @@
         </div>
     </div>
     <main class="container">
-        <h1>Rotas cadastradas</h1>
+        <div class="forms">
+            <div class="divisão">
+                <div class="coluna1" >
 
-        <div class="box">
-
-            <div class="list-routes">
-
-                <div class="text">
-                    <div class="title">
-                        <h4>Rota</h4>
-                        <h4>Placa</h4>
-
-                    </div>
-
-                    <div class="dots">
-                        <img src="../assets/dots.png" alt="" onclick="abrirDots()">
-                        <div class="options" style="display: none;" id="options">
-                            <img src="../assets/close.jpeg" alt="" onclick="fecharDots()">
-                            <button id="button-delete">Deletar rota</button>
-                            <button onclick="telaCadastroRota()">Editar rota</button>
-                        </div>
-
-                    </div>
+                    <p>Placa</p>
+                    <input type="text" id="placa" style="margin-bottom: 60px;" maxlength="7">
+    
+                    <p>Modelo</p>
+                    <input type="text" id="modelo" style="margin-bottom: 60px;">
+    
+                    <p>Ano</p>
+                    <input type="text" id="ano" maxlength="4">
+    
                 </div>
+                <div class="coluna2" style="display: flex; flex-direction: column;">
+                    <p>Ponto de Partida</p>
+                    <input type="text" id="ponto_partida" style="margin-bottom: 2.5em;">
 
-                <div class="rota">
-                    <p>Rua Gomes de Carvalho - Rua Funchal</p>
-                    <p class="placa">AVCD256</p>
+                    <!-- <button id="adicionarRua" style="font-size: medium; visibility: hidden;">+ Adicionar rua intermediária</button> -->
+                    <div id="containerComScroll" style="height: 150px; overflow-y: auto; margin-top: 8px;">
+                        <div id="ruasIntermediarias"></div>
+                    </div>
+    
+                    <p>Ponto de Destino</p>
+                    <input type="text" id="ponto_destino">
                 </div>
             </div>
-            <a href="cadastro-rota.html">
-                <button>Adicionar Rota</button>
-            </a>
+        
+            <button onclick="atualizarVeiculo()">Salvar</button>
         </div>
     </main>
+
 </body>
-
 <script src="../js/icons.js"></script>
-
 </html>
+
 <script>
     let hamburgu = document.getElementById('hamburguer');
     let menu = document.getElementById('menu-mobile');

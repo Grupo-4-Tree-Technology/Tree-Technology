@@ -1,13 +1,13 @@
 function telaUser(){
-    window.location.href = "./atualizar-info.html";
+   window.location.href = "./atualizar-info.html";
 }
 
 function telaDash(){
-    window.location.href = "./dashboard.html";
+    window.location.href = "../telas-veiculos-rotas/dashboard.html";
 }
 
 function telaNotificação(){
-    window.location.href = "./notificacoes.html";
+    window.location.href = "../telas-veiculos-rotas/notificacoes.html";
 }
 
 function telaListaRota(){
@@ -18,8 +18,23 @@ function telaListaVeiculo(){
     window.location.href = "./lista-veiculo.html";
 }
 
-function telaCadastroRota(){
-    window.location.href = "./cadastro-rota.html";
+function telaCadastroRota(button){
+
+    // Encontro a div mais próxima com a classe "list-routes"
+    var parentDiv = button.closest(".list-routes");
+
+    if (parentDiv) {
+        // Obtenho o atributo data-setIdTrajeto e transformo em INTEIRO!
+        var dataSetNumber = parseInt(parentDiv.getAttribute("data-setIdTrajeto"), 10);
+        console.log(`ID Trajeto selecionado: ${dataSetNumber}`);
+
+        // Estou inserindo o ID do trajeto no sessionStorage
+        sessionStorage.ID_TRAJETO = dataSetNumber;
+        window.location.href = "../telas-trajetos-func/gerenciamentoTrajetos.html";
+    } else {
+        console.error("Não foi possível encontrar o trajeto associado.");
+    }
+
 }
 
 function mensagemConfirmar() {
@@ -58,8 +73,6 @@ function fecharDots(){
 
 
 
-
-
 document.addEventListener('DOMContentLoaded', function() {
     var addRua = document.getElementById('adicionarRua');
     var ruasIntermediarias = document.getElementById('ruasIntermediarias');
@@ -76,11 +89,15 @@ document.addEventListener('DOMContentLoaded', function() {
         novoInput.setAttribute('name', 'ruaIntermediaria');
         novoInput.setAttribute('placeholder', 'Digite a rua intermediária');
         novoInput.setAttribute('id', 'inputRua' + contadorRua);
+        novoInput.setAttribute('class', 'input-rua');
         
-        var btnRemoverRua = document.createElement('button');
-        btnRemoverRua.setAttribute('type', 'button');
+        var btnRemoverRua = document.createElement('p');
+        btnRemoverRua.setAttribute('type', 'p');
         btnRemoverRua.innerText = 'Remover';
+        btnRemoverRua.style.color = 'red';
+        btnRemoverRua.style.cursor = 'pointer';
         btnRemoverRua.setAttribute('onclick', 'removerRua("rua' + contadorRua + '")');
+
 
         ruaDiv.appendChild(novoInput);
         ruaDiv.appendChild(btnRemoverRua);
@@ -89,8 +106,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
-function removerRua(id) {
-    var ruaParaRemover = document.getElementById(id);
-    ruaParaRemover.remove();
-}
