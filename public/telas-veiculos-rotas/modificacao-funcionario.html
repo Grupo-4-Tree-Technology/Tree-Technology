@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="../css/modificacao-funcionario.css">
     <title>Funcionários | Modificação</title>
     <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
+
+    <script src="../js/verificacaoSeguranca.js"></script>
 </head>
 
-<body onload="buscarUsuario()">
+<body onload="buscarUsuario(), verificarPermissao()">
 
     <div class="top-menu">
         <div id="hamburguer">
@@ -27,8 +29,8 @@
             <nav>
                 <ul>
                     <li><a href="dashboard.html">DASHBOARD</a></li>
-                    <li><a href="lista-rotas.html">VISUALIZAR ROTAS</a></li>
-                    <li><a href="lista-veiculo.html">VISUALIZAR VEÍCULOS</a></li>
+                    <li><a href="lista-trajetos.html">VISUALIZAR TRAJETOS</a></li>
+                    <li id="item-func"><a href="../telas-trajetos-func/lista-funcionario.html">VISUALIZAR FUNCIONÁRIOS</a></li>
                     <li><a href="../index.html">SAIR</a></li>
                 </ul>
             </nav>
@@ -73,22 +75,22 @@
                     <p>Permissão</p>
                     <select style="width: 30.7vw;" id="permissao">
                         <option value=""></option>
-                        <option value="">Total</option>
-                        <option value="">Leitura</option>
+                        <option value="Total">Total</option>
+                        <option value="Leitura">Leitura</option>
                     </select>
 
                     <p>Status</p>
-                    <select style="width: 30.7vw;" name="" id="">
+                    <select style="width: 30.7vw;" name="" id="status">
                         <option value=""></option>
-                        <option value="">Ativado</option>
-                        <option value="">Desativado</option>
+                        <option value="Ativado">Ativado</option>
+                        <option value="Desativado">Desativado</option>
                     </select>
 
                     <p>Data de contratação</p>
                     <input type="text" id="data2" oninput="mascaraData2()" required>
                 </forms>
             </div>
-            <button id="adicionar" onclick="salvarMudancas">Salvar mudanças</button>
+            <button id="adicionar" onclick="salvarMudancas()">Salvar mudanças</button>
             <span style="cursor: pointer; color: #f75050; font-weight: 800; align-self: end;"
                 onclick="mensagemConfirmar()">Deletar
                 conta</span>

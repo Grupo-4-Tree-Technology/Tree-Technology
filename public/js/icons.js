@@ -2,6 +2,10 @@ function telaUser(){
    window.location.href = "./atualizar-info.html";
 }
 
+function telaUser2(){
+   window.location.href = "../telas-veiculos-rotas/atualizar-info.html";
+}
+
 function telaDash(){
     window.location.href = "../telas-veiculos-rotas/dashboard.html";
 }

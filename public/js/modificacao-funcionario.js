@@ -34,18 +34,36 @@ function buscarUsuario() {
         .replace(/(\d{3})(\d)/, '$1.$2')
         .replace(/(\d{3})(\d)/, '$1-$2')
         .replace(/(-\d{2})\d+?$/, '$1')
+
+        let dtNascFormatada = formatarData(data[0].data_nascimento);
+        let dtContratFormatada = formatarData(data[0].data_contratacao);
+
         // Preenchendo os campos com os dados recebidos
         nome.value = data[0].nome;
         email.value = data[0].email;
         cpfInput.value = cpfMascarado;
-        dataNasc.value = data[0].dataNasc;
+        dataNasc.value = dtNascFormatada;
         permissao.value = data[0].permissao;
         status.value = data[0].status;
-        dataContratacao.value = data[0].dataContratacao;
+        dataContratacao.value = dtContratFormatada;
     })
     .catch(error => {
         console.error(error);
     });
+}
+
+function formatarData(data) {
+    data = data.substring(0, 10).replaceAll("-", "/");
+    const [ano, mes, dia] = data.split("/");
+
+    return `${dia}/${mes}/${ano}`;
+}
+
+function formatarData2(data) {
+    data = data.substring(0, 10).replaceAll("/", "-");
+    const [dia, mes, ano] = data.split("-");
+
+    return `${ano}-${mes}-${dia}`;
 }
 
 function salvarMudancas(){
@@ -64,18 +82,21 @@ function salvarMudancas(){
     let status = document.querySelector("#status");
     let dataContratacao = document.querySelector("#data2");
 
+    cpf = cpf.value.replaceAll(".", "");
+    cpf = cpf.replaceAll("-", "");
+
     // Configura o fetch para enviar os dados via PUT
     fetch(`/modificacao/atualizarFuncionario/${idFuncionario}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-            nome: nome,
-            email: email,
+            nome: nome.value,
+            email: email.value,
             cpf: cpf,
-            dataNasc: dataNasc,
-            permissao: permissao,
-            status: status,             
-            dataContratacao: dataContratacao
+            dataNasc: formatarData2(dataNasc.value),
+            permissao: permissao.value,
+            status: status.value,             
+            dataContratacao: formatarData2(dataContratacao.value)
         })
     })
     .then(response => {
@@ -116,8 +137,7 @@ function deletarConta(){
         })
         .then(data => {
             console.log(data.mensagem);
-            sessionStorage.clear(); // Limpa os dados do usuário
-            window.location.href = "../index.html"; // Redireciona para a página inicial
+            window.location.href = "../telas-trajetos-func/lista-funcionario.html"; // Redireciona para a página lista-funcionario.html
 
         })
         .catch(error => {

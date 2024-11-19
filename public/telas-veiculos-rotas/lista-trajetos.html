@@ -12,7 +12,7 @@
     <script src="../js/verificacaoSeguranca.js"></script>
 </head>
 
-<body onload="carregarTrajetos()">
+<body onload="carregarTrajetos(), verificarPermissao()">
     <div class="top-menu">
 
         <div id="hamburguer">
@@ -30,8 +30,8 @@
             <nav>
                 <ul>
                     <li><a href="dashboard.html">DASHBOARD</a></li>
-                    <li><a href="lista-rotas.html">VISUALIZAR ROTAS</a></li>
-                    <li><a href="lista-veiculo.html">VISUALIZAR VEÍCULOS</a></li>
+                    <li><a href="lista-trajetos.html">VISUALIZAR TRAJETOS</a></li>
+                    <li id="item-func"><a href="../telas-trajetos-func/lista-funcionario.html">VISUALIZAR FUNCIONÁRIOS</a></li>
                     <li onclick="sairDaSessao()"><a href="../index.html">SAIR</a></li>
                 </ul>
             </nav>
