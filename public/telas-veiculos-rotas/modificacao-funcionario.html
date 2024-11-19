@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
 </head>
 
-<body>
+<body onload="buscarUsuario()">
 
     <div class="top-menu">
         <div id="hamburguer">
@@ -53,10 +53,10 @@
                 <forms class="forms">
 
                     <p>Nome</p>
-                    <input type="text" name="" id="" required>
+                    <input type="text" name="" id="nome" required>
 
                     <p>E-mail</p>
-                    <input type="email" name="" id="" required>
+                    <input type="email" name="" id="email" required>
 
                     <p>Senha</p>
                     <button onclick="redirecionarRedefinir()" id="redefinir">CLIQUE AQUI PARA REDEFINIR</button>
@@ -71,7 +71,7 @@
                     <input type="text" id="cpf" oninput="mascaraCPF()" required>
 
                     <p>Permissão</p>
-                    <select style="width: 30.7vw;" name="" id="">
+                    <select style="width: 30.7vw;" id="permissao">
                         <option value=""></option>
                         <option value="">Total</option>
                         <option value="">Leitura</option>
@@ -88,14 +88,14 @@
                     <input type="text" id="data2" oninput="mascaraData2()" required>
                 </forms>
             </div>
-            <button id="adicionar">Salvar mudanças</button>
+            <button id="adicionar" onclick="salvarMudancas">Salvar mudanças</button>
             <span style="cursor: pointer; color: #f75050; font-weight: 800; align-self: end;"
                 onclick="mensagemConfirmar()">Deletar
                 conta</span>
             <div class="box-2" id="confirmarcao" style="display: none;">
                 <span>Tem certeza que deseja excluir sua conta?</span>
                 <div>
-                    <button id="adicionar" style="background-color: #f75050;">Deletar conta</button>
+                    <button id="adicionar" style="background-color: #f75050;" onclick="deletarConta()">Deletar conta</button>
                     <button id="adicionar" onclick="cancelarMensagem()">Cancelar</button>
                 </div>
             </div>
@@ -104,6 +104,7 @@
 </body>
 
 <script src="../js/icons.js"></script>
+<script src="../js/modificacao-funcionario.js"></script>
 
 </html>
 <script>

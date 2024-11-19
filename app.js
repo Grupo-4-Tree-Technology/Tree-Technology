@@ -27,6 +27,8 @@ var veiculoRouter = require("./src/routes/veiculo");
 var rotaRouter = require("./src/routes/rota");
 var ruaRouter = require("./src/routes/rua");
 var funcionarioRouter = require("./src/routes/funcionario");
+var usuarioRouter = require("./src/routes/usuario");
+var modificacaoRouter = require("./src/routes/modificacao");
 
 app.use(bodyParser.json());
 
@@ -43,6 +45,8 @@ app.use("/veiculo", veiculoRouter);
 app.use("/rota", rotaRouter);
 app.use("/rua", ruaRouter);
 app.use("/funcionario", funcionarioRouter);
+app.use("/usuario", usuarioRouter);
+app.use("/modificacao", modificacaoRouter);
 
 // Criação da data e hora atual para enviar no e-mail:
 

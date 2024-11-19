@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
 </head>
 
-<body>
+<body onload="buscaUsuario()">
 
     <div class="top-menu">
         <div id="hamburguer">
@@ -53,19 +53,19 @@
                 <forms class="forms">
 
                     <p>Nome</p>
-                    <input type="text" name="" id="" required>
+                    <input type="text" name="" id="nome" required>
 
                     <p>CPF</p>
                     <input style="background-color: #BBBB; cursor: not-allowed;" type="text" id="cpf"
                         oninput="mascaraCPF()" disabled required>
 
                     <p>E-mail</p>
-                    <input type="email" name="" id="" required>
+                    <input type="email" name="" id="email" required>
 
                     <p>Senha</p>
                     <button onclick="redirecionarRedefinir()" id="redefinir">CLIQUE AQUI PARA REDEFINIR</button>
 
-                    <button style="margin-top: 25px;" id="adicionar">Salvar mudanças</button>
+                    <button style="margin-top: 25px;" id="adicionar" onclick="salvarMudancas()" >Salvar mudanças</button>
 
                     <span style="cursor: pointer; color: #f75050; font-weight: 800; align-self: end;"
                         onclick="mensagemConfirmar()">Deletar
@@ -73,7 +73,7 @@
                     <div class="box-2" id="confirmarcao" style="display: none; margin-top: 8vh;">
                         <span style="align-self: center; color: black;">Tem certeza que deseja excluir sua conta?</span>
                         <div>
-                            <button id="adicionar" style="background-color: #f75050;">Deletar conta</button>
+                            <button id="adicionar" style="background-color: #f75050;" onclick="deletarConta()">Deletar conta</button>
                             <button id="adicionar" onclick="cancelarMensagem()">Cancelar</button>
                         </div>
                     </div>
@@ -85,6 +85,7 @@
 </body>
 
 <script src="../js/icons.js"></script>
+<script src="../js/atualizar-info.js"></script>
 
 </html>
 <script>

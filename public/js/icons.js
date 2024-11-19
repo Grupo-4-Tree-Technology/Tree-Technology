@@ -1,5 +1,5 @@
 function telaUser(){
-    window.location.href = "../telas-veiculos-rotas/atualizar-info.html";
+   window.location.href = "./atualizar-info.html";
 }
 
 function telaDash(){
