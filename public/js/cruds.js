@@ -34,7 +34,6 @@ function cadastrarVeiculo() {
         })
         .then(() => {
             mensagemErro.innerHTML = "<p style='color: green;'>Cadastro realizado!</p>";
-            alert("Cadastro de veículo realizado!");
 
             document.getElementById('cadastro-veiculos').style.display = 'none';
             document.getElementById('cadastro-rotas').style.display = 'block';
@@ -50,6 +49,8 @@ function cadastrarRota() {
     var ruaInicio = document.querySelector('#rua_inicial').value;
     var ruaFim = document.querySelector("#rua_final").value;
     var fkEmpresa = sessionStorage.getItem("ID_EMPRESA");
+
+    let blur = document.getElementById("blur");
 
     var mensagem = document.querySelector("#mensagem");
 
@@ -79,6 +80,9 @@ function cadastrarRota() {
         })
         .then(() => {
             mensagem.innerHTML = "<p style='color: green;'>Cadastro de rota realizado!</p>";
+
+
+
             pegarIdUltimaRota();
 
         }).catch(error => {
