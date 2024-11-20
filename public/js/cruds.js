@@ -489,8 +489,8 @@ function atualizarRuas() {
                 return response.json();
             })
             .then(() => {
-                console.log('Atualização da rua feita com sucesso! ' + nomeRua);     
-                alert("ATUALIZAÇÂO FINALIZADA 100% !!!")   
+                console.log('Atualização da rua feita com sucesso! ' + nomeRua);
+                
                 window.location.href = "../telas-veiculos-rotas/lista-trajetos.html";      
             }).catch(error => {
                 console.error(error);
