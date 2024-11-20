@@ -1,3 +1,5 @@
+let myChart;
+
 function buildGraphic() {
     let dadosAcidentes = JSON.parse(sessionStorage.getItem("ACIDENTES_SEMANA"))
 
@@ -79,7 +81,11 @@ function buildGraphic() {
         }
     };
 
-    const myChart = new Chart(ctx, config);
+    if (myChart) {
+        myChart.destroy();
+    }
+
+    myChart = new Chart(ctx, config);
 }
 
 function openSelectWithImages() {
