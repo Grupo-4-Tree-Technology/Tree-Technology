@@ -67,6 +67,9 @@ function formatarData2(data) {
 }
 
 function salvarMudancas(){
+
+    let blur = document.getElementById("blur");
+
     let idFuncionario = sessionStorage.ID_FUNCIONARIO;
 
     if (!idFuncionario) {
@@ -107,14 +110,20 @@ function salvarMudancas(){
     })
     .then(data => {
         console.log(data.mensagem)
+        div_error.innerHTML = `Mudança realizada com sucesso!`;
+        container.style.display = "flex";
+        blur.style.display="block";
     })
     .catch(error => {
         console.error(error);
+        div_error.innerHTML = `Erro na alteração!`;
+        container.style.display = "flex";
+        blur.style.display="block";
 
     });
+
 }
 // FUNÇÃO PARA DELETAR CONTA
-
 function deletarConta(){
     let idFuncionario = sessionStorage.ID_FUNCIONARIO;
 

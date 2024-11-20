@@ -13,6 +13,20 @@
 
 <body onload="buscarUsuario(), verificarPermissao()">
 
+
+            <!-- MODAL -->
+            <div class="container-modal" id="container" style="display: none;">
+                <div class="close">
+                    <div class="title">
+                        <img class="img-modal" src="../assets/treeLogo.jpeg" alt="">
+                        <span class="text" id="texto_modal">Modificação Funcionário</span>
+                    </div>
+                    <img class="img-modal" src="../assets/close.jpeg" alt="" style="height: 30px;" onclick="fecharModal()">
+                </div>
+                <span class="text" id="div_error"></span>
+            </div>
+            <div id="blur" style="display: none;"></div>
+
     <div class="top-menu">
         <div id="hamburguer">
             <img src="../assets/Group 23.png" style="width: 50%;">
@@ -166,5 +180,12 @@
     function cancelarMensagem() {
         var mensagemConfirmar = document.getElementById('confirmarcao');
         mensagemConfirmar.style.display = "none";
+    }
+    function fecharModal() {
+        let blur = document.getElementById("blur");
+
+        container.style.display = "none";
+        blur.style.display = "none";
+
     }
 </script>

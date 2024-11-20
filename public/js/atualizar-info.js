@@ -42,6 +42,9 @@ function buscaUsuario() {
 // FUNÇÃO PARA SALVAR ALTERAÇÕES
 
 function salvarMudancas(){
+
+    let blur = document.getElementById("blur");
+
     let idUsuario = sessionStorage.ID_USUARIO;
 
     if (!idUsuario) {
@@ -69,9 +72,15 @@ function salvarMudancas(){
     })
     .then(data => {
         console.log(data.mensagem)
+        div_error.innerHTML = `Mudança realizada com sucesso!`;
+        container.style.display = "flex";
+        blur.style.display="block";
     })
     .catch(error => {
         console.error(error);
+        div_error.innerHTML = `Erro na alteração!`;
+        container.style.display = "flex";
+        blur.style.display="block";
 
     });
 }
