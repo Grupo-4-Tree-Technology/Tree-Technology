@@ -210,6 +210,7 @@ select {
 
 .text {
     display: flex;
+    width: 16vw;
 }
 
 .title {
