@@ -241,6 +241,7 @@ button:hover{
 
 .text{
     display: flex;
+    justify-content: space-between;
 }
 
 .title{
