@@ -297,25 +297,36 @@ function buscarInfoTrajeto() {
                     ponto_partida.value = infosTrajeto[0].ponto_partida;
                     ponto_destino.value = infosTrajeto[0].ponto_destino;
 
-                    const listaRuas = infosTrajeto[0].ruas_intermediarias.split(' | ');
-                    const listaIdRuas = infosTrajeto[0].idRuas.split(' | ');
+                    var divComScroll = document.getElementById('containerMensagem');
                     var ruasIntermediarias = document.getElementById('ruasIntermediarias');
-                    var contadorRua = 0;
 
-                    for (let i = 0; i < listaIdRuas.length; i++) {
-                        contadorRua++
+                    if (infosTrajeto[0].ruas_intermediarias == null) {
+                        ruasIntermediarias.style.display = 'none';
+                        divComScroll.innerHTML = `<input id="containerMensagem" placeholder="Não há Pontos de Parada" disabled></input>`
 
-                        ruasIntermediarias.insertAdjacentHTML('beforeend', `
-                            <div id="${listaIdRuas[i]}" class="input-ruas">
-                                <input type="text" name="ruaIntermediaria" id="inputRua${contadorRua}" class="input-rua">
-                                <p type="p" class="paragrafoRua" onclick="deletarRua('${listaIdRuas[i]}')" style="color: red; cursor: pointer;">
-                                    X
-                                </p>
-                            </div>
-                        `);
+                    } else {
 
-                        let inputRuaDaVez = document.getElementById(`inputRua${contadorRua}`);
-                        inputRuaDaVez.value = listaRuas[i];
+                        const listaRuas = infosTrajeto[0].ruas_intermediarias.split(' | ');
+                        const listaIdRuas = infosTrajeto[0].idRuas.split(' | ');
+
+                        divComScroll.style.display = 'none';
+                        var contadorRua = 0;
+    
+                        for (let i = 0; i < listaIdRuas.length; i++) {
+                            contadorRua++
+    
+                            ruasIntermediarias.insertAdjacentHTML('beforeend', `
+                                <div id="${listaIdRuas[i]}" class="input-ruas">
+                                    <input type="text" name="ruaIntermediaria" id="inputRua${contadorRua}" class="input-rua">
+                                    <p type="p" class="paragrafoRua" onclick="deletarRua('${listaIdRuas[i]}')" style="color: red; cursor: pointer;">
+                                        X
+                                    </p>
+                                </div>
+                            `);
+    
+                            let inputRuaDaVez = document.getElementById(`inputRua${contadorRua}`);
+                            inputRuaDaVez.value = listaRuas[i];
+                        }
                     }
                 });
 
@@ -454,32 +465,39 @@ function atualizarRota() {
 
 function atualizarRuas() {
     var ordemRua = 0;
+    let ruasValidas = 0; // Para contar o total de ruas com nome
 
-    const arrayIdsRuas = Array.from(document.getElementsByClassName("input-ruas"));
-
-    // Pego nessa variável const todas as classes 'input-rua' e depois transformo em array: 
     const arrayRuasIntermediarias = Array.from(document.getElementsByClassName("input-rua"));
     
+    // Contar quantas ruas têm um nome preenchido
     arrayRuasIntermediarias.forEach(function(rua) {
+        if (rua.value.trim() !== "") {
+            ruasValidas++;
+        }
+    });
 
+    // Se o total de ruas válidas for 0, não faz nada
+    if (ruasValidas === 0) {
+        console.log("Nenhuma rua preenchida, não há o que atualizar.");
+        return; // Sai da função sem fazer nada
+    }
+
+    // Caso contrário, começa o processamento
+    arrayRuasIntermediarias.forEach(function(rua) {
         let idRuaAtualizado = rua.closest('.input-ruas');
         idRuaAtualizado = idRuaAtualizado.id;
 
         var nomeRua = rua.value;
         ordemRua++;
-        console.log(nomeRua);
 
-        if ((nomeRua == "")) {
-            return false;
-
+        if (nomeRua === "") {
+            return; // Ignora as ruas sem nome
         } else {
-            data = {
-                rua: nomeRua
-            }
+            const data = { rua: nomeRua };
     
             fetch(`/rua/atualizarRua/${idRuaAtualizado}`, {
                 method: "POST",
-                headers: {"Content-Type": "application/json"},
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data)
             })
             .then(response => {
@@ -490,12 +508,11 @@ function atualizarRuas() {
             })
             .then(() => {
                 console.log('Atualização da rua feita com sucesso! ' + nomeRua);
-                
                 window.location.href = "../telas-veiculos-rotas/lista-trajetos.html";      
-            }).catch(error => {
-                console.error(error);
-                
             })
+            .catch(error => {
+                console.error(error);
+            });
         }
     });
 }

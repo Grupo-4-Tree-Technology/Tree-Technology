@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var novoInput = document.createElement('input');
         novoInput.setAttribute('type', 'text');
         novoInput.setAttribute('name', 'ruaIntermediaria');
-        novoInput.setAttribute('placeholder', 'Digite a rua intermediária');
+        novoInput.setAttribute('placeholder', `Ponto de Parada ${contadorRua}`);
         novoInput.setAttribute('id', 'inputRua' + contadorRua);
         novoInput.setAttribute('class', 'input-rua');
         

@@ -21,7 +21,7 @@
 
 </head>
 
-<body onload="initMap(), calculateRoute(), chamaFuncoes()">
+<body onload="initMap(), calculateRoute(), openSelectWithImages(), chamaFuncoes()">
     <header>
         <div class="session-title">
             <div id="hamburguer">
@@ -126,9 +126,9 @@
                             Rota Original
                             <img src="../assets/icon (point a for b).png">
                         </div>
-                        <div data-value="2" style="display: flex; justify-content: start; gap: 2em; padding: 0 27px;">
-                            Rota Alternativa - Gemini
-                            <img src="../assets/logo-gemini.png">
+                        <div data-value="2" style="display: flex; justify-content: start; gap: 6.5em; padding: 0 27px;">
+                            Rota Otimizada
+                            <img src="../assets/Tree Technology (MINI LOGO SELECT).png">
                         </div>
                     </div>
                 </div>
@@ -185,7 +185,7 @@
     setInterval(() => {
         chamaFuncoes();
     }, 2500);
-
+ 
     function abrirBox() {
         var instrucao = document.getElementById('box');
 
@@ -253,8 +253,6 @@
         menu.classList.remove('abrir-menu');
         overlay.style.display = 'none';
     });
-
-    openSelectWithImages();
 
     function changeColorPercent() {
         let acidentesFasesDia = JSON.parse(sessionStorage.ACIDENTES_FASES_DIA);
@@ -338,6 +336,9 @@
         let waypoint2 = document.getElementById('waypoint2').value;
         let end = document.getElementById('end').value; */
 
+        /* let start = 'Rua Santo Hermeto';
+        let end = 'Estação Brás'; */
+
         let start = 'Avenida do Estado, 5533';
         let end = 'Rua Haddock Lobo, 595';
 
@@ -345,20 +346,13 @@
             alert('Por favor, insira endereços válidos!');
             return;
         }
+        
+        let waypointsStr = ""
+        let waypointsArray = [];
 
-        /* let waypoints = [];
-        if (waypoint1 !== '') {
-            waypoints.push({
-                location: waypoint1,
-                stopover: true
-            });
+        if (waypointsStr != "") {
+            waypointsArray = waypointsStr.split(',').map(waypoint => ({ location: waypoint }));            
         }
-        if (waypoint2 !== '') {
-            waypoints.push({
-                location: waypoint2,
-                stopover: true
-            });
-        } */
 
         let selectedRoute = document.querySelector(".select-selected .text-icon").textContent.trim();
 
@@ -368,13 +362,17 @@
             request = {
                 origin: start,
                 destination: end,
-                travelMode: 'TRANSIT' // Pode ser 'WALKING', 'BICYCLING', 'TRANSIT'
+                waypoints: waypointsArray,
+                optimizeWaypoints: true,
+                travelMode: 'TRANSIT' // Pode ser 'WALKING', 'BICYCLING', 'TRANSIT', 'DRIVING'
             };
-        } else if (selectedRoute.includes('Gemini')) {
+        } else if (selectedRoute.includes('Rota Otimizada')) {
             request = {
                 origin: start,
                 destination: end,
-                travelMode: 'DRIVING' // Pode ser 'WALKING', 'BICYCLING', 'TRANSIT'
+                waypoints: waypointsArray,
+                optimizeWaypoints: true,
+                travelMode: 'DRIVING' // Pode ser 'WALKING', 'BICYCLING', 'TRANSIT', 'DRIVING'
             };
         }
 

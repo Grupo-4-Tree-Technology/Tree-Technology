@@ -247,8 +247,6 @@ main {
 }
 
 .select-items img {
-    width: 50px;
-    height: 50px;
     vertical-align: middle;
     margin-right: 10px;
 }
@@ -285,9 +283,8 @@ main {
 .text-icon {
     width: 13vw;
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    gap: 0.5em;
+    gap: 1em;
 }
 
 #info-rota {

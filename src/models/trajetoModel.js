@@ -47,7 +47,7 @@ function buscarInfoTrajeto(idTrajeto, fkEmpresa) {
                     GROUP_CONCAT(DISTINCT veiculo.modelo ORDER BY veiculo.modelo SEPARATOR ' | ') AS modelo,
                     GROUP_CONCAT(DISTINCT veiculo.ano ORDER BY veiculo.ano SEPARATOR ' | ') AS anoVeiculo
                 FROM rota
-                JOIN rua_intermediaria AS rua_intermed
+                LEFT JOIN rua_intermediaria AS rua_intermed
                     ON rota.id = rua_intermed.fkRota
                 JOIN trajeto
                     ON trajeto.fkRota = rota.id
@@ -69,9 +69,19 @@ function deletarTrajeto(idTrajeto) {
     return database.executar(query);
 }
 
+function pegarIdVeiculoRotaDeTrajetoEspecifico(idTrajeto) {
+    console.log("ACESSEI O ROTA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pegarIdVeiculoRotaDeTrajetoEspecifico():", idTrajeto);
+
+    var query = `SELECT * FROM trajeto WHERE id = ${idTrajeto}`;
+
+    console.log("Executando a instrução SQL: \n" + query);
+    return database.executar(query);
+}
+
 module.exports = {
     cadastrarTrajeto,
     carregarTrajetos,
     buscarInfoTrajeto,
-    deletarTrajeto
+    deletarTrajeto,
+    pegarIdVeiculoRotaDeTrajetoEspecifico
 }

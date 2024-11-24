@@ -13,7 +13,7 @@ function cadastrarVeiculo(placa, modelo, ano, fkEmpresa) {
 }
 
 function pegarIdUltimoVeiculo(fkEmpresa) {
-    console.log("ACESSEI O ROTA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pegarIdUltimoVeiculo():", fkEmpresa);
+    console.log("ACESSEI O VEICULO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pegarIdUltimoVeiculo():", fkEmpresa);
 
     var query = `SELECT id AS idVeiculo
                 FROM veiculo

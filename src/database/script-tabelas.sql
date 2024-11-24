@@ -73,7 +73,7 @@ FOREIGN KEY (fkEmpresa) REFERENCES empresa (id)
 
 CREATE TABLE IF NOT EXISTS veiculo (
 id			    INT NOT NULL UNIQUE AUTO_INCREMENT ,
-placa 		  	VARCHAR(7) UNIQUE,
+placa 		  	VARCHAR(7),
 modelo		  	VARCHAR(45) NOT NULL,
 ano			    INT NOT NULL,
 fkEmpresa 		INT NOT NULL,
@@ -166,6 +166,7 @@ INSERT INTO empresa (razao_social, nome_fantasia, cnpj, cep) VALUES
 INSERT INTO veiculo (placa, modelo, ano, fkEmpresa) VALUES
 ('ABC1234', 'Modelo X', 2020, 1),
 ('DEF5678', 'Modelo Y', 2019, 1),
+('OKD9021', 'Modelo VQ', 2021, 1),
 ('GHI9012', 'Modelo Z', 2021, 2),
 ('MNO7890', 'Modelo V', 2020, 2),
 ('JKL3456', 'Modelo W', 2022, 3);
@@ -174,14 +175,15 @@ INSERT INTO rota (ponto_partida, ponto_destino, fkEmpresa) VALUES
 ('Belo Horizonte', 'Brasília', 2),
 ('Curitiba', 'Florianópolis', 2),
 ('Porto Alegre', 'Caxias do Sul', 3),
+('Rua Santo Hermeto', 'Metrô Brás', 1),
 ('Recife', 'Salvador', 1);
 INSERT INTO trajeto (fkRota, fkVeiculo) VALUES
 (1, 1),
-(1, 2),
 (2, 3),
 (3, 4),
 (4, 5),
-(5, 1);
+(5, 2),
+(6, 3);
 INSERT INTO rua_intermediaria (rua, ordem, fkRota) VALUES
 ('Rua A', 1, 1),
 ('Rua B', 2, 1),

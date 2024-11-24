@@ -91,8 +91,8 @@
                     dirigindo.
                 </p>
 
-                <h4>Adicionar Rua Intermediária:</h4>
-                <p>Esse campo permite adicionar ruas ou locais intermediários pelos quais a rota deve passar antes
+                <h4>Adicionar Pontos de Parada:</h4>
+                <p>Esse campo permite adicionar pontos de parada ou locais intermediários pelos quais o fretado passará antes
                     de
                     chegar ao destino final.</p>
 
@@ -103,13 +103,13 @@
                     <img src="../assets/circle-help.png" alt="" onclick="instrucao()">
                 </div>
                 <p>Partida</p>
-                <input type="text" name="" id="rua_inicial" class="input-rota">
+                <input type="text" name="" id="rua_inicial" class="input-rota" placeholder="(Rua Partida), (Número)">
                 
                 <div id="ruasIntermediarias" class="novoInput"></div>
-                <button id="adicionarRua">+ Adicionar Rua Intermediária</button>
+                <button id="adicionarRua">+ Adicionar Pontos de Parada</button>
 
                 <p>Destino</p>
-                <input type="text" name="" id="rua_final" class="input-rota">
+                <input type="text" name="" id="rua_final" class="input-rota" placeholder="(Rua Destino), (Número)">
                 <span id="mensagem"></span>
                 <button onclick="cadastrarRota()">Registrar</button>
             </div>

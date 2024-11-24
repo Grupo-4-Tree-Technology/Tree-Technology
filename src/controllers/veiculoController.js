@@ -8,8 +8,6 @@ function cadastrarVeiculo(req, res) {
 
     console.log("ACESSEI O VEICULO CONTROLLER \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarVeiculo():", placa, modelo, ano, fkEmpresa);
 
-    console.log("req.body: " + req.body)
-
     if (placa == undefined) {
         res.status(400).send("A placa está undefined!");
     } else if (modelo == undefined) {
@@ -37,7 +35,7 @@ function cadastrarVeiculo(req, res) {
 function pegarIdUltimoVeiculo(req, res) {
     var fkEmpresa = req.params.fkEmpresa;
 
-    console.log("ACESSEI O ROTA CONTROLLER \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pegarIdUltimoVeiculo(): ", fkEmpresa);
+    console.log("ACESSEI O VEICULO CONTROLLER \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pegarIdUltimoVeiculo(): ", fkEmpresa);
 
     if (fkEmpresa == undefined) {
         res.status(400).send("A fkEmpresa está undefined!");
