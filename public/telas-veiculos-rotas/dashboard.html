@@ -21,7 +21,7 @@
 
 </head>
 
-<body onload="initMap(), calculateRoute(), openSelectWithImages(), chamaFuncoes()">
+<body onload="initMap(), calculateRoute(), openSelectWithImages(), exibeInfoTrajetoSelecionado()">
     <header>
         <div class="session-title">
             <div id="hamburguer">
@@ -40,7 +40,8 @@
                     <ul>
                         <li><a>DASHBOARD</a></li>
                         <li><a href="lista-trajetos.html">VISUALIZAR TRAJETOS</a></li>
-                        <li id="item-func"><a href="../telas-trajetos-func/lista-funcionario.html">VISUALIZAR FUNCIONÁRIOS</a></li>
+                        <li id="item-func"><a href="../telas-trajetos-func/lista-funcionario.html">VISUALIZAR
+                                FUNCIONÁRIOS</a></li>
                         <li onclick="sairDaSessao()"><a href="../index.html">SAIR</a></li>
                     </ul>
                 </nav>
@@ -114,6 +115,7 @@
         <section class="right-side">
             <div class="side-maps">
                 <div class="custom-select">
+                    <span id="duration"></span>
                     <div class="select-selected">
                         <span class="text-icon">
                             Rota Original
@@ -133,7 +135,7 @@
                     </div>
                 </div>
                 <div id="info-rota">
-                    <span>Início: Avenida do Estado, 5533 - Final: Rua Haddock Lobo, 595</span>
+                    <span>Início: - Final: </span>
                     <span>DEFY872</span>
                 </div>
                 <div class="box" id="box" style="display: none;">
@@ -174,7 +176,7 @@
     </main>
 </body>
 <script>
-    function chamaFuncoes() {
+    /* function chamaFuncoes() {
         verificarPermissao();
         obterFasesDoDia();
         obterAcidentesClima();
@@ -184,8 +186,8 @@
 
     setInterval(() => {
         chamaFuncoes();
-    }, 2500);
- 
+    }, 2500); */
+
     function abrirBox() {
         var instrucao = document.getElementById('box');
 
@@ -339,33 +341,66 @@
         /* let start = 'Rua Santo Hermeto';
         let end = 'Estação Brás'; */
 
-        let start = 'Avenida do Estado, 5533';
-        let end = 'Rua Haddock Lobo, 595';
+        let start = sessionStorage.getItem("PONTO_PARTIDA");
+        let end = sessionStorage.getItem("PONTO_DESTINO");
+        let paradas = sessionStorage.getItem("PARADAS");
 
         if (start === '' || end === '') {
             alert('Por favor, insira endereços válidos!');
             return;
         }
-        
-        let waypointsStr = ""
+
+        let waypointsStr = "";
         let waypointsArray = [];
 
-        if (waypointsStr != "") {
-            waypointsArray = waypointsStr.split(',').map(waypoint => ({ location: waypoint }));            
+        console.log("Paradas:", paradas);
+        console.log("Waypoints String:", waypointsStr);
+        console.log("Waypoints Array:", waypointsArray);
+
+        // Estou verificando se as paradas não são null e possuem valores válidos
+        if (paradas && typeof paradas === "string" && paradas.trim() !== "" && paradas != "null") {
+            // Substituio ' | ' por '|'
+            let waypointsStr = paradas.replace(/ \| /g, '|').trim();
+
+            // Divido a string em waypoints e transformo em objetos válidos
+            waypointsArray = waypointsStr
+                .split('|')
+                .map(waypoint => waypoint.trim()) // Removo espaços extras
+                .filter(waypoint => waypoint !== "") // Removo entradas vazias
+                .map(waypoint => ({ location: waypoint })); // Transformo em objetos { location: ... }
         }
+
+        // Caso paradas seja null ou inválido, waypointsArray permanece como []
+
+
+        console.log("Paradas:", paradas);
+        console.log("Waypoints String:", waypointsStr);
+        console.log("Waypoints Array:", waypointsArray);
+
 
         let selectedRoute = document.querySelector(".select-selected .text-icon").textContent.trim();
 
         let request = {};
 
         if (selectedRoute.includes('Rota Original')) {
-            request = {
-                origin: start,
-                destination: end,
-                waypoints: waypointsArray,
-                optimizeWaypoints: true,
-                travelMode: 'TRANSIT' // Pode ser 'WALKING', 'BICYCLING', 'TRANSIT', 'DRIVING'
-            };
+            if (waypointsArray.length != 0) {
+                request = {
+                    origin: start,
+                    destination: end,
+                    waypoints: waypointsArray,
+                    optimizeWaypoints: true,
+                    travelMode: 'DRIVING' // Pode ser 'WALKING', 'BICYCLING', 'TRANSIT', 'DRIVING'
+                };
+
+            } else if (waypointsArray.length == 0) {
+                request = {
+                    origin: start,
+                    destination: end,
+                    optimizeWaypoints: true,
+                    travelMode: 'TRANSIT' // Pode ser 'WALKING', 'BICYCLING', 'TRANSIT', 'DRIVING'
+                };
+            }
+
         } else if (selectedRoute.includes('Rota Otimizada')) {
             request = {
                 origin: start,
@@ -379,10 +414,27 @@
         directionsService.route(request, function (result, status) {
             if (status === 'OK') {
                 directionsRenderer.setDirections(result);
+
+                // Soma a duração total de todos os trechos
+                let totalDuration = 0;
+                result.routes[0].legs.forEach(leg => {
+                    totalDuration += leg.duration.value; // `value` retorna o tempo em segundos
+                });
+
+                // Converte a duração total para minutos
+                totalDuration = Math.ceil(totalDuration / 60);
+
+                if (request.travelMode == "DRIVING") {
+                    totalDuration += totalDuration / 2
+                }
+
+                // Exibe o tempo estimado
+                document.getElementById("duration").innerText = `DURAÇÃO: ${totalDuration.toFixed(0)} minuto(s)`;
             } else {
                 alert('Falha ao traçar a rota: ' + status);
             }
         });
+
     }
 
     document.addEventListener('click', (event) => {

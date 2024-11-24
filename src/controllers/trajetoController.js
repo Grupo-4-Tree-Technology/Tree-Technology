@@ -102,9 +102,36 @@ function deletarTrajeto(req, res) {
     }
 }
 
+function selecionarTrajetoEspecifico(req, res) {
+    var idTrajeto = req.params.idTrajeto;
+    var fkEmpresa = req.params.fkEmpresa;
+
+    console.log("ACESSEI O TRAJETO CONTROLLER \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function selecionarTrajetoEspecifico():", idTrajeto, fkEmpresa);
+
+    if (idTrajeto == undefined) {
+        res.status(400).send("O idTrajeto está undefined!");
+    } else if (fkEmpresa == undefined) {
+        res.status(400).send("A fkEmpresa está undefined!");
+    } else {
+        trajetoModel.selecionarTrajetoEspecifico(idTrajeto, fkEmpresa)
+            .then(function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        )
+    }
+}
+
 module.exports = {
     cadastrarTrajeto,
     carregarTrajetos,
     buscarInfoTrajeto,
-    deletarTrajeto
+    deletarTrajeto,
+    selecionarTrajetoEspecifico
 }

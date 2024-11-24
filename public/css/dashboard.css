@@ -507,6 +507,7 @@ main {
     align-items: center;
     background-color: #ffff;
     font-size: larger;
+    cursor: pointer;
 }
 
 .text{
