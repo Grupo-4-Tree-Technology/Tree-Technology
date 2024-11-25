@@ -7,7 +7,7 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #433c00;
+    background: #004306;
 }
 
 /* Handle */
@@ -62,7 +62,7 @@
 
 .box{
     background-color: #F4F4F4;
-    height: auto;
+    height: 75vh;
     width: auto;
     margin-top: 20px;
     padding: 10px 20px;
@@ -70,6 +70,7 @@
     box-shadow: 10px 10px 10px  #68696977;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .box-notificacoes {
@@ -101,6 +102,10 @@
     background-color: #ffff;
 }
 
+
+
+
+
 /*TELA INFORMAÇÕES PESSOAIS*/
 
 .box-2{
@@ -119,13 +124,24 @@
     
 }
 
+.divisão{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 40px;
+    background-color:  #F4F4F4;
+    padding: 20px 10px;
+    margin-top: 20px;
+}
 .forms{
     display: flex;
     flex-direction: column;
+    align-items: center;
     font-size: large;
-    justify-content: center;
-    
-    
+    background-color:  #F4F4F4;
+    padding: 10px 10px;
+    margin-top: 20px;
+    border-radius: 10px;
 }
 
 .forms p{
@@ -134,10 +150,30 @@
     
 }
 
+.paragrafoRua {
+    margin-left: -5%;
+    margin-bottom: 1%;
+    font-weight: 700;
+    font-size: large;
+}
 
-.forms input{
+.input-ruas {
+    width: 98%;
+    height: 41%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: transparent;
+}
+
+.input-rua {
+    width: 30vw !important;
+    margin: 10px 5px;
+}
+
+.forms input, select{
     padding: 10px 5px;
-    max-width: auto;
+    /* max-width: auto; */
     border-radius: 10px;
     outline: none;
     font-size: large;
@@ -147,7 +183,7 @@
 }
 
 button{
-    margin-top: 10px;
+    margin: 10px;
     background-color: #77D17A;
     border: none;
     color: white;
@@ -205,7 +241,27 @@ button:hover{
 
 .text{
     display: flex;
+    justify-content: space-between;
 }
+
+
+
+#containerMensagem {
+    background-color: #dcd8d8;
+
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+
+    height: 26%; 
+    width: 96%; 
+
+    cursor: not-allowed; 
+    box-shadow: 5px 12px 5px #21432c1c; 
+    padding-left: 2%; 
+}
+
+
 
 .title{
     display: flex;
@@ -218,7 +274,7 @@ button:hover{
 .rota{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 40px;
     
 }
@@ -290,18 +346,6 @@ button:hover{
 .novoInput button{
     margin-left: 5px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ESTILO DO MENU MOBILE */
 /* ESTILO DO MENU MOBILE */
@@ -417,5 +461,3 @@ button:hover{
 
     
 }
-
-

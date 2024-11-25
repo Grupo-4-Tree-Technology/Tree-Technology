@@ -247,8 +247,6 @@ main {
 }
 
 .select-items img {
-    width: 50px;
-    height: 50px;
     vertical-align: middle;
     margin-right: 10px;
 }
@@ -285,9 +283,8 @@ main {
 .text-icon {
     width: 13vw;
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    gap: 0.5em;
+    gap: 1em;
 }
 
 #info-rota {
@@ -454,8 +451,8 @@ main {
 .modal-2 {
     display: none;
     position: absolute;
-    top: 40%;
-    left: 88%;
+    top: 41%;
+    left: 80%;
     transform: translateY(0);
     border-radius: 5px;
     opacity: 0;
@@ -509,8 +506,8 @@ main {
     justify-content:center;
     align-items: center;
     background-color: #ffff;
-    
     font-size: larger;
+    cursor: pointer;
 }
 
 .text{
@@ -522,7 +519,7 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 40vw;
+    gap: 31vw;
     text-align: right;
     color: #248829;
 }
@@ -581,4 +578,12 @@ button{
     align-self: center;
     cursor: pointer;
    
+}
+
+#button-delete {
+    background-color: #e42c2c;
+}
+
+#button-delete:hover {
+    background-color: #d21414;
 }

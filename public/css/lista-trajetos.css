@@ -7,7 +7,7 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #433c00;
+    background: #004306;
 }
 
 /* Handle */
@@ -62,7 +62,7 @@
 
 .box{
     background-color: #F4F4F4;
-    height: auto;
+    height: 75vh;
     width: auto;
     margin-top: 20px;
     padding: 10px 20px;
@@ -100,6 +100,10 @@
     align-items: center;
     background-color: #ffff;
 }
+
+
+
+
 
 /*TELA INFORMAÇÕES PESSOAIS*/
 
@@ -205,20 +209,28 @@ button:hover{
 
 .text{
     display: flex;
+    justify-content: space-between;
+    align-items: center; 
 }
 
 .title{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     gap: 20vw;
+    width: 32vw;
+    font-size: 1em;
     text-align: right;
 }
 
 .rota{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+    height: 5vh;
+    width: 32.5vw;
     gap: 40px;
     
 }
@@ -227,7 +239,8 @@ button:hover{
 .dots{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     height: 40px;
     margin-left: 10px;
 }
@@ -247,6 +260,7 @@ button:hover{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    z-index: 10;
     border-radius: 0px 10px 10px 10px;
     border: 2px solid #61ab63;
 }

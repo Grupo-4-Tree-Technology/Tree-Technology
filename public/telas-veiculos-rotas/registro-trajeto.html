@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/registro-trajeto.css">
+
+    <script src="../js/cruds.js"></script>
+    <script src="../js/verificacaoSeguranca.js"></script>
+
+    <title>Registro de Trajeto</title>
+    <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
+    
+</head>
+<body onload="verificarPermissao()">
+    
+    <div class="top-menu">
+        <div id="hamburguer" style="cursor: pointer;">
+            <img src="../assets/Group 23.png" style="width: 50%;">
+        </div>
+        <div class="btn-abrir-menu" id="btn-menu">
+            <i class="bi bi-list"></i>
+        </div>
+        <div class="menu-mobile" id="menu-mobile">
+            <div class="btn-fechar">
+                <i class="bi bi-x-lg"></i>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">DASHBOARD</a></li>
+                    <li><a href="lista-trajetos.html">VISUALIZAR TRAJETOS</a></li>
+                    <li id="item-func"><a href="../telas-trajetos-func/lista-funcionario.html">VISUALIZAR FUNCIONÁRIOS</a></li>
+                    <li onclick="sairDaSessao()"><a href="../index.html">SAIR</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="overlay-menu" id="overlay-menu"></div>
+        <div class="icons">
+            <img src="../assets/Bell.png" onclick="telaNotificação()">
+            <img src="../assets/Icon.png" id="user" onclick="telaUser()">
+            <img src="../assets/icon dashboard.png" id="dash" onclick="telaDash()">
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="box-2" id="confirmarcao" style="display: none;">
+            <span>Tem certeza que deseja excluir sua conta?</span>
+            <div class="buttons">
+                <button style="background-color: #f75050;">Deletar conta</button>
+                <button onclick="cancelarMensagem()">Cancelar</button>
+            </div>
+        </div>
+
+        <h1>Registro de Trajeto</h1>
+
+        <!-- Seção de Cadastro de Veículos -->
+        <div class="box" id="cadastro-veiculos">
+            
+            <div class="forms">
+                <div class="registro-trajeto-title-veic">
+                    <h1>Cadastro de Veículo</h1>
+                    
+                </div>
+                <p>Placa</p>
+                <input type="text" class="input-veic"  id="placa" maxlength="7">
+                <p>Modelo</p>
+                <input type="text" class="input-veic" id="modelo" >
+                <p>Ano</p>
+                <input type="text" class="input-veic" id="anoVeiculo"  maxlength="4">
+                <span id="mensagemErro"></span>
+                <!-- <button onclick="cadastrarVeiculo()">AVANÇAR</button> -->
+                <button onclick="cadastrarVeiculo()">AVANÇAR</button>
+            </div>
+        </div>
+
+        <!-- Seção de Cadastro de Rotas -->
+
+        
+        <div class="box" id="cadastro-rotas" style="display: none;">
+            <div class="box-3" id="instrucao" style="display: none;">
+
+                <img src="../assets/close.jpeg" alt="" onclick="fechar()">
+
+                <h4>Partida:</h4>
+                <p>O campo "Partida" se refere ao ponto de onde a rota será iniciada. Insira o endereço ou nome do
+                    local
+                    de partida.</p>
+
+                <h4>Destino:</h4>
+                <p>O campo "Destino" é o ponto final da rota, ou seja, o local para onde o veículo está se
+                    dirigindo.
+                </p>
+
+                <h4>Adicionar Pontos de Parada:</h4>
+                <p>Esse campo permite adicionar pontos de parada ou locais intermediários pelos quais o fretado passará antes
+                    de
+                    chegar ao destino final.</p>
+
+            </div>
+            <div class="forms">
+                <div class="registro-trajeto-title">
+                    <h1>Cadastro de Rota</h1>
+                    <img src="../assets/circle-help.png" alt="" onclick="instrucao()">
+                </div>
+                <p>Partida</p>
+                <input type="text" name="" id="rua_inicial" class="input-rota" placeholder="(Rua Partida), (Número)">
+                
+                <div id="ruasIntermediarias" class="novoInput"></div>
+                <button id="adicionarRua">+ Adicionar Pontos de Parada</button>
+
+                <p>Destino</p>
+                <input type="text" name="" id="rua_final" class="input-rota" placeholder="(Rua Destino), (Número)">
+                <span id="mensagem"></span>
+                <button onclick="cadastrarRota()">Registrar</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/icons.js"></script>
+    <script>
+        let hamburgu = document.getElementById('hamburguer');
+        let menu = document.getElementById('menu-mobile');
+        let overlay = document.getElementById('overlay-menu');
+        let btnFechar = document.querySelector('.btn-fechar');
+
+        hamburgu.addEventListener('click', () => {
+            menu.classList.add('abrir-menu')
+        });
+
+        menu.addEventListener('click', () => {
+            menu.classList.remove('abrir-menu')
+        });
+
+        overlay.addEventListener('click', () => {
+            menu.classList.remove('abrir-menu')
+        });
+
+        btnFechar.addEventListener('click', () => {
+            menu.classList.remove('abrir-menu');
+            overlay.style.display = 'none';
+        });
+
+        function mostrarCadastroRotas() {
+            document.getElementById('cadastro-veiculos').style.display = 'none';
+            document.getElementById('cadastro-rotas').style.display = 'block';
+        }
+        
+    </script>
+</body>
+</html>

@@ -7,12 +7,28 @@
     <link rel="stylesheet" href="../css/modificacao-funcionario.css">
     <title>Funcionários | Modificação</title>
     <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
+
+    <script src="../js/verificacaoSeguranca.js"></script>
 </head>
 
-<body>
+<body onload="buscarUsuario(), verificarPermissao()">
+
+
+            <!-- MODAL -->
+            <div class="container-modal" id="container" style="display: none;">
+                <div class="close">
+                    <div class="title">
+                        <img class="img-modal" src="../assets/treeLogo.jpeg" alt="">
+                        <span class="text" id="texto_modal">Modificação Funcionário</span>
+                    </div>
+                    <img class="img-modal" src="../assets/close.jpeg" alt="" style="height: 30px;" onclick="fecharModal()">
+                </div>
+                <span class="text" id="div_error"></span>
+            </div>
+            <div id="blur" style="display: none;"></div>
 
     <div class="top-menu">
-        <div id="hamburguer">
+        <div id="hamburguer" style="cursor: pointer;">
             <img src="../assets/Group 23.png" style="width: 50%;">
         </div>
         <div class="btn-abrir-menu" id="btn-menu">
@@ -27,9 +43,9 @@
             <nav>
                 <ul>
                     <li><a href="dashboard.html">DASHBOARD</a></li>
-                    <li><a href="lista-rotas.html">VISUALIZAR ROTAS</a></li>
-                    <li><a href="lista-veiculo.html">VISUALIZAR VEÍCULOS</a></li>
-                    <li><a href="../index.html">SAIR</a></li>
+                    <li><a href="lista-trajetos.html">VISUALIZAR TRAJETOS</a></li>
+                    <li id="item-func"><a href="../telas-trajetos-func/lista-funcionario.html">VISUALIZAR FUNCIONÁRIOS</a></li>
+                    <li onclick="sairDaSessao()"><a href="../index.html">SAIR</a></li>
                 </ul>
             </nav>
         </div>
@@ -53,10 +69,10 @@
                 <forms class="forms">
 
                     <p>Nome</p>
-                    <input type="text" name="" id="" required>
+                    <input type="text" name="" id="nome" required>
 
                     <p>E-mail</p>
-                    <input type="email" name="" id="" required>
+                    <input type="email" name="" id="email" required>
 
                     <p>Senha</p>
                     <button onclick="redirecionarRedefinir()" id="redefinir">CLIQUE AQUI PARA REDEFINIR</button>
@@ -71,31 +87,31 @@
                     <input type="text" id="cpf" oninput="mascaraCPF()" required>
 
                     <p>Permissão</p>
-                    <select style="width: 30.7vw;" name="" id="">
+                    <select style="width: 30.7vw;" id="permissao">
                         <option value=""></option>
-                        <option value="">Total</option>
-                        <option value="">Leitura</option>
+                        <option value="Total">Total</option>
+                        <option value="Leitura">Leitura</option>
                     </select>
 
                     <p>Status</p>
-                    <select style="width: 30.7vw;" name="" id="">
+                    <select style="width: 30.7vw;" name="" id="status">
                         <option value=""></option>
-                        <option value="">Ativado</option>
-                        <option value="">Desativado</option>
+                        <option value="Ativado">Ativado</option>
+                        <option value="Desativado">Desativado</option>
                     </select>
 
                     <p>Data de contratação</p>
                     <input type="text" id="data2" oninput="mascaraData2()" required>
                 </forms>
             </div>
-            <button id="adicionar">Salvar mudanças</button>
+            <button id="adicionar" onclick="salvarMudancas()">Salvar mudanças</button>
             <span style="cursor: pointer; color: #f75050; font-weight: 800; align-self: end;"
                 onclick="mensagemConfirmar()">Deletar
                 conta</span>
             <div class="box-2" id="confirmarcao" style="display: none;">
                 <span>Tem certeza que deseja excluir sua conta?</span>
                 <div>
-                    <button id="adicionar" style="background-color: #f75050;">Deletar conta</button>
+                    <button id="adicionar" style="background-color: #f75050;" onclick="deletarConta()">Deletar conta</button>
                     <button id="adicionar" onclick="cancelarMensagem()">Cancelar</button>
                 </div>
             </div>
@@ -104,6 +120,7 @@
 </body>
 
 <script src="../js/icons.js"></script>
+<script src="../js/modificacao-funcionario.js"></script>
 
 </html>
 <script>
@@ -163,5 +180,12 @@
     function cancelarMensagem() {
         var mensagemConfirmar = document.getElementById('confirmarcao');
         mensagemConfirmar.style.display = "none";
+    }
+    function fecharModal() {
+        let blur = document.getElementById("blur");
+
+        container.style.display = "none";
+        blur.style.display = "none";
+
     }
 </script>

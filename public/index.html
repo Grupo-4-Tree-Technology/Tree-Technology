@@ -247,6 +247,17 @@
         </section>
 
         <section class="entre-contato" id="contato">
+            <div class="container-modal" id="container" style="display: none;">
+                <div class="close">
+                    <div class="title">
+                        <img class="img-modal" src="assets/treeLogo.jpeg" alt="">
+                        <span class="text" id="texto_modal">Contato Tree Technology</span>
+                    </div>
+                    
+                </div>
+                <span class="text" id="div_txt"></span>
+                <button id="button-modal" onclick="fecharModal()">OK</button>
+            </div>
             <div class="contact">
                 <div class="contact-title">
                     <h2>ENTRE EM CONTATO</h2>
@@ -365,13 +376,15 @@
 
         const message = await response.text();
         
-        if (message == 'Email enviado com sucesso!') {
+         if (message == 'Email enviado com sucesso!') {
             animaBotao();
-        }
+         }
     }
 
     function animaBotao() {
         botaoSubmit.classList.add('clicked');
+        abrirModal()
+        div_txt.innerHTML = '<span style="margin-left:10px;">Obrigado por entrar em contato! Em breve retornaremos.</span>';
         botaoSubmit.innerHTML = 'ENVIADO <span class="check-icon"><i class="fa-solid fa-check" style="color: #f9f9f959"></i></span>';
         let icone = document.querySelector('.check-icon');
         
@@ -390,4 +403,20 @@
             .replace(/(\d{5})(\d)/, '$1-$2')
             .replace(/(-\d{4})\d+?$/, '$1')
     }
+
+
+    // SCRIPT MODAL
+
+    function fecharModal() {
+        container.style.display = "none";
+
+        window.location.reload(true);
+    }
+
+    function abrirModal() {
+        container.style.display = "flex";
+
+    }
+
+    //FIM SCRIPT MODAL
 </script>

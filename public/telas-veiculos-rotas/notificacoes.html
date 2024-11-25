@@ -8,9 +8,10 @@
     
     <title>Notificações</title>
     <link rel="shortcut icon" href="../assets/Tree Technology (Logo fundo transparente + nome).png" type="image/x-icon">
+    <script src="../js/verificacaoSeguranca.js"></script>
 </head>
 
-<body>
+<body onload="verificarPermissao()">
     <div class="top-menu">
         <div id="hamburguer">
             <img src="../assets/Group 23.png" style="width: 50%;">
@@ -27,9 +28,9 @@
             <nav>
                 <ul>
                     <li><a href="dashboard.html">DASHBOARD</a></li>
-                    <li><a href="lista-rotas.html">VISUALIZAR ROTAS</a></li>
-                    <li><a href="lista-veiculo.html">VISUALIZAR VEÍCULOS</a></li>
-                    <li><a href="../index.html">SAIR</a></li>
+                    <li><a href="lista-trajetos.html">VISUALIZAR TRAJETOS</a></li>
+                    <li id="item-func"><a href="../telas-trajetos-func/lista-funcionario.html">VISUALIZAR FUNCIONÁRIOS</a></li>
+                    <li onclick="sairDaSessao()"><a href="../index.html">SAIR</a></li>
                 </ul>
             </nav>
         </div>
