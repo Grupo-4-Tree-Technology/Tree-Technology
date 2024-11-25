@@ -244,6 +244,25 @@ button:hover{
     justify-content: space-between;
 }
 
+
+
+#containerMensagem {
+    background-color: #dcd8d8;
+
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+
+    height: 26%; 
+    width: 96%; 
+
+    cursor: not-allowed; 
+    box-shadow: 5px 12px 5px #21432c1c; 
+    padding-left: 2%; 
+}
+
+
+
 .title{
     display: flex;
     flex-direction: row;

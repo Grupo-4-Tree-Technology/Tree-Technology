@@ -1,92 +1,93 @@
 let myChart;
 
 function buildGraphic() {
-    let dadosAcidentes = JSON.parse(sessionStorage.getItem("ACIDENTES_SEMANA"))
-
-    const ctx = document.getElementById('myChart').getContext('2d');
+    const dadosAcidentes = JSON.parse(sessionStorage.getItem("ACIDENTES_SEMANA"));
 
     const labels = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'];
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: 'Número de Acidentes X Dia da semana',
-            data: [ dadosAcidentes[0].total_fase_dia, 
-                    dadosAcidentes[1].total_fase_dia, 
-                    dadosAcidentes[2].total_fase_dia,
-                    dadosAcidentes[3].total_fase_dia,
-                    dadosAcidentes[4].total_fase_dia,
-                    dadosAcidentes[5].total_fase_dia,
-                    dadosAcidentes[6].total_fase_dia],
-            backgroundColor: '#fff',
-            borderColor: '#0F7A09',
-            borderWidth: 3.5,
-            tension: 0.4,
-            animations: {
-                y: {
-                    duration: 0
-                }
-            }
-        }]
-    };
+    const data = [
+        dadosAcidentes[0].total_fase_dia,
+        dadosAcidentes[1].total_fase_dia,
+        dadosAcidentes[2].total_fase_dia,
+        dadosAcidentes[3].total_fase_dia,
+        dadosAcidentes[4].total_fase_dia,
+        dadosAcidentes[5].total_fase_dia,
+        dadosAcidentes[6].total_fase_dia
+    ];
 
-    const config = {
-        type: 'line',
-        data: data,
-        options: {
-            plugins: {
-                legend: {
-                    display: false
-                }
+    if (!myChart) {
+        // Cria o gráfico na primeira execução
+        const ctx = document.getElementById('myChart').getContext('2d');
+
+        const config = {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Número de Acidentes X Dia da semana',
+                    data: data,
+                    backgroundColor: '#62a065aa',
+                    borderColor: '#0F7A09',
+                    borderWidth: 3.5,
+                    tension: 0.4
+                }]
             },
-            scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Dias da semana',
-                        font: {
-                            size: 18,
-                            weight: 'bold'
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Dias da semana',
+                            font: {
+                                size: 18,
+                                weight: 'bold'
+                            },
+                            color: '#0E3D0B'
                         },
-                        color: '#0E3D0B'
+                        ticks: {
+                            font: {
+                                size: 14,
+                                color: '#0E3D0B'
+                            }
+                        }
                     },
-                    ticks: {
-                        font: {
-                            size: 14,
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: "Número de acidentes",
+                            font: {
+                                size: 18,
+                                weight: 'bold'
+                            },
                             color: '#0E3D0B'
                         }
                     }
                 },
-                y: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: "Número de acidentes",
-                        font: {
-                            size: 18,
-                            weight: 'bold'
-                        },
-                        color: '#0E3D0B'
+                elements: {
+                    line: {
+                        borderWidth: 5,
+                        borderColor: '#000'
+                    },
+                    point: {
+                        backgroundColor: 'rgb(75, 192, 192)'
                     }
                 }
-            },
-            elements: {
-                line: {
-                    borderWidth: 5,
-                    borderColor: '#000'
-                },
-                point: {
-                    backgroundColor: 'rgb(75, 192, 192)'
-                }
             }
-        }
-    };
+        };
 
-    if (myChart) {
-        myChart.destroy();
+        myChart = new Chart(ctx, config);
+    } else {
+        // Atualiza os dados do gráfico existente
+        myChart.data.datasets[0].data = data;
+        myChart.update();
     }
-
-    myChart = new Chart(ctx, config);
 }
+
 
 function openSelectWithImages() {
     const selectSelected = document.querySelector('.select-selected');

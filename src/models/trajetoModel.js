@@ -47,7 +47,7 @@ function buscarInfoTrajeto(idTrajeto, fkEmpresa) {
                     GROUP_CONCAT(DISTINCT veiculo.modelo ORDER BY veiculo.modelo SEPARATOR ' | ') AS modelo,
                     GROUP_CONCAT(DISTINCT veiculo.ano ORDER BY veiculo.ano SEPARATOR ' | ') AS anoVeiculo
                 FROM rota
-                JOIN rua_intermediaria AS rua_intermed
+                LEFT JOIN rua_intermediaria AS rua_intermed
                     ON rota.id = rua_intermed.fkRota
                 JOIN trajeto
                     ON trajeto.fkRota = rota.id
@@ -69,9 +69,41 @@ function deletarTrajeto(idTrajeto) {
     return database.executar(query);
 }
 
+function selecionarTrajetoEspecifico(idTrajeto, fkEmpresa) {
+    console.log("ACESSEI O ROTA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function selecionarTrajetoEspecifico():", idTrajeto, fkEmpresa);
+
+    var query = `
+                SELECT
+                    trajeto.id,
+                    rota.id AS rota_id,
+                    rota.ponto_partida,
+                    GROUP_CONCAT(rua_intermed.id ORDER BY rua_intermed.id SEPARATOR ' | ') AS idRuas,
+                    GROUP_CONCAT(rua_intermed.rua ORDER BY rua_intermed.ordem SEPARATOR ' | ') AS ruas_intermediarias,
+                    GROUP_CONCAT(rua_intermed.ordem ORDER BY rua_intermed.ordem SEPARATOR ' | ') AS ordem_ruas,
+                    COUNT(*) AS total_ruas,
+                    rota.ponto_destino,
+                    veiculo.id AS veiculo_id,
+                    GROUP_CONCAT(DISTINCT veiculo.placa ORDER BY veiculo.placa SEPARATOR ' | ') AS placa,
+                    GROUP_CONCAT(DISTINCT veiculo.modelo ORDER BY veiculo.modelo SEPARATOR ' | ') AS modelo,
+                    GROUP_CONCAT(DISTINCT veiculo.ano ORDER BY veiculo.ano SEPARATOR ' | ') AS anoVeiculo
+                FROM rota
+                LEFT JOIN rua_intermediaria AS rua_intermed
+                    ON rota.id = rua_intermed.fkRota
+                JOIN trajeto
+                    ON trajeto.fkRota = rota.id
+                JOIN veiculo
+                    ON veiculo.id = trajeto.fkVeiculo
+                WHERE rota.fkEmpresa = ${fkEmpresa} and trajeto.id = ${idTrajeto}
+                GROUP BY rota.id, veiculo.id;`;
+
+    console.log("Executando a instrução SQL: \n" + query);
+    return database.executar(query);
+}
+
 module.exports = {
     cadastrarTrajeto,
     carregarTrajetos,
     buscarInfoTrajeto,
-    deletarTrajeto
+    deletarTrajeto,
+    selecionarTrajetoEspecifico
 }

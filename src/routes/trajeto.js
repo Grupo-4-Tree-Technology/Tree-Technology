@@ -19,4 +19,8 @@ router.post("/deletarTrajeto/:idTrajeto", function (req, res) {
     trajetoController.deletarTrajeto(req, res);
 })
 
+router.get("/selecionarTrajetoEspecifico/:idTrajeto/:fkEmpresa", function (req, res) {
+    trajetoController.selecionarTrajetoEspecifico(req, res);
+})
+
 module.exports = router;
