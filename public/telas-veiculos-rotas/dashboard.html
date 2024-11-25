@@ -21,7 +21,7 @@
 
 </head>
 
-<body onload="initMap(), calculateRoute(), openSelectWithImages(), exibeInfoTrajetoSelecionado()">
+<body onload="initMap(), calculateRoute(), openSelectWithImages(), exibeInfoTrajetoSelecionado(), chamaFuncoes()">
     <header>
         <div class="session-title">
             <div id="hamburguer">
@@ -176,7 +176,7 @@
     </main>
 </body>
 <script>
-    /* function chamaFuncoes() {
+    function chamaFuncoes() {
         verificarPermissao();
         obterFasesDoDia();
         obterAcidentesClima();
@@ -186,7 +186,7 @@
 
     setInterval(() => {
         chamaFuncoes();
-    }, 2500); */
+    }, 2500);
 
     function abrirBox() {
         var instrucao = document.getElementById('box');
