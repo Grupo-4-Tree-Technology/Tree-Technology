@@ -41,8 +41,9 @@
 
 .icons{
     display: flex;
-    justify-content: space-around;
+    justify-content: end;
     width: 15vw;
+    gap: 27px;
   
 }
 
