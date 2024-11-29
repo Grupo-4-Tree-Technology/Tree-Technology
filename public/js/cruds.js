@@ -273,6 +273,59 @@ function carregarTrajetos() {
         });
 }
 
+function carregarTrajetos2() {
+    var fkEmpresa = sessionStorage.getItem("ID_EMPRESA");
+    var divScroll = document.getElementById("scroll");
+
+    divScroll.innerHTML = '';
+
+    fetch(`/trajeto/carregarTrajetos/${fkEmpresa}`, { cache: 'no-store' })
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (trajetos) {
+
+                    console.log(`Dados recebidos: ${JSON.stringify(trajetos)}`);
+
+                    trajetos.forEach(function (trajeto) {
+                        divScroll.innerHTML += `
+                        <div onclick="selecionarTrajetoEspecifico(this)" class="list-routes" data-setIdTrajeto="${trajeto.id}">
+        
+                            <div class="text">
+                                <div class="title">
+                                    <h4>Rota (Início | Fim)</h4>
+                                    <h4>Placa</h4>
+            
+                                </div>
+            
+                                <div class="dots">
+                                    <div class="options" style="display: none;">
+                                        <img src="../assets/close.jpeg" alt="" class="close-dots">
+                                        <button id="button-delete" onclick="deletarTrajeto(this)">Deletar Trajeto</button>
+                                        <button onclick="telaCadastroRota(this)">Editar Trajeto</button>
+                                    </div>
+
+                                </div>
+                            </div>
+            
+                            <div class="rota">
+                            
+                            <p style="font-size: 80%">${trajeto.ponto_partida} | ${trajeto.ponto_destino}</p>
+                                <p class="placa" style="font-size: 80%">${trajeto.placa}</p>
+                            </div>
+                        </div>
+                        `
+                    });
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados: ${error.message}`);
+        });
+}
+
 function selecionarTrajetoEspecifico(elemento) {
 
     // Obtém o valor do atributo data-setIdTrajeto
