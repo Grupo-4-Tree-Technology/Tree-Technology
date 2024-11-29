@@ -54,7 +54,7 @@
             </div>
 
             <div class="icons">
-                <a href="notificacoes.html"><img src="../assets/Bell.png" style="width: 44.34px;"></a>
+                <!-- <a href="notificacoes.html"><img src="../assets/Bell.png" style="width: 44.34px;"></a> -->
                 <a href="atualizar-info.html"><img src="../assets/Icon.png" style="width: 36px;"></a>
             </div>
         </div>
@@ -192,7 +192,7 @@
         var instrucao = document.getElementById('box');
 
         box.style.display = "flex";
-        carregarTrajetos();
+        carregarTrajetos2();
     }
 
     function fecharBox() {
@@ -333,13 +333,6 @@
     });
 
     function calculateRoute() {
-        /* let start = document.getElementById('start').value;
-        let waypoint1 = document.getElementById('waypoint1').value;
-        let waypoint2 = document.getElementById('waypoint2').value;
-        let end = document.getElementById('end').value; */
-
-        /* let start = 'Rua Santo Hermeto';
-        let end = 'Estação Brás'; */
 
         let start = sessionStorage.getItem("PONTO_PARTIDA");
         let end = sessionStorage.getItem("PONTO_DESTINO");
@@ -357,20 +350,15 @@
         console.log("Waypoints String:", waypointsStr);
         console.log("Waypoints Array:", waypointsArray);
 
-        // Estou verificando se as paradas não são null e possuem valores válidos
         if (paradas && typeof paradas === "string" && paradas.trim() !== "" && paradas != "null") {
-            // Substituio ' | ' por '|'
             let waypointsStr = paradas.replace(/ \| /g, '|').trim();
 
-            // Divido a string em waypoints e transformo em objetos válidos
             waypointsArray = waypointsStr
                 .split('|')
-                .map(waypoint => waypoint.trim()) // Removo espaços extras
-                .filter(waypoint => waypoint !== "") // Removo entradas vazias
-                .map(waypoint => ({ location: waypoint })); // Transformo em objetos { location: ... }
+                .map(waypoint => waypoint.trim())
+                .filter(waypoint => waypoint !== "")
+                .map(waypoint => ({ location: waypoint }));
         }
-
-        // Caso paradas seja null ou inválido, waypointsArray permanece como []
 
 
         console.log("Paradas:", paradas);
@@ -389,7 +377,7 @@
                     destination: end,
                     waypoints: waypointsArray,
                     optimizeWaypoints: true,
-                    travelMode: 'DRIVING' // Pode ser 'WALKING', 'BICYCLING', 'TRANSIT', 'DRIVING'
+                    travelMode: 'DRIVING'
                 };
 
             } else if (waypointsArray.length == 0) {
@@ -397,7 +385,7 @@
                     origin: start,
                     destination: end,
                     optimizeWaypoints: true,
-                    travelMode: 'TRANSIT' // Pode ser 'WALKING', 'BICYCLING', 'TRANSIT', 'DRIVING'
+                    travelMode: 'TRANSIT'
                 };
             }
 
@@ -407,7 +395,7 @@
                 destination: end,
                 waypoints: waypointsArray,
                 optimizeWaypoints: true,
-                travelMode: 'DRIVING' // Pode ser 'WALKING', 'BICYCLING', 'TRANSIT', 'DRIVING'
+                travelMode: 'DRIVING'
             };
         }
 
@@ -415,20 +403,18 @@
             if (status === 'OK') {
                 directionsRenderer.setDirections(result);
 
-                // Soma a duração total de todos os trechos
+                // Soma a duração total de todos os trechos (legs)
                 let totalDuration = 0;
                 result.routes[0].legs.forEach(leg => {
-                    totalDuration += leg.duration.value; // `value` retorna o tempo em segundos
+                    totalDuration += leg.duration.value; // vai retornar em Seconds 
                 });
 
-                // Converte a duração total para minutos
                 totalDuration = Math.ceil(totalDuration / 60);
 
                 if (request.travelMode == "DRIVING") {
                     totalDuration += totalDuration / 2
                 }
 
-                // Exibe o tempo estimado
                 document.getElementById("duration").innerText = `DURAÇÃO: ${totalDuration.toFixed(0)} minuto(s)`;
             } else {
                 alert('Falha ao traçar a rota: ' + status);
@@ -455,7 +441,7 @@
             options.style.display = 'flex'; // Mostra o menu
         }
 
-        // Fechar o menu de opções associado ao botão "close"
+        // Fecha o menu de opções associado ao botão "close"
         if (event.target.classList.contains('close-dots')) {
             const options = event.target.closest('.options'); // Menu associado
             options.style.display = 'none'; // Oculta o menu
